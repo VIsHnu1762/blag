@@ -12,6 +12,7 @@ assumptions:
   - {id: A-07, assumption: "Players will use focus lanes", test: "Ask players to pick one in the test", pass_if: "Most pick a lane other than 'just for fun'", status: Untested}
   - {id: A-08, assumption: "Players share the recap card", test: "Count shares in the beta", pass_if: "A meaningful share of players post one", status: Untested}
   - {id: A-09, assumption: "Players can find their numbers on their own phone in under a minute", test: "Timed task with 10 people on mixed phones", pass_if: "Most succeed in under 60 seconds", status: Untested}
+  - {id: A-10, assumption: "In-app words (Today's Drop, Lock it in, Call it, Receipts, Season Wrap) are understood without explanation", test: "Show screens to 10 people in the first market; ask what each word means", pass_if: "Most explain each word correctly", status: Untested}
 risks:
   - {id: R-01, risk: "iOS won't allow reading Screen Time numbers to share them", likelihood: High, impact: High, mitigation: "Design for typed-in numbers; seal before claim; trust badges; never promise auto-sync on iOS", evidence: "S-29"}
   - {id: R-02, risk: "Fake stats make the reveal meaningless", likelihood: Medium, impact: High, mitigation: "Seal before claim; screenshot proof; optional Android auto-read", evidence: ""}

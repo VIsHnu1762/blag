@@ -16,6 +16,7 @@ related: [design.emotional, design.screens, design.flows, design.accessibility, 
 | Page | What it covers |
 |---|---|
 | [Emotional design](emotional-design.md) | The feelings BLAG creates, the emotional arc of a day and a season, and the review that shaped it |
+| [UX language and moments map](ux-language.md) | In-app words, and each moment's feeling, proven pattern, twist and backend guarantee |
 | [Screens](screens.md) | Every MVP screen with purpose, contents and states |
 | [Flows](flows.md) | Diagrams of the main flows |
 | [Accessibility](accessibility.md) | WCAG 2.2 AA checklist applied to BLAG |

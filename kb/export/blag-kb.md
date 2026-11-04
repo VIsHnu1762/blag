@@ -139,42 +139,44 @@ good reads, close guesses and Speakers who fooled people. Daily points build a
 
 > **In short:** the shared words for BLAG. Use them exactly in docs, UI copy and code. The *code name* is what to call it in code and the database.
 
-| Term | Meaning | Code name | Don't call it |
-|---|---|---|---|
-| **Circle** | A private, invite-only group of 3-8 friends that plays together across seasons. | `circle` | room, group, team |
-| **Member** | A person in a circle. | `circle_member` | user (in game context), follower |
-| **Organiser** | The member who created the circle. Can change circle settings; has no extra power in the game. | `owner` | admin, host |
-| **Season** | One calendar month of play. Scores reset at the start of each season. | `season` | league (the league is the competition inside a season) |
-| **League** | The standings within a circle for the current season. | `league` | leaderboard (we avoid this word in UI) |
-| **Finale** | The end-of-season moment where every member gets a title and the recap is shown. | `finale` | results |
-| **Drop** | The circle's daily game: it opens in the morning and reveals at the circle's reveal time. | `drop` | session, match |
-| **Round** | One claim-vote-reveal cycle inside a drop. MVP has one round per drop. | `round` | turn |
-| **Card type** | The kind of round: stat (MVP), rest, movie, meme, music.  | `card_type` | mode |
-| **Speaker** | The member who makes today's claim. Kept secret until they claim. | `speaker` | player of the day |
-| **Backup Speaker** | A member chosen privately if the Speaker doesn't claim before the cutoff. | `backup_speaker` |  |
-| **Seal** | The Speaker's real number, locked on the server before they claim. Hidden from everyone until the reveal. | `seal` | answer, truth value |
-| **Claim** | The number the Speaker tells the circle. It may be true or a bluff. | `claim` | statement |
-| **Truth zone** | The range of claims that count as true: within 10% of the sealed number, with a minimum per unit. | `truth_zone` | tolerance (fine in code comments) |
-| **Bluff** | A claim outside the truth zone. | `bluff` | lie (we never say 'lie' in UI) |
-| **Read** | A voter's call on the claim: TRUE or BLUFF. | `read` | vote (vote is fine in code; 'read' in UI) |
-| **Guess** | A voter's estimate of the sealed number. Optional. | `guess` | bet |
-| **Reveal** | The moment the sealed number and the TRUTH or BLUFF! stamp are shown. | `reveal` |  |
-| **Reveal time** | The circle's chosen daily time for the reveal. Early reveal if everyone has voted. | `reveal_at` |  |
-| **Stat** | A measurable habit used as game material, from the stat catalogue. | `stat` | metric (fine in code) |
-| **Spicy stat** | A stat that can feel personal (late-night use, pickups). Needs an extra opt-in. | `sensitivity=spicy` |  |
-| **Health stat** | A stat that may count as health data (steps, sleep). Needs an extra opt-in and is never ranked. | `sensitivity=health` |  |
-| **Focus lane** | A member's chosen theme (fitness, less social media, sleep, productivity, just for fun) that decides their stats as Speaker. | `focus_lane` | goal |
-| **Pass** | Choosing not to take part today. Invisible to the circle. | `pass` | skip (internal only) |
-| **Away** | A neutral status for a member who hasn't opened today's drop. No counts. | `away` | absent, inactive |
-| **Rest day** | A weekly drop with a non-stat prompt. | `card_type=rest` |  |
-| **Catch-up card** | A short summary shown to a member returning after days away. | `catch_up` |  |
-| **Title** | A play-style award given to every member at the finale. | `title` | badge (badges are for trust levels) |
-| **Trust badge** | Shows how a seal was entered: typed, screenshot or auto-read. Never changes points. | `trust_level` | verified |
-| **My month** | A member's private view of their own stats against their own baseline. | `my_month` | dashboard |
-| **Our month** | The circle's shared story of the season: moments, not numbers. | `our_month` |  |
-| **Live mode** | Playing a drop together in the same room with short timers. | `live` | party mode |
-| **Day score** | A member's points for one drop. | `day_score` |  |
-| **Season score** | The sum of a member's best 20 day scores in the season. | `season_score` | total |
+The *in the app* column is the proposed wording users see ([UX language map](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/ux-language.md)); it's being tested and may change. Code names don't change.
+
+| Term | Meaning | In the app | Code name | Don't call it |
+|---|---|---|---|---|
+| **Circle** | A private, invite-only group of 3-8 friends that plays together across seasons. | Circle | `circle` | room, group, team |
+| **Member** | A person in a circle. | (name only) | `circle_member` | user (in game context), follower |
+| **Organiser** | The member who created the circle. Can change circle settings; has no extra power in the game. | Organiser | `owner` | admin, host |
+| **Season** | One calendar month of play. Scores reset at the start of each season. | Season | `season` | league (the league is the competition inside a season) |
+| **League** | The standings within a circle for the current season. | The League | `league` | leaderboard (we avoid this word in UI) |
+| **Finale** | The end-of-season moment where every member gets a title and the recap is shown. | Season Wrap | `finale` | results |
+| **Drop** | The circle's daily game: it opens in the morning and reveals at the circle's reveal time. | Today's Drop | `drop` | session, match |
+| **Round** | One claim-vote-reveal cycle inside a drop. MVP has one round per drop. | (not shown) | `round` | turn |
+| **Card type** | The kind of round: stat (MVP), rest, movie, meme, music.  | (not shown) | `card_type` | mode |
+| **Speaker** | The member who makes today's claim. Kept secret until they claim. | On the mic 🎤 | `speaker` | player of the day |
+| **Backup Speaker** | A member chosen privately if the Speaker doesn't claim before the cutoff. | (not shown) | `backup_speaker` |  |
+| **Seal** | The Speaker's real number, locked on the server before they claim. Hidden from everyone until the reveal. | Lock it in 🔒 | `seal` | answer, truth value |
+| **Claim** | The number the Speaker tells the circle. It may be true or a bluff. | Drop your number | `claim` | statement |
+| **Truth zone** | The range of claims that count as true: within 10% of the sealed number, with a minimum per unit. | Honest range | `truth_zone` | tolerance (fine in code comments) |
+| **Bluff** | A claim outside the truth zone. | BLUFF | `bluff` | lie (we never say 'lie' in UI) |
+| **Read** | A voter's call on the claim: TRUE or BLUFF. | Call it: TRUTH or BLUFF | `read` | vote (vote is fine in code; 'read' in UI) |
+| **Guess** | A voter's estimate of the sealed number. Optional. | Bonus guess | `guess` | bet |
+| **Reveal** | The moment the sealed number and the TRUTH or BLUFF! stamp are shown. | The Reveal | `reveal` |  |
+| **Reveal time** | The circle's chosen daily time for the reveal. Early reveal if everyone has voted. | Reveal time | `reveal_at` |  |
+| **Stat** | A measurable habit used as game material, from the stat catalogue. | (the stat's own name) | `stat` | metric (fine in code) |
+| **Spicy stat** | A stat that can feel personal (late-night use, pickups). Needs an extra opt-in. | 🌶️ Spicy | `sensitivity=spicy` |  |
+| **Health stat** | A stat that may count as health data (steps, sleep). Needs an extra opt-in and is never ranked. | Health | `sensitivity=health` |  |
+| **Focus lane** | A member's chosen theme (fitness, less social media, sleep, productivity, just for fun) that decides their stats as Speaker. | Your lane | `focus_lane` | goal |
+| **Pass** | Choosing not to take part today. Invisible to the circle. | Skip today | `pass` | skip (internal only) |
+| **Away** | A neutral status for a member who hasn't opened today's drop. No counts. | (nothing shown) | `away` | absent, inactive |
+| **Rest day** | A weekly drop with a non-stat prompt. | Chill Day | `card_type=rest` |  |
+| **Catch-up card** | A short summary shown to a member returning after days away. | While you were away | `catch_up` |  |
+| **Title** | A play-style award given to every member at the finale. | Your title | `title` | badge (badges are for trust levels) |
+| **Trust badge** | Shows how a seal was entered: typed, screenshot or auto-read. Never changes points. | Receipts 🧾 | `trust_level` | verified |
+| **My month** | A member's private view of their own stats against their own baseline. | Just you | `my_month` | dashboard |
+| **Our month** | The circle's shared story of the season: moments, not numbers. | Our story | `our_month` |  |
+| **Live mode** | Playing a drop together in the same room with short timers. | Live | `live` | party mode |
+| **Day score** | A member's points for one drop. | Today's points | `day_score` |  |
+| **Season score** | The sum of a member's best 20 day scores in the season. | Season points | `season_score` | total |
 
 
 ---
@@ -1919,7 +1921,7 @@ network failure don't double-submit ([API](https://github.com/VIsHnu1762/blag/bl
 | Backup cutoff | 18:00 | OPEN → REST |
 | Reveal | 21:00 | CLAIMED/REST → REVEALED |
 
-A scheduler job runs every few minutes and advances any drop whose time has
+A scheduler job runs every minute and advances any drop whose time has
 passed ([ADR-005](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-005-scheduled-drops.md)). Early
 reveal is triggered by the `read` action when it's the last missing read.
 
@@ -2134,11 +2136,11 @@ waits until the quiet hours end, or is dropped if it's no longer relevant.
 
 | ID | When | To | Wording (example) | Can turn off |
 |---|---|---|---|---|
-| N-1 | Speaker chosen | Speaker only | "Psst, you're today's secret Speaker 🤫" | No (it's the game), but can pass |
-| N-2 | Claim published | Readers | "Priya just made a claim. TRUE or BLUFF?" | Yes |
+| N-1 | Speaker chosen | Speaker only | "You've got the mic today 🎤🤫" | No (it's the game), but can pass |
+| N-2 | Claim published | Readers | "Priya dropped her number. Call it 👀" | Yes |
 | N-3 | Reveal | Everyone who read, and the Speaker | "The truth is out 👀" | Yes |
 | N-4 | Finale | Everyone | "Season's over! Your title is waiting 🏆" | Yes |
-| N-5 | Backup Speaker chosen | Backup only | "Plot twist: you're today's secret Speaker 🤫" | No, but can pass |
+| N-5 | Backup Speaker chosen | Backup only | "Plot twist: the mic is yours today 🎤" | No, but can pass |
 | N-6 | Circle reached 3 members | Organiser | "Hostel 4B is ready! First drop tomorrow at 8" | Yes |
 
 ### Rules
@@ -2226,6 +2228,9 @@ waits until the quiet hours end, or is dropped if it's no longer relevant.
 
 ### Words
 
+In-app labels for each game concept (Today's Drop, Lock it in, Call it, Season Wrap…) are in the [UX language map](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/ux-language.md).
+
+
 | Use | Avoid |
 |---|---|
 | bluff, fooled, caught | lie, liar, cheat |
@@ -2241,7 +2246,7 @@ waits until the quiet hours end, or is dropped if it's no longer relevant.
 | Moment | Tone | Example |
 |---|---|---|
 | Onboarding | Reassuring, brief | "This is a game, not a judgement. Everyone's numbers are fine." |
-| Speaker chosen | Conspiratorial | "Psst, you're today's secret Speaker 🤫" |
+| Speaker chosen | Conspiratorial | "You've got the mic today 🎤🤫" |
 | Truth zone | Helpful | "Anything from 7,200 to 8,800 counts as the truth." |
 | Claim published | Playful | "Priya says 9,400 steps. TRUE or BLUFF?" |
 | Waiting for reveal | Light | "Locked in. Reveal at 9pm." |
@@ -2381,6 +2386,7 @@ Sounds off by default *(Proposal)* with a clear toggle; haptics follow the syste
 | Page | What it covers |
 |---|---|
 | [Emotional design](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/emotional-design.md) | The feelings BLAG creates, the emotional arc of a day and a season, and the review that shaped it |
+| [UX language and moments map](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/ux-language.md) | In-app words, and each moment's feeling, proven pattern, twist and backend guarantee |
 | [Screens](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/screens.md) | Every MVP screen with purpose, contents and states |
 | [Flows](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/flows.md) | Diagrams of the main flows |
 | [Accessibility](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/accessibility.md) | WCAG 2.2 AA checklist applied to BLAG |
@@ -2471,6 +2477,117 @@ for emotional design on 2026-11-01. The intent was strong, but the follow-throug
 - [ ] Does losing still feel OK?
 - [ ] Is absence invisible?
 - [ ] Is there a moment of delight, and is it short?
+
+
+---
+
+<!-- page: kb/06-design/ux-language.md · id: design.language · status: proposal · updated: 2026-11-04 -->
+
+## UX language and moments map
+
+> **In short:** BLAG speaks the language people already use on social and productivity apps (drops, lock it in, receipts, season wrap), so nothing needs explaining; every moment borrows a pattern that has worked elsewhere, adds one BLAG twist, and is backed by a specific backend guarantee.
+
+Status: **Proposal**. All words are to be tested in the hand-run test (A-10)
+before they're final. Code and database names don't change (see the
+[glossary](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/glossary.md), which now lists both).
+
+### Adoption principles
+
+| Principle | Meaning for BLAG |
+|---|---|
+| **Familiar first** | People prefer apps that work like the ones they already use (Jakob's Law) [S-76]. BLAG reuses known gestures and words: stories-style finale, Wordle-style share, chat-style invites |
+| **One decision per screen** | More choices slow decisions (Hick's Law) [S-76]. Each game screen asks one thing: lock it, drop it, call it |
+| **Fun in 60 seconds** | A new member sees a real claim within a minute of joining, before any setup beyond one stat |
+| **Ask later, not upfront** | Join with one lane and one stat; offer more stats after the first reveal |
+| **Thumb zone** | Main buttons in the bottom third; TRUTH and BLUFF full width |
+| **One delight a day** | The reveal is the only big animation; everything else is calm |
+| **No dark patterns** | No fake urgency, no guilt, no streak traps ([red lines](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/05-principles-and-red-lines.md)) |
+
+### Vocabulary: system words → in-app words
+
+| Concept (code name) | In the app | Why it lands | Avoid |
+|---|---|---|---|
+| circle | **Circle** | Same idea as close-friends lists on social apps | group, room |
+| drop | **Today's Drop** | "Drops" are how music, sneakers and games release: new, timed, exciting | session, match |
+| speaker | **On the mic 🎤** | Familiar from podcasts and live audio; playful, not formal | player of the day |
+| seal | **Lock it in 🔒** | Everyday phrase for committing to something, also used for getting focused | submit, seal |
+| truth_zone | **Honest range** | Self-explanatory | tolerance |
+| claim | **Drop your number** | Echoes "drop"; short and active | statement |
+| read | **Call it: TRUTH or BLUFF** | "Call it" is natural party-game language | vote, accuse |
+| guess | **Bonus guess** | Makes the optional part clearly optional | bet |
+| reveal | **The Reveal** at **reveal time** | Reality-TV and game-show familiarity | results |
+| reactions | **Reacts** | Same word as messaging apps | likes |
+| day_score | **Today's points** | Plain | score |
+| season | **Season** | Games and streaming series both use seasons | month |
+| league | **The League** | Fantasy-sports familiarity, but friendly | leaderboard, ranking |
+| finale | **Season Wrap** | Recalls year-end music recaps people love to share | results |
+| title | **Your title** | Like a superlative in a yearbook | badge |
+| focus_lane | **Your lane** | "Stay in your lane" is everyday; doubles as the productivity idea of focus | goal |
+| sensitivity=spicy | **🌶️ Spicy** | Instantly signals "a bit personal" | sensitive |
+| pass | **Skip today** | Neutral; nothing to explain | pass, opt out |
+| away | (nothing shown) | Absence is invisible | absent, inactive |
+| catch_up | **While you were away** | Familiar from news and social apps | missed |
+| card_type=rest | **Chill Day** | Signals a lighter day | rest day |
+| my_month | **Just you** (only you can see this) | Privacy promise in the label itself | dashboard, stats |
+| our_month | **Our story** | Stories format is familiar | timeline |
+| trust_level / proof | **Receipts 🧾** | "Show the receipts" means "show proof" | verified |
+| live | **Live** | Familiar from streaming | party mode |
+| knowing score (Next) | **In sync** | Friendship language, not numbers | compatibility |
+
+### Moments map
+
+Each row: what the person sees, what they should feel, the proven pattern it
+borrows, BLAG's twist, and the backend step that makes it reliable.
+
+| # | Moment | In-app words | Feeling | Proven pattern (source) | BLAG twist | Backend guarantee |
+|---|---|---|---|---|---|---|
+| 1 | Invite | "Invite your circle" → link or QR | Belonging | Room codes and phone-first joining from party games [S-24] | One link brings the whole group; circle capped at 8 | `circles/join`; invite code stored hashed; rate-limited |
+| 2 | Join | "Pick your lane" → one stat | In control | Small, close-friend networks [S-14] | Lane decides what *you* get asked about | `circles/lane-set`, `consent-set`; nothing shared until opted in |
+| 3 | Drop opens | "Today's Drop is live 👀" | Curiosity | One shared daily moment [S-03, S-01] | The Speaker is a secret | `scheduler` opens drop; `drop.opened` event; Speaker hidden by row-level security |
+| 4 | You're the Speaker | "You've got the mic 🎤🤫" | Mischief | Hidden roles in social-deduction games [S-25] | Your real life is the material | Private push to the Speaker only; generic lock-screen text |
+| 5 | Lock it in | "Lock it in 🔒" + where to find your number | Fair play | — (BLAG's own) | Truth locked *before* the bluff | `game/seal` → `private.seals`; locked at claim |
+| 6 | Honest range | "Anything from 7,200 to 8,800 counts as the truth" | Clever | — (BLAG's own) | Bluffing is always deliberate | Computed by `game-engine` `truthZone()` |
+| 7 | Drop your number | "Drop your number" | Excitement | — | Name revealed only now | `game/claim`: claim + `round.claimed` in one transaction |
+| 8 | Call it | "Priya says 9,400 steps. TRUTH or BLUFF?" | Playful suspicion | Voting on who's lying [S-25] | Real numbers, not made-up roles | `game/read`; others' calls hidden until reveal |
+| 9 | Waiting | "Locked in. Reveal at 9pm" | Anticipation | Timed shared reveal [S-01] | Early reveal when everyone's in | Score-on-write; last read triggers early reveal |
+| 10 | The Reveal | Number counts up → **BLUFF!** stamp | Delight | Reveal moments and celebration animations [S-05] | One big moment a day, then calm | `reveal_due_rounds()` every minute; within 2 minutes (SLO) |
+| 11 | Reacts | Preset emoji | Laughter | Uncounted reactions [S-14] | No text, no pile-ons | Emoji from a fixed list; never aggregated |
+| 12 | Skip today | "Skip today" | Relief | — | Nobody can tell | Backup Speaker chosen privately |
+| 13 | Coming back | "While you were away…" | Welcome | — | No missed-day counts, ever | Best-20 scoring; no absence data exposed |
+| 14 | Chill Day | "Who'd last longest without their phone?" | Lightness | — | A day off from numbers | Rest card type; no points |
+| 15 | The League | Positions, joint places | Playful rivalry | Small groups that reset [S-06] | Points only for reading people | `league` from `round.revealed`; best-20 |
+| 16 | Season Wrap | Titles dealt like cards, moments, share card | Pride, belonging | Year-end recaps people share [S-07]; friends mode [S-08] | Everyone gets a title; no stats on the card | `league` close + `assignTitles()`; `season.finale_ready` |
+| 17 | Share | Card with stamps and titles | Showing off safely | Spoiler-free share grid [S-03] | Shows the play, never the numbers | Share image built on device from non-sensitive fields |
+| 18 | Just you | "Only you can see this" | Calm insight | — | Compared only with your past self | Owner-only access rules |
+| 19 | Receipts | "Add receipts 🧾" | Trust | — | Proof is optional and appears only after the reveal | `proofs` unlocks after `round.revealed`; deleted after 30 days |
+| 20 | Leaving | "Leave circle" / "Delete everything" | Control | Store-required deletion [S-37, S-38] | No guilt copy | `account.deleted` → every service cleans its own data |
+
+### What's borrowed and what's new
+
+| Borrowed (proven) | New in BLAG |
+|---|---|
+| Daily drop and timed reveal | **Lock-it-in before you bluff**: fair bluffing with typed numbers |
+| Hidden-role bluffing | **Real habits as the game material**, with consent per stat |
+| Close-friend circles | **Points for reading people, never for the numbers** |
+| Season recaps that people share | **Everyone gets a title**; share cards without stats |
+| Party-game joining | **Invisible skipping** and a **secret Speaker** |
+| Celebration animations | **Honest range** that makes every bluff deliberate |
+
+### The 60-second first run
+
+1. Tap the invite link → "Join Hostel 4B" (sign-in, 18+ check).
+2. "Pick your lane" (one tap).
+3. "Turn on one thing to bluff about" (one stat, plain explanation).
+4. Land on **Today's Drop**: if a claim is already up, call it immediately.
+5. After the first reveal: "Want more to bluff about?" offers more stats.
+
+### Rules for trendy language
+
+- Use words most 18–30-year-olds already use; avoid slang that dates fast or excludes people.
+- Every label must make sense without the emoji.
+- Never use words that judge habits ([voice and tone](https://github.com/VIsHnu1762/blag/blob/main/kb/05-brand/voice-and-tone.md)).
+- English first; keep every string in the catalogue so it can be translated and changed without code.
+- Test with real users in the hand-run test and usability tests; replace anything that needs explaining.
 
 
 ---
@@ -2697,12 +2814,294 @@ circles, game, league, scheduler, notifications, proofs) described in the
 
 | Page | What it covers |
 |---|---|
+| [Backend blueprint](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/backend-blueprint.md) | Service internals, request pipeline, key flows, events, queues, SLOs, capacity, runbooks |
 | [Data model](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/data-model.md) | Tables, keys, who can read what |
 | [API and realtime](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/api-and-realtime.md) | Every action, scheduled job and realtime event |
 | [Sealing and fairness](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/sealing-and-fairness.md) | How hidden values stay hidden and scoring stays honest |
 | [Repository structure](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/repository-structure.md) | Every folder, dependency rules, naming, where things go |
 | [Service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md) | The seven backend services, their data, events and extraction rules |
+| [Enterprise standards scorecard](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/enterprise-standards.md) | How the plan meets enterprise practice, and the gaps closed |
+| [Learning guide](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/learning-guide.md) | Every folder and concept explained in plain words |
 | [ADRs](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/README.md) | Architecture decisions and their reasons |
+
+
+---
+
+<!-- page: kb/07-architecture/backend-blueprint.md · id: arch.blueprint · status: proposal · updated: 2026-11-04 -->
+
+## Backend blueprint
+
+> **In short:** every action goes through the same pipeline (check who you are, check you haven't sent it before, check the shape, apply the game rules, save the change and its event in one database transaction); points are worked out as people read, so the evening reveal is just a quick switch that scales to thousands of circles at once.
+
+Builds on the [service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md) (who owns what) and
+[API and realtime](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/api-and-realtime.md) (the list of actions). The user-facing
+words for each step are in the [UX language map](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/ux-language.md).
+
+### Containers (C4 level 2)
+
+```mermaid
+flowchart TB
+    subgraph Device["Member's phone"]
+        APP["BLAG app (Expo)<br/>screens · TanStack Query cache · offline queue"]
+    end
+    subgraph Supa["Supabase project (one per environment)"]
+        AUTH["Auth"]
+        subgraph Fn["Edge Functions = services"]
+            ID[identity] ; CI[circles] ; GA[game] ; LE[league]
+            SC[scheduler] ; NO[notifications] ; PR[proofs]
+        end
+        subgraph PG["Postgres"]
+            T["Tables (owned per service) + row-level security"]
+            P["private schema: seals, provisional results"]
+            RPC["SQL write functions (one per use case)"]
+            Q["Supabase Queues: one inbox per consuming service"]
+            CR["pg_cron: every minute"]
+        end
+        RT["Realtime: private channel per circle"]
+        STG["Storage: proofs bucket"]
+    end
+    PUSH["Expo push → APNs / FCM"]
+    APP --> AUTH
+    APP -->|actions| Fn
+    APP -->|reads via RLS| T
+    APP <-->|ids only| RT
+    APP --> STG
+    Fn --> RPC --> T & P & Q
+    CR --> SC --> GA & LE
+    Q --> LE & NO & GA & PR
+    NO --> PUSH
+```
+
+### Inside a service
+
+#### Layers
+
+| Layer | Job | Example in `game/claim` | May import |
+|---|---|---|---|
+| **Handler** | Parse HTTP, auth token, idempotency key; return a response | `handlers/claim.ts` | use cases, `_shared` |
+| **Use case** | One business action, start to finish | `usecases/make-claim.ts` | domain, data |
+| **Domain** | The rules, pure | `@blag/game-engine`: `isTruth`, `canClaim` | nothing |
+| **Data** | Read state; call one SQL write function | `data/rounds.ts` → `game.claim_round()` | `_shared/db` |
+
+Folder for each service:
+
+```text
+supabase/functions/game/
+├── index.ts            # tiny router: "/claim" → handlers/claim.ts …
+├── handlers/           # one file per action
+├── usecases/           # one file per business action
+├── data/               # queries and calls to SQL write functions
+└── events/             # handlers for events from this service's inbox
+```
+
+The SQL write functions live in migrations (`supabase/migrations/…_game_functions.sql`).
+
+#### The request pipeline (every action)
+
+```mermaid
+flowchart LR
+    A[Request] --> B[Verify sign-in token]
+    B --> C[Rate limit]
+    C --> D{Idempotency key<br/>seen before?}
+    D -- yes --> R1[Return stored response]
+    D -- no --> E[Validate shape<br/>@blag/contracts]
+    E --> F[Load current state]
+    F --> G[Apply rules<br/>@blag/game-engine]
+    G --> H["SQL write function:<br/>change + event in ONE transaction"]
+    H --> I[Store response for the key]
+    I --> R2[Respond]
+```
+
+**Why one SQL function per write:** Supabase Queues live inside Postgres, so a
+SQL function can save the change *and* put the event on the queue in a single
+transaction. Either both happen or neither does, so no event is ever lost or
+sent for a change that didn't save. The function also re-checks the state
+(e.g. "still OPEN?") with a row lock, which closes race conditions.
+
+### Key flows
+
+#### 1. Seal and claim ("Lock it in" → "Drop your number")
+
+```mermaid
+sequenceDiagram
+    participant A as App (Speaker)
+    participant G as game service
+    participant DB as Postgres
+    participant Q as Queues
+    A->>G: game/seal {roundId, value, key}
+    G->>G: auth · idempotency · validate · canSeal()
+    G->>DB: game.seal_round() → private.seals (unlocked)
+    G-->>A: ok + truth zone (from game-engine)
+    A->>G: game/claim {roundId, value, key}
+    G->>DB: game.claim_round(): lock seal, insert claim, state → CLAIMED, send round.claimed
+    DB->>Q: round.claimed → notifications_inbox
+    G-->>A: ok
+    Note over A: Realtime "round.claimed" (id only) → other members fetch the claim
+```
+
+#### 2. Read, and score on write ("Call it")
+
+```mermaid
+sequenceDiagram
+    participant A as App (Reader)
+    participant G as game service
+    participant DB as Postgres
+    A->>G: game/read {roundId, read, guess, key}
+    G->>DB: game.save_read(): upsert read
+    G->>G: scoreRound() with all current reads (game-engine)
+    G->>DB: write private.provisional_results (hidden)
+    alt last active reader
+        G->>DB: game.reveal_round() now (early reveal)
+    end
+    G-->>A: ok "Locked in"
+```
+
+**Score on write:** each read is followed by a recompute of that round's
+points (at most 7 reads, so it's instant) into a hidden table. At reveal time
+nothing needs computing: the reveal just copies the seal value and the
+provisional points into the visible results and flips the state. This makes the
+9pm rush cheap.
+
+#### 3. Scheduled reveal ("The Reveal")
+
+```mermaid
+sequenceDiagram
+    participant C as pg_cron (every minute)
+    participant S as scheduler
+    participant DB as Postgres
+    participant Q as Queues
+    C->>S: tick
+    S->>DB: game.reveal_due_rounds(now) — one set-based UPDATE for all due rounds
+    DB->>Q: round.revealed × N → league_inbox, notifications_inbox, proofs_inbox
+    S->>DB: game.open_due_drops(now), apply_cutoffs(now)
+    Note over Q: League adds day scores · Notifications sends the reveal push · Proofs unlocks screenshots
+```
+
+#### 4. Season close ("Season Wrap")
+
+1. Scheduler, first tick after local midnight on the 1st: `league.close_due_seasons(now)`.
+2. League computes best-20 season scores from `day_scores` (already up to date from events).
+3. `assignTitles()` from the game engine; titles written.
+4. `season.finale_ready` → Notifications ("Season's over! Your title is waiting 🏆").
+5. New season row created.
+
+#### 5. Delete account ("Delete everything")
+
+1. `identity/delete-account` → SQL: mark account deleting, send `account.deleted` to every inbox.
+2. Each service deletes or anonymises its own rows when it handles the event.
+3. Identity deletes the auth user last; a completion record (no personal data) is kept.
+
+### Event catalogue
+
+All payloads carry ids and timestamps only, never stat values or names.
+
+| Event | v | Producer | Consumers | Payload |
+|---|---|---|---|---|
+| `drop.opened` | 1 | game | notifications (Speaker nudge) | `dropId, circleId, speakerId` (to the Speaker's push only) |
+| `round.claimed` | 1 | game | notifications | `roundId, circleId` |
+| `round.revealed` | 1 | game | league, notifications, proofs | `roundId, circleId, seasonId, localDate` |
+| `league.updated` | 1 | league | (realtime only) | `seasonId, circleId` |
+| `season.finale_ready` | 1 | league | notifications | `seasonId, circleId` |
+| `circle.member_joined` | 1 | circles | game | `circleId, userId` |
+| `circle.member_left` | 1 | circles | game, league | `circleId, userId` |
+| `consent.changed` | 1 | circles | game | `userId, statId, on` |
+| `account.deleted` | 1 | identity | all | `userId` |
+
+Rules: events are versioned (`v`); consumers ignore fields they don't know;
+every handler is idempotent (keyed on event id).
+
+### Queues
+
+| Queue (inbox) | Read by | Every | Batch | Retry | Dead letter |
+|---|---|---|---|---|---|
+| `league_inbox` | league | 1 min | 100 | Message stays if handler fails; retried next run [S-71] | Moved to `league_dlq` after 5 attempts |
+| `notifications_inbox` | notifications | 1 min | 500 | Same | `notifications_dlq` |
+| `game_inbox` | game | 1 min | 100 | Same | `game_dlq` |
+| `proofs_inbox` | proofs | 5 min | 100 | Same | `proofs_dlq` |
+
+A small `event_subscriptions` table says which inboxes receive each event, so
+adding a new consumer is a data change, not a code change in the producer.
+
+### Scheduler timings
+
+`pg_cron` calls `scheduler` **every minute** (ADR-005). Each tick runs, in order:
+`open_due_drops` → `apply_cutoffs` → `reveal_due_rounds` → `close_due_seasons` →
+`cleanup_retention` (hourly). All are idempotent set-based SQL updates that only
+touch rows whose time has passed.
+
+### Service-level objectives
+
+| Objective | Target | Measured by |
+|---|---|---|
+| Reveal visible after reveal time | 99% within 2 minutes | `revealed_at − reveal_at` |
+| Action success (excluding user errors) | 99.5% | Error logs per action |
+| Action speed | p95 under 800 ms from India | Function timing logs |
+| Reveal push delivered | 95% within 5 minutes | Notification log vs reveal time |
+| Seal never readable before reveal | 100% (security invariant) | Access-rule tests on every change |
+
+### Capacity estimate *(Estimate)*
+
+Scenario: **10,000 circles, 5 members on average (50,000 people)**.
+
+| Per day | Count |
+|---|---|
+| Claims | ~10,000 |
+| Reads (incl. changes) | ~60,000 |
+| Reactions | ~100,000 |
+| Pushes | ~150,000 |
+
+**Peak:** if most circles keep the default 9pm reveal, ~7,000 rounds reveal in
+the same minute. With score-on-write, that's one SQL update plus ~7,000 queue
+messages per inbox; League and Notifications drain them in a few minutes of
+batches. App traffic at 9pm: roughly 35,000 people opening the reveal within 10
+minutes, about 60 reads per second, well within a managed Postgres.
+*Mitigation if needed:* suggest staggered default reveal times (e.g. 8:30, 9, 9:30).
+
+### Errors
+
+| Code | Meaning | App behaviour |
+|---|---|---|
+| `not_member` | Not in this circle | Return to Home |
+| `wrong_state` | e.g. claim after the cutoff | Refresh the drop; friendly "That moment has passed" |
+| `not_speaker` | Not today's Speaker | Refresh |
+| `invalid_value` | Out of range | Inline message on the number pad |
+| `circle_full` | 8 members already | "This circle is full" |
+| `rate_limited` | Too many actions | Wait and retry quietly |
+| `internal` | Our fault | Retry with the same idempotency key, then "That didn't go through. Try again?" |
+
+### Observability
+
+- **Logs:** JSON lines with `requestId`, `eventId`, `service`, `action`, `circleId`, `durationMs`, `outcome`. Never stat values, names or tokens.
+- **Metrics (from logs and SQL):** actions per minute, p95 duration, error rate per action, queue depth per inbox, dead-letter count, reveal lag, push failures.
+- **Alerts:** reveal lag over 5 minutes; any dead-letter message; error rate over 2% for 10 minutes; queue depth growing for 15 minutes.
+- **Tracing:** the `requestId` is copied into the event, so one user action can be followed across services.
+
+### Security per layer
+
+| Layer | Control |
+|---|---|
+| App | No secrets bundled; only the public key; token in secure storage |
+| Handler | Verify sign-in token; rate limit; reject unknown fields |
+| Use case | Check membership and Speaker role every time |
+| Data | Service-role key only inside functions; SQL functions re-check state with row locks |
+| Database | Row-level security on all public tables; `private` schema not exposed to clients |
+| Realtime | Private channels; ids-only payloads |
+| Storage | Proofs readable only by circle members after reveal |
+
+### Runbooks
+
+| Symptom | First checks | Fix |
+|---|---|---|
+| Reveals late | `cron.job_run_details` for scheduler failures; function logs | Re-run the tick (idempotent); fix the failing step |
+| Queue growing | Consumer function errors; dead-letter messages | Fix the handler; move dead letters back to the inbox |
+| Pushes failing | Expired tokens; push service status | Delete invalid tokens; retry |
+| Migration failed on deploy | CI logs | Fix forward with a new migration; never edit an applied one |
+| Suspected seal leak | Access-rule tests; recent policy changes | Revert the policy; investigate; follow the breach plan (DPDP 72-hour notice, [compliance](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/compliance.md)) |
+
+### Open items
+
+- Confirm Supabase Queues' visibility-timeout and read-count fields for the dead-letter rule.
+- Load-test the 9pm peak with seeded circles before the beta.
 
 
 ---
@@ -2823,7 +3222,7 @@ Rate limit *(Proposal)*: 60 actions per minute per user; 10 joins per hour per u
 
 | Job | Every | Does |
 |---|---|---|
-| `drops-tick` | 5 minutes | Creates tomorrow's drops; opens due drops; applies Speaker and backup cutoffs; reveals due rounds; scores revealed rounds |
+| `drops-tick` | 1 minute | Creates tomorrow's drops; opens due drops; applies Speaker and backup cutoffs; reveals due rounds; scores revealed rounds |
 | `season-tick` | 1 hour | Closes ended seasons; computes best-20 scores and titles; creates the next season |
 
 Supabase supports calling Edge Functions on a schedule with `pg_cron` and
@@ -2930,6 +3329,8 @@ See [quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.
 Status: **Proposal** (ADR-008, ADR-009, ADR-010). Nothing here exists yet.
 Create folders **only when the first file needs them** (see [growth plan](#growth-plan-create-folders-only-when-needed)).
 
+How this measures up against enterprise practice is in the [enterprise standards scorecard](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/enterprise-standards.md); a plain-language tour of every part is in the [learning guide](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/learning-guide.md).
+
 ### Goals
 
 | Goal | How the structure supports it |
@@ -2964,8 +3365,10 @@ blag/
 │   └── seed.sql                 # Local test data (fake circles, never real people)
 ├── kb/                          # This knowledge base
 ├── scripts/                     # Repo tools: kb.py, codegen, release helpers
-├── .github/                     # CI workflows, PR template, CODEOWNERS
+├── .github/                     # workflows (ci, e2e, deploy-backend, codeql, kb), CODEOWNERS, PR and issue templates, renovate.json
+├── .changeset/                  # release notes and versions
 ├── AGENTS.md  CLAUDE.md  README.md  CONTRIBUTING.md  SECURITY.md  CHANGELOG.md  LICENSE
+├── commitlint.config.js         # Conventional Commits check
 ├── package.json                 # Root: workspace scripts only, no app code
 ├── pnpm-workspace.yaml          # Declares apps/* and packages/*
 ├── turbo.json                   # Task graph and build cache (ADR-008)
@@ -3121,7 +3524,7 @@ supabase/
 
 Supabase recommends keeping shared function code in a folder whose name starts
 with an underscore, and building a few larger functions that combine related
-actions to reduce cold starts [S-69]. BLAG follows that: each **service** from the [service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md) is
+actions to reduce cold starts [S-69]. Inside each service the code is layered (handler → use case → domain → data); see the [backend blueprint](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/backend-blueprint.md#inside-a-service). BLAG follows that: each **service** from the [service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md) is
 one function folder, and each action from [API and realtime](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/api-and-realtime.md)
 is a route inside it (ADR-010). Services talk to each other through events on a
 queue, never by writing each other's tables. Importing code from outside `supabase/` (our
@@ -3346,6 +3749,292 @@ shared code in `_shared/` and the shared packages
 
 ---
 
+<!-- page: kb/07-architecture/enterprise-standards.md · id: arch.standards · status: proposal · updated: 2026-11-04 -->
+
+## Enterprise standards scorecard
+
+> **In short:** the planned structure already meets most enterprise practices (layered architecture, service boundaries, ADRs, strict types, tests, access rules); this page closes the remaining gaps (commit conventions, versioning, code owners, dependency updates, security scanning, runbooks, service-level targets) and says which to switch on now and which to leave until there's a team.
+
+"Enterprise grade" here means: a stranger (or an AI agent) can understand
+the code, change it safely, ship it repeatably, and find out quickly when
+something breaks. It doesn't mean "as many tools as possible".
+
+### Scorecard
+
+Legend: ✅ in the plan · 🆕 added on this page · ⏳ planned for later.
+
+#### Architecture
+
+| Practice | What it means | BLAG | Status |
+|---|---|---|---|
+| Layered / clean architecture | Business rules don't depend on UI, database or framework | `packages/game-engine` is pure; services use handler → use case → domain → data layers ([backend blueprint](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/backend-blueprint.md)) | ✅ |
+| Bounded contexts (domain services) | Each part of the business owns its data and language | Seven services in the [service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md) | ✅ |
+| Architecture decision records | Every big decision written down with options and reasons | `kb/07-architecture/adr/` | ✅ |
+| C4 diagrams | Architecture drawn at four levels: context, containers, components, code [S-73] | Context and containers in the [architecture overview](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/README.md); components in the [backend blueprint](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/backend-blueprint.md) | ✅ |
+| Contract-first APIs | Request, response and event shapes defined once and shared | `packages/contracts` | ✅ |
+| Config separate from code | Anything that changes between deploys lives in the environment, not in code [S-74] | Env vars per environment; secrets in Supabase and EAS stores | ✅ |
+
+#### Code quality
+
+| Practice | BLAG | Status |
+|---|---|---|
+| Strict TypeScript everywhere | `tsconfig.base.json` with `strict: true` | ✅ |
+| Lint and format | Shared ESLint and Prettier in `packages/config` | ✅ |
+| Enforced import boundaries | Lint rule in CI (ADR-009) | ✅ |
+| Conventional Commits | Commit messages like `feat(game): add early reveal`, which tools turn into changelogs and version numbers [S-75] | 🆕 `commitlint` in CI |
+| Semantic versioning and changelog | App version and `CHANGELOG.md` generated from commits | 🆕 Changesets or release-please |
+| Code owners and pull-request template | Who reviews what; a checklist on every PR (red lines, tests, KB updated) | 🆕 `.github/CODEOWNERS`, `.github/pull_request_template.md` |
+| Automated dependency updates | Weekly update PRs, grouped | 🆕 Renovate or Dependabot |
+
+#### Testing
+
+| Practice | BLAG | Status |
+|---|---|---|
+| Test pyramid | Many unit tests (game engine), fewer integration (functions, access rules), few end-to-end (Maestro) | ✅ [quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.md) |
+| Coverage gate on core rules | 95%+ line coverage on `game-engine`; no gate elsewhere at first | 🆕 |
+| Access-rule tests | Every row of the who-can-read table is a test | ✅ |
+| Contract tests | Schemas in `packages/contracts` validated on both sides | 🆕 |
+
+#### Security
+
+| Practice | BLAG | Status |
+|---|---|---|
+| Threat model | [Threat model](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/threat-model.md) | ✅ |
+| Mobile security checklist | OWASP MASVS self-assessment before beta | ✅ |
+| Secret scanning | GitHub secret scanning + push protection | 🆕 |
+| Static analysis | CodeQL on TypeScript | 🆕 |
+| Least privilege | Service-role key only inside functions; row-level security for every client read | ✅ |
+| Security policy | `SECURITY.md` with how to report a problem | 🆕 |
+
+#### Operations
+
+| Practice | BLAG | Status |
+|---|---|---|
+| Separate environments | local, preview, production | ✅ |
+| CI/CD | Checks on every PR; deploy functions and migrations from `main` | ✅ (workflow drafted in `scripts/ci/`) |
+| Service-level objectives | e.g. reveals visible within 2 minutes of reveal time ([backend blueprint](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/backend-blueprint.md#service-level-objectives)) | 🆕 |
+| Observability | Structured logs with request and event ids; key metrics; alerts | 🆕 [backend blueprint](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/backend-blueprint.md#observability) |
+| Runbooks | Step-by-step fixes for known failures | 🆕 [backend blueprint](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/backend-blueprint.md#runbooks) |
+| Backups and restore drill | Supabase backups; one restore rehearsal before beta | ⏳ |
+| Feature flags | Turn features on per circle or per release | 🆕 `src/config/flags.ts`, values from the server |
+
+#### Data, accessibility and docs
+
+| Practice | BLAG | Status |
+|---|---|---|
+| Versioned migrations | `supabase/migrations/`, never edited after merge | ✅ |
+| Data ownership and retention | [Service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md), [data inventory](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/data-inventory.md) | ✅ |
+| Accessibility standard | WCAG 2.2 AA | ✅ |
+| Internationalisation-ready | Strings in catalogues from day one | ✅ |
+| Living documentation | This KB, generated indexes, `AGENTS.md` | ✅ |
+
+### Files added to the repository plan
+
+```text
+.github/
+├── workflows/
+│   ├── ci.yml                   # lint, types, boundaries, unit + access-rule tests, kb check
+│   ├── e2e.yml                  # Maestro flows on preview builds (nightly)
+│   ├── deploy-backend.yml       # migrations + Edge Functions on merge to main
+│   ├── codeql.yml               # static security analysis
+│   └── kb.yml                   # knowledge-base site (currently scripts/ci/kb-workflow.yml)
+├── CODEOWNERS
+├── pull_request_template.md
+├── ISSUE_TEMPLATE/              # bug, feature, research question
+└── renovate.json (or dependabot.yml)
+.changeset/                      # release notes and versions (if Changesets is chosen)
+commitlint.config.js
+SECURITY.md
+```
+
+These are reflected in the [repository structure](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/repository-structure.md).
+
+### Right-sizing for one person
+
+| Switch on at the start | Leave until there's a team or users |
+|---|---|
+| Strict types, lint, import boundaries | Coverage gates outside the game engine |
+| Game-engine and access-rule tests | Nightly end-to-end runs |
+| Conventional Commits | CODEOWNERS (you own everything for now) |
+| Secret scanning, CodeQL | Remote build cache |
+| Environments and secrets handling | Formal on-call and incident process |
+| ADRs and the KB | Separate database schemas per service |
+
+
+---
+
+<!-- page: kb/07-architecture/learning-guide.md · id: arch.learning · status: living · updated: 2026-11-04 -->
+
+## Learning guide to the code structure
+
+> **In short:** each idea below gets one plain sentence, an everyday analogy, how BLAG uses it, what breaks without it, and where to learn more; learn them in the order of the build phases at the bottom.
+
+Think of BLAG's codebase as **a restaurant**: the app is the dining room, the
+server is the kitchen, the database is the store room, and the rules of the
+game are the recipe book everyone must follow. Most ideas below fit into that
+picture.
+
+### Part 1: The repository
+
+#### Monorepo
+- **What:** one Git repository that holds the app, the server code, shared code and the docs.
+- **Analogy:** one building with several rooms, instead of separate buildings across town.
+- **In BLAG:** `apps/`, `packages/`, `supabase/`, `kb/` in one repo (ADR-008).
+- **Without it:** the app and server drift apart; a rule fixed in one place stays broken in another.
+- **Learn next:** [Expo: monorepos](https://docs.expo.dev/guides/monorepos/), [pnpm workspaces](https://pnpm.io/workspaces).
+
+#### `apps/` vs `packages/`
+- **What:** `apps/` are things you ship to users; `packages/` are building blocks the apps share.
+- **Analogy:** apps are the dishes served; packages are the shared sauces made once and used in many dishes.
+- **In BLAG:** `apps/mobile`, `apps/web`; `packages/game-engine`, `contracts`, `config`.
+- **Without it:** copy-pasted code that slowly becomes different in each copy.
+
+#### Package manager and workspaces (pnpm)
+- **What:** the tool that downloads libraries and links your own packages together.
+- **Analogy:** the supplier who stocks the kitchen and labels which shelf belongs to which cook.
+- **Learn next:** [pnpm workspaces](https://pnpm.io/workspaces).
+
+#### Task runner with a cache (Turborepo)
+- **What:** runs lint, tests and builds across all packages, and skips work whose inputs didn't change.
+- **Analogy:** a chef who doesn't re-chop vegetables that are already chopped.
+- **Without it:** CI gets slower every month.
+
+#### Strict TypeScript
+- **What:** JavaScript with types; "strict" makes the compiler refuse risky code.
+- **Analogy:** a recipe that says "200 g sugar", not "some sugar".
+- **In BLAG:** shared `tsconfig.base.json`. The same types travel from database to app.
+- **Learn next:** [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/intro.html).
+
+### Part 2: The app (`apps/mobile`)
+
+#### Routes folder (`src/app`)
+- **What:** in Expo Router every file here is a screen with a URL; nothing else may live here.
+- **Analogy:** the restaurant's floor plan: it says where tables are, not how food is cooked.
+- **In BLAG:** thin route files that just show a feature's screen.
+- **Learn next:** [Expo Router core concepts](https://docs.expo.dev/router/basics/core-concepts/).
+
+#### Feature folders with a front door (`src/features/<feature>/index.ts`)
+- **What:** all code for one product feature in one folder; other code may only use what `index.ts` exports.
+- **Analogy:** apartments with a front door: neighbours ring the bell, they don't climb in through the window.
+- **In BLAG:** `circles/`, `round/`, `league/`, `finale/` … (ADR-009).
+- **Without it:** changing one feature breaks three others you didn't know were connected.
+
+#### Design system (`src/ui/`, later `packages/tokens`)
+- **What:** one set of buttons, cards, stamps and colours used everywhere.
+- **Analogy:** the restaurant's plates and cutlery: every dish looks like it belongs.
+- **In BLAG:** `Button`, `Stamp`, `NumberPad`; tokens from [visual identity](https://github.com/VIsHnu1762/blag/blob/main/kb/05-brand/visual-identity.md).
+
+#### Infrastructure layer (`src/lib/`)
+- **What:** code that talks to the outside world: Supabase, push, storage, analytics.
+- **Analogy:** the waiter who carries orders between dining room and kitchen.
+- **Without it:** network code scattered in screens; impossible to add retries or caching in one place.
+
+#### Server state vs screen state (TanStack Query)
+- **What:** data from the server is cached and refreshed by a library; small UI state (which button is pressed) stays in the screen.
+- **Analogy:** the menu board (server state, updated centrally) vs your own notepad (screen state).
+- **Learn next:** [TanStack Query](https://tanstack.com/query/latest).
+
+### Part 3: Shared packages
+
+#### Pure game engine (`packages/game-engine`)
+- **What:** the rules as plain functions with no network, database or UI. Same input, same output, always.
+- **Analogy:** the recipe book. The kitchen and the menu both follow it; nobody improvises.
+- **In BLAG:** `truthZone()`, `scoreRound()`, `assignTitles()`; tested with every worked example in [scoring](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/scoring.md).
+- **Without it:** the app shows one score, the server stores another.
+
+#### Contracts (`packages/contracts`)
+- **What:** the agreed shape of every request, response, error and event, checked at runtime with a schema library.
+- **Analogy:** the order slip: the waiter and the kitchen both read the same form.
+- **Learn next:** [Zod](https://zod.dev).
+
+### Part 4: The backend (`supabase/`)
+
+#### Postgres and row-level security (RLS)
+- **What:** the database, plus rules on every row that decide who may read or write it.
+- **Analogy:** a store room where each shelf has its own guest list at the door.
+- **In BLAG:** a member can read their circle's revealed rounds, never a seal ([data model](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/data-model.md)).
+- **Learn next:** [Supabase row-level security](https://supabase.com/docs/guides/database/postgres/row-level-security).
+
+#### Migrations
+- **What:** numbered SQL files that change the database step by step, applied in order everywhere.
+- **Analogy:** numbered renovation permits: you can rebuild the same building anywhere by following them.
+- **Without it:** your laptop's database and production's database quietly differ.
+
+#### Services as Edge Functions
+- **What:** small server programs, one per business area, that receive the app's requests.
+- **Analogy:** kitchen stations: grill, pastry, drinks. Each has its own job and its own fridge.
+- **In BLAG:** identity, circles, game, league, scheduler, notifications, proofs ([service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md)).
+
+#### Layers inside a service
+- **What:** handler (reads the request) → use case (decides what to do) → domain (game engine rules) → data (database calls).
+- **Analogy:** take the order → decide the steps → follow the recipe → fetch ingredients.
+- **In BLAG:** [backend blueprint](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/backend-blueprint.md#inside-a-service).
+
+#### Idempotency keys
+- **What:** a unique id sent with each action so repeating it has no extra effect.
+- **Analogy:** a receipt number: the cashier won't charge you twice for the same receipt.
+- **In BLAG:** every action; essential on patchy mobile networks.
+
+#### Events and queues
+- **What:** a service announces "this happened"; others react in their own time, via a queue.
+- **Analogy:** the office mail tray: you drop a note and carry on; the other department picks it up.
+- **In BLAG:** `round.revealed` → League updates scores, Notifications sends pushes (Supabase Queues).
+- **Without it:** services call each other directly and one slow service slows everyone.
+
+#### Scheduler (cron)
+- **What:** a clock that triggers jobs at set times.
+- **Analogy:** the restaurant's opening and closing bell.
+- **In BLAG:** opens drops, applies cutoffs, triggers reveals every minute.
+
+#### Realtime channels
+- **What:** a live connection so the app hears "something changed" instantly.
+- **Analogy:** the kitchen bell that rings when a dish is ready; the waiter then fetches it.
+- **In BLAG:** events carry only ids; the app then fetches data through access rules.
+
+### Part 5: Shipping and running
+
+#### Environments and config
+- **What:** separate copies for development, testing and real users; settings in environment variables, not code.
+- **Analogy:** rehearsal stage vs opening night.
+- **Learn next:** [The Twelve-Factor App: config](https://12factor.net/config).
+
+#### CI/CD
+- **What:** robots that check every change (CI) and ship approved changes (CD).
+- **Analogy:** a quality inspector at the kitchen door.
+
+#### Test pyramid
+- **What:** many fast small tests, fewer bigger ones, a handful of full-journey tests.
+- **Analogy:** taste each ingredient often, each dish sometimes, the whole menu before opening night.
+
+#### Conventional Commits and semantic versioning
+- **What:** commit messages with a type (`feat`, `fix`) so tools can write release notes and pick the next version number.
+- **Learn next:** [conventionalcommits.org](https://www.conventionalcommits.org), [semver.org](https://semver.org).
+
+#### ADRs
+- **What:** short records of why a technical decision was made.
+- **Analogy:** meeting minutes you'll thank yourself for in six months.
+
+#### Observability
+- **What:** logs, metrics and alerts that tell you what the system is doing.
+- **Analogy:** the dashboard in a car: speed, fuel, warning lights.
+
+#### Feature flags
+- **What:** switches that turn a feature on or off without a new app release.
+- **Analogy:** a dimmer switch instead of rewiring the room.
+
+### Learning order (matches the roadmap)
+
+| Phase | Learn | Why then |
+|---|---|---|
+| Before coding | TypeScript basics, Git, Conventional Commits | Everything builds on these |
+| Prototype | Expo Router, feature folders, pure functions and unit tests, Supabase basics (tables, auth, RLS) | First playable round |
+| MVP | Edge Functions and layers, migrations, contracts, idempotency, TanStack Query, scheduler, realtime | Real circles playing daily |
+| Beta | Events and queues, environments, CI/CD, observability, feature flags | Running it for others |
+| Later | Native modules in Swift and Kotlin, extracting a service | Widgets, auto-read, scale |
+
+
+---
+
 <!-- page: kb/07-architecture/adr/README.md · id: arch.adr · status: living · updated: 2026-11-04 -->
 
 ## Architecture decision records
@@ -3507,7 +4196,7 @@ The seal screen must make finding numbers easy (A-09). Native modules come only 
 
 ## ADR-005: Drive drops with a scheduler job
 
-> **In short:** A `drops-tick` job runs every 5 minutes via `pg_cron` and advances any drop whose stored UTC time has passed.
+> **In short:** A scheduler job runs **every minute** via `pg_cron` (changed from 5 minutes on 2026-11-04 to meet the 2-minute reveal objective, D-22) and advances any drop whose stored UTC time has passed.
 
 **Status:** Proposed
 
@@ -3517,7 +4206,7 @@ Drops open, change Speaker, and reveal at circle-specific local times across man
 
 ### Decision
 
-A `drops-tick` job runs every 5 minutes via `pg_cron` and advances any drop whose stored UTC time has passed. A `season-tick` job runs hourly. Both are idempotent. Early reveal is triggered by the last read.
+A scheduler job runs **every minute** via `pg_cron` (changed from 5 minutes on 2026-11-04 to meet the 2-minute reveal objective, D-22) and advances any drop whose stored UTC time has passed. A `season-tick` job runs hourly. Both are idempotent. Early reveal is triggered by the last read.
 
 ### Options considered
 
@@ -3529,7 +4218,7 @@ A `drops-tick` job runs every 5 minutes via `pg_cron` and advances any drop whos
 
 ### Consequences
 
-Reveal may be up to 5 minutes late; fine for a daily game. Times are stored in UTC and computed with the time-zone database, so daylight-saving changes are handled.
+Reveal is at most about a minute late, plus processing; see the [backend blueprint](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/backend-blueprint.md#scheduler-timings). Times are stored in UTC and computed with the time-zone database, so daylight-saving changes are handled.
 
 
 ---
@@ -4366,10 +5055,10 @@ The full 290-word description is in the [vision](https://github.com/VIsHnu1762/b
 | [Idea bank](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/ideas.md) | 52 ideas | `kb/data/ideas.yaml` |
 | [Feature catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/features.md) | 23 features with acceptance criteria | `kb/data/features.yaml` |
 | [Stat catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/stats.md) | 16 stats | `kb/data/stats.yaml` |
-| [Decision log](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/decisions.md) | 21 decisions | `kb/data/decisions.yaml` |
+| [Decision log](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/decisions.md) | 23 decisions | `kb/data/decisions.yaml` |
 | [Open questions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/questions.md) | 19 open of 20 | `kb/data/questions.yaml` |
-| [Risks and assumptions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/risks.md) | 15 risks, 9 assumptions | `kb/data/risks.yaml` |
-| [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md) | 71 sources | `kb/data/sources.yaml` |
+| [Risks and assumptions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/risks.md) | 15 risks, 10 assumptions | `kb/data/risks.yaml` |
+| [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md) | 75 sources | `kb/data/sources.yaml` |
 | [Glossary](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/glossary.md) | 34 terms | `kb/data/glossary.yaml` |
 
 The [decisions workbook](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/design-decisions-2026-11-01.xlsx) from 1 Nov 2026 is kept here for reference; the YAML files supersede it.
@@ -4722,6 +5411,8 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | D-19 | 2026-11-04 | Build BLAG with Expo + React Native (TypeScript) for Android and iOS; review after the prototype in light of Shopify's return to native | Two native apps (SwiftUI + Compose) built with AI coding agents; Flutter; Swift-only iOS app | Founder's choice (2026-11-04). Solo builder; ~93% of phones in India run Android, so one codebase for both platforms matters; TypeScript shared with the game engine and Supabase. Swift is learned alongside for iOS-only parts (widget, Screen Time view, HealthKit) | Agreed |
 | D-20 | 2026-11-04 | One monorepo (pnpm workspaces + Turborepo) with apps/, packages/ and supabase/; feature modules with enforced import boundaries (ADR-008, ADR-009) | Separate repositories; folders by file type | Shared game rules stay identical; structure scales from one developer to a team | Proposed |
 | D-21 | 2026-11-04 | Backend split into seven domain services inside one Supabase project, connected by events on Supabase Queues; extract a service into its own microservice only when a trigger in the service map is met (ADR-010) | Full microservices now; one monolithic backend; one function per action | Founder wants classified, separately optimisable services; full microservices are too heavy for a solo MVP | Proposed |
+| D-22 | 2026-11-04 | Backend writes go through one SQL function per use case that saves the change and its queue event in one transaction; points are computed on each read (score-on-write) so the reveal is a cheap state flip; scheduler runs every minute | Outbox table plus dispatcher; compute all points at reveal time; 5-minute ticks | No lost events; handles the 9pm peak; reveals within 2 minutes | Proposed |
+| D-23 | 2026-11-04 | Separate in-app wording from code names: friendly, familiar words in the UI (Today's Drop, Lock it in, Call it, Season Wrap, Receipts) while code keeps glossary code names | Use the technical terms in the UI | Familiar words cut learning time for social and productivity users; code stays stable if wording changes | Proposed |
 
 
 ---
@@ -4781,6 +5472,7 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | A-07 | Players will use focus lanes | Ask players to pick one in the test | Most pick a lane other than 'just for fun' | Untested |
 | A-08 | Players share the recap card | Count shares in the beta | A meaningful share of players post one | Untested |
 | A-09 | Players can find their numbers on their own phone in under a minute | Timed task with 10 people on mixed phones | Most succeed in under 60 seconds | Untested |
+| A-10 | In-app words (Today's Drop, Lock it in, Call it, Receipts, Season Wrap) are understood without explanation | Show screens to 10 people in the first market; ask what each word means | Most explain each word correctly | Untested |
 
 ### Risks
 
@@ -4886,3 +5578,7 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | S-70 | Supabase CLI: Edge Functions can import files outside the supabase directory (monorepos) | [Supabase](https://supabase.com/changelog/33613-deploy-edge-functions-from-cli-without-needing-docker-import-files-outside-of-supabase-directory) | A | 2026-11-04 |
 | S-71 | Supabase Queues: pull-based Postgres queue consumed by Edge Functions; failed messages stay for retry | [Supabase](https://supabase.com/docs/guides/queues/consuming-messages-with-edge-functions) | A | 2026-11-04 |
 | S-72 | Expo guidance on organising app folders for scale (src folder, components, server code) | [Expo](https://expo.dev/blog/expo-app-folder-structure-best-practices) | A | 2026-11-04 |
+| S-73 | C4 model: architecture diagrams at four levels (context, container, component, code) | [MockFlow glossary](https://mockflow.com/glossary/c4-model) | C | 2026-11-04 |
+| S-74 | Twelve-Factor App: store config in the environment, separate from code | [12factor.net](https://12factor.net/config) | A | 2026-11-04 |
+| S-75 | Conventional Commits: commit types that drive changelogs and semantic versions | [Conventional Commits](https://github.com/conventional-commits/conventionalcommits.org/blob/master/content/next/index.md) | A | 2026-11-04 |
+| S-76 | Laws of UX: Jakob's Law (familiar patterns) and Hick's Law (fewer choices, faster decisions) | [Fast Company](https://www.fastcompany.com/90157775/10-laws-of-ux-illustrated) | B | 2026-11-04 |

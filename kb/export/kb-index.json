@@ -648,6 +648,29 @@
       "path": "kb/06-design/emotional-design.md"
     },
     {
+      "id": "design.language",
+      "title": "UX language and moments map",
+      "section": "06-design",
+      "status": "proposal",
+      "summary": "The words BLAG uses in the app (familiar to social-media and productivity users), and a moment-by-moment map linking each screen's words and feeling to the proven product pattern behind it, BLAG's own twist, and the backend step that guarantees it.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "design.emotional",
+        "brand.voice",
+        "arch.blueprint",
+        "start.glossary",
+        "idea.inspiration"
+      ],
+      "audience": [
+        "design",
+        "product",
+        "developers",
+        "agents",
+        "judges"
+      ],
+      "path": "kb/06-design/ux-language.md"
+    },
+    {
       "id": "design.screens",
       "title": "Screens",
       "section": "06-design",
@@ -723,6 +746,27 @@
         "agents"
       ],
       "path": "kb/07-architecture/README.md"
+    },
+    {
+      "id": "arch.blueprint",
+      "title": "Backend blueprint",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "Detailed backend design: containers, the layers and request pipeline inside each service, step-by-step flows for the key moments, the event and queue catalogue, scheduler timings, the score-on-write optimisation, service-level objectives, capacity estimates, errors, observability, security and runbooks.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.services",
+        "arch.api",
+        "arch.data",
+        "arch.fairness",
+        "game.state",
+        "design.language"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/backend-blueprint.md"
     },
     {
       "id": "arch.data",
@@ -823,6 +867,46 @@
         "agents"
       ],
       "path": "kb/07-architecture/services.md"
+    },
+    {
+      "id": "arch.standards",
+      "title": "Enterprise standards scorecard",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "Checks BLAG's planned code structure against recognised enterprise practices (architecture, code quality, testing, security, operations, data, documentation), lists the gaps found and how they're closed, and keeps it right-sized for a solo founder.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.repo",
+        "arch.services",
+        "arch.learning",
+        "quality.home",
+        "privacy.threats"
+      ],
+      "audience": [
+        "developers",
+        "agents",
+        "judges"
+      ],
+      "path": "kb/07-architecture/enterprise-standards.md"
+    },
+    {
+      "id": "arch.learning",
+      "title": "Learning guide to the code structure",
+      "section": "07-architecture",
+      "status": "living",
+      "summary": "Plain-language explanations, with everyday analogies, of every folder and engineering concept in BLAG's planned codebase: what it is, why enterprises use it, what goes wrong without it, and what to learn next, in the order you'll need them.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.repo",
+        "arch.services",
+        "arch.standards",
+        "arch.blueprint"
+      ],
+      "audience": [
+        "everyone",
+        "developers"
+      ],
+      "path": "kb/07-architecture/learning-guide.md"
     },
     {
       "id": "arch.adr",

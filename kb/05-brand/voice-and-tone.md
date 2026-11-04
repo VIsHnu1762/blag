@@ -23,6 +23,9 @@ related: [brand.home, idea.principles, features.notifications, design.emotional]
 
 ## Words
 
+In-app labels for each game concept (Today's Drop, Lock it in, Call it, Season Wrap…) are in the [UX language map](../06-design/ux-language.md).
+
+
 | Use | Avoid |
 |---|---|
 | bluff, fooled, caught | lie, liar, cheat |
@@ -38,7 +41,7 @@ related: [brand.home, idea.principles, features.notifications, design.emotional]
 | Moment | Tone | Example |
 |---|---|---|
 | Onboarding | Reassuring, brief | "This is a game, not a judgement. Everyone's numbers are fine." |
-| Speaker chosen | Conspiratorial | "Psst, you're today's secret Speaker 🤫" |
+| Speaker chosen | Conspiratorial | "You've got the mic today 🎤🤫" |
 | Truth zone | Helpful | "Anything from 7,200 to 8,800 counts as the truth." |
 | Claim published | Playful | "Priya says 9,400 steps. TRUE or BLUFF?" |
 | Waiting for reveal | Light | "Locked in. Reveal at 9pm." |

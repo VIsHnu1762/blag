@@ -178,8 +178,9 @@ def gen_registers() -> dict[Path, str]:
 
     g = load("glossary")
     body = "# Glossary\n\n> **In short:** the shared words for BLAG. Use them exactly in docs, UI copy and code. The *code name* is what to call it in code and the database.\n\n"
-    body += table(["Term", "Meaning", "Code name", "Don't call it"],
-                  [[f"**{x['term']}**", x["definition"], f"`{x['code_name']}`", x.get("not", "")] for x in g["items"]])
+    body += "The *in the app* column is the proposed wording users see ([UX language map](../06-design/ux-language.md)); it's being tested and may change. Code names don't change.\n\n"
+    body += table(["Term", "Meaning", "In the app", "Code name", "Don't call it"],
+                  [[f"**{x['term']}**", x["definition"], x.get("ui_label", ""), f"`{x['code_name']}`", x.get("not", "")] for x in g["items"]])
     out[KB / "00-start-here" / "glossary.md"] = page({"id": "start.glossary", "order": 1, "title": "Glossary", "section": "00-start-here", "status": "generated",
                                                       "summary": "Shared vocabulary for people, code and agents.", "last_updated": g["meta"]["last_updated"],
                                                       "source": "kb/data/glossary.yaml"}, "kb/data/glossary.yaml", body)

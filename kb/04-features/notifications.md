@@ -24,11 +24,11 @@ waits until the quiet hours end, or is dropped if it's no longer relevant.
 
 | ID | When | To | Wording (example) | Can turn off |
 |---|---|---|---|---|
-| N-1 | Speaker chosen | Speaker only | "Psst, you're today's secret Speaker 🤫" | No (it's the game), but can pass |
-| N-2 | Claim published | Readers | "Priya just made a claim. TRUE or BLUFF?" | Yes |
+| N-1 | Speaker chosen | Speaker only | "You've got the mic today 🎤🤫" | No (it's the game), but can pass |
+| N-2 | Claim published | Readers | "Priya dropped her number. Call it 👀" | Yes |
 | N-3 | Reveal | Everyone who read, and the Speaker | "The truth is out 👀" | Yes |
 | N-4 | Finale | Everyone | "Season's over! Your title is waiting 🏆" | Yes |
-| N-5 | Backup Speaker chosen | Backup only | "Plot twist: you're today's secret Speaker 🤫" | No, but can pass |
+| N-5 | Backup Speaker chosen | Backup only | "Plot twist: the mic is yours today 🎤" | No, but can pass |
 | N-6 | Circle reached 3 members | Organiser | "Hostel 4B is ready! First drop tomorrow at 8" | Yes |
 
 ## Rules

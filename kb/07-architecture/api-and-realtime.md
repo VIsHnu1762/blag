@@ -46,7 +46,7 @@ Rate limit *(Proposal)*: 60 actions per minute per user; 10 joins per hour per u
 
 | Job | Every | Does |
 |---|---|---|
-| `drops-tick` | 5 minutes | Creates tomorrow's drops; opens due drops; applies Speaker and backup cutoffs; reveals due rounds; scores revealed rounds |
+| `drops-tick` | 1 minute | Creates tomorrow's drops; opens due drops; applies Speaker and backup cutoffs; reveals due rounds; scores revealed rounds |
 | `season-tick` | 1 hour | Closes ended seasons; computes best-20 scores and titles; creates the next season |
 
 Supabase supports calling Edge Functions on a schedule with `pg_cron` and

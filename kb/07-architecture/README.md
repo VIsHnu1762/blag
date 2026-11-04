@@ -79,9 +79,12 @@ circles, game, league, scheduler, notifications, proofs) described in the
 
 | Page | What it covers |
 |---|---|
+| [Backend blueprint](backend-blueprint.md) | Service internals, request pipeline, key flows, events, queues, SLOs, capacity, runbooks |
 | [Data model](data-model.md) | Tables, keys, who can read what |
 | [API and realtime](api-and-realtime.md) | Every action, scheduled job and realtime event |
 | [Sealing and fairness](sealing-and-fairness.md) | How hidden values stay hidden and scoring stays honest |
 | [Repository structure](repository-structure.md) | Every folder, dependency rules, naming, where things go |
 | [Service map](services.md) | The seven backend services, their data, events and extraction rules |
+| [Enterprise standards scorecard](enterprise-standards.md) | How the plan meets enterprise practice, and the gaps closed |
+| [Learning guide](learning-guide.md) | Every folder and concept explained in plain words |
 | [ADRs](adr/README.md) | Architecture decisions and their reasons |

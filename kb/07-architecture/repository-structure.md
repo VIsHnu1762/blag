@@ -17,6 +17,8 @@ related: [arch.home, arch.services, adr.008, adr.009, adr.010, stack.home, quali
 Status: **Proposal** (ADR-008, ADR-009, ADR-010). Nothing here exists yet.
 Create folders **only when the first file needs them** (see [growth plan](#growth-plan-create-folders-only-when-needed)).
 
+How this measures up against enterprise practice is in the [enterprise standards scorecard](enterprise-standards.md); a plain-language tour of every part is in the [learning guide](learning-guide.md).
+
 ## Goals
 
 | Goal | How the structure supports it |
@@ -51,8 +53,10 @@ blag/
 │   └── seed.sql                 # Local test data (fake circles, never real people)
 ├── kb/                          # This knowledge base
 ├── scripts/                     # Repo tools: kb.py, codegen, release helpers
-├── .github/                     # CI workflows, PR template, CODEOWNERS
+├── .github/                     # workflows (ci, e2e, deploy-backend, codeql, kb), CODEOWNERS, PR and issue templates, renovate.json
+├── .changeset/                  # release notes and versions
 ├── AGENTS.md  CLAUDE.md  README.md  CONTRIBUTING.md  SECURITY.md  CHANGELOG.md  LICENSE
+├── commitlint.config.js         # Conventional Commits check
 ├── package.json                 # Root: workspace scripts only, no app code
 ├── pnpm-workspace.yaml          # Declares apps/* and packages/*
 ├── turbo.json                   # Task graph and build cache (ADR-008)
@@ -208,7 +212,7 @@ supabase/
 
 Supabase recommends keeping shared function code in a folder whose name starts
 with an underscore, and building a few larger functions that combine related
-actions to reduce cold starts [S-69]. BLAG follows that: each **service** from the [service map](services.md) is
+actions to reduce cold starts [S-69]. Inside each service the code is layered (handler → use case → domain → data); see the [backend blueprint](backend-blueprint.md#inside-a-service). BLAG follows that: each **service** from the [service map](services.md) is
 one function folder, and each action from [API and realtime](api-and-realtime.md)
 is a route inside it (ADR-010). Services talk to each other through events on a
 queue, never by writing each other's tables. Importing code from outside `supabase/` (our

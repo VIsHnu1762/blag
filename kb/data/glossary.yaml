@@ -1,40 +1,41 @@
 # Glossary: the shared vocabulary. Use these exact words in docs, UI copy and code.
 # code_name is the identifier to use in code and the database.
+# ui_label is the proposed in-app wording (kb/06-design/ux-language.md), to be tested (A-10).
 meta:
   title: Glossary
   last_updated: 2026-11-04
 items:
-  - {term: Circle, code_name: circle, definition: "A private, invite-only group of 3-8 friends that plays together across seasons.", not: "room, group, team"}
-  - {term: Member, code_name: circle_member, definition: "A person in a circle.", not: "user (in game context), follower"}
-  - {term: Organiser, code_name: owner, definition: "The member who created the circle. Can change circle settings; has no extra power in the game.", not: "admin, host"}
-  - {term: Season, code_name: season, definition: "One calendar month of play. Scores reset at the start of each season.", not: "league (the league is the competition inside a season)"}
-  - {term: League, code_name: league, definition: "The standings within a circle for the current season.", not: "leaderboard (we avoid this word in UI)"}
-  - {term: Finale, code_name: finale, definition: "The end-of-season moment where every member gets a title and the recap is shown.", not: "results"}
-  - {term: Drop, code_name: drop, definition: "The circle's daily game: it opens in the morning and reveals at the circle's reveal time.", not: "session, match"}
-  - {term: Round, code_name: round, definition: "One claim-vote-reveal cycle inside a drop. MVP has one round per drop.", not: "turn"}
-  - {term: Card type, code_name: card_type, definition: "The kind of round: stat (MVP), rest, movie, meme, music. ", not: "mode"}
-  - {term: Speaker, code_name: speaker, definition: "The member who makes today's claim. Kept secret until they claim.", not: "player of the day"}
-  - {term: Backup Speaker, code_name: backup_speaker, definition: "A member chosen privately if the Speaker doesn't claim before the cutoff.", not: ""}
-  - {term: Seal, code_name: seal, definition: "The Speaker's real number, locked on the server before they claim. Hidden from everyone until the reveal.", not: "answer, truth value"}
-  - {term: Claim, code_name: claim, definition: "The number the Speaker tells the circle. It may be true or a bluff.", not: "statement"}
-  - {term: Truth zone, code_name: truth_zone, definition: "The range of claims that count as true: within 10% of the sealed number, with a minimum per unit.", not: "tolerance (fine in code comments)"}
-  - {term: Bluff, code_name: bluff, definition: "A claim outside the truth zone.", not: "lie (we never say 'lie' in UI)"}
-  - {term: Read, code_name: read, definition: "A voter's call on the claim: TRUE or BLUFF.", not: "vote (vote is fine in code; 'read' in UI)"}
-  - {term: Guess, code_name: guess, definition: "A voter's estimate of the sealed number. Optional.", not: "bet"}
-  - {term: Reveal, code_name: reveal, definition: "The moment the sealed number and the TRUTH or BLUFF! stamp are shown.", not: ""}
-  - {term: Reveal time, code_name: reveal_at, definition: "The circle's chosen daily time for the reveal. Early reveal if everyone has voted.", not: ""}
-  - {term: Stat, code_name: stat, definition: "A measurable habit used as game material, from the stat catalogue.", not: "metric (fine in code)"}
-  - {term: Spicy stat, code_name: sensitivity=spicy, definition: "A stat that can feel personal (late-night use, pickups). Needs an extra opt-in.", not: ""}
-  - {term: Health stat, code_name: sensitivity=health, definition: "A stat that may count as health data (steps, sleep). Needs an extra opt-in and is never ranked.", not: ""}
-  - {term: Focus lane, code_name: focus_lane, definition: "A member's chosen theme (fitness, less social media, sleep, productivity, just for fun) that decides their stats as Speaker.", not: "goal"}
-  - {term: Pass, code_name: pass, definition: "Choosing not to take part today. Invisible to the circle.", not: "skip (internal only)"}
-  - {term: Away, code_name: away, definition: "A neutral status for a member who hasn't opened today's drop. No counts.", not: "absent, inactive"}
-  - {term: Rest day, code_name: card_type=rest, definition: "A weekly drop with a non-stat prompt.", not: ""}
-  - {term: Catch-up card, code_name: catch_up, definition: "A short summary shown to a member returning after days away.", not: ""}
-  - {term: Title, code_name: title, definition: "A play-style award given to every member at the finale.", not: "badge (badges are for trust levels)"}
-  - {term: Trust badge, code_name: trust_level, definition: "Shows how a seal was entered: typed, screenshot or auto-read. Never changes points.", not: "verified"}
-  - {term: My month, code_name: my_month, definition: "A member's private view of their own stats against their own baseline.", not: "dashboard"}
-  - {term: Our month, code_name: our_month, definition: "The circle's shared story of the season: moments, not numbers.", not: ""}
-  - {term: Live mode, code_name: live, definition: "Playing a drop together in the same room with short timers.", not: "party mode"}
-  - {term: Day score, code_name: day_score, definition: "A member's points for one drop.", not: ""}
-  - {term: Season score, code_name: season_score, definition: "The sum of a member's best 20 day scores in the season.", not: "total"}
+  - {term: Circle, ui_label: "Circle", code_name: circle, definition: "A private, invite-only group of 3-8 friends that plays together across seasons.", not: "room, group, team"}
+  - {term: Member, ui_label: "(name only)", code_name: circle_member, definition: "A person in a circle.", not: "user (in game context), follower"}
+  - {term: Organiser, ui_label: "Organiser", code_name: owner, definition: "The member who created the circle. Can change circle settings; has no extra power in the game.", not: "admin, host"}
+  - {term: Season, ui_label: "Season", code_name: season, definition: "One calendar month of play. Scores reset at the start of each season.", not: "league (the league is the competition inside a season)"}
+  - {term: League, ui_label: "The League", code_name: league, definition: "The standings within a circle for the current season.", not: "leaderboard (we avoid this word in UI)"}
+  - {term: Finale, ui_label: "Season Wrap", code_name: finale, definition: "The end-of-season moment where every member gets a title and the recap is shown.", not: "results"}
+  - {term: Drop, ui_label: "Today's Drop", code_name: drop, definition: "The circle's daily game: it opens in the morning and reveals at the circle's reveal time.", not: "session, match"}
+  - {term: Round, ui_label: "(not shown)", code_name: round, definition: "One claim-vote-reveal cycle inside a drop. MVP has one round per drop.", not: "turn"}
+  - {term: Card type, ui_label: "(not shown)", code_name: card_type, definition: "The kind of round: stat (MVP), rest, movie, meme, music. ", not: "mode"}
+  - {term: Speaker, ui_label: "On the mic 🎤", code_name: speaker, definition: "The member who makes today's claim. Kept secret until they claim.", not: "player of the day"}
+  - {term: Backup Speaker, ui_label: "(not shown)", code_name: backup_speaker, definition: "A member chosen privately if the Speaker doesn't claim before the cutoff.", not: ""}
+  - {term: Seal, ui_label: "Lock it in 🔒", code_name: seal, definition: "The Speaker's real number, locked on the server before they claim. Hidden from everyone until the reveal.", not: "answer, truth value"}
+  - {term: Claim, ui_label: "Drop your number", code_name: claim, definition: "The number the Speaker tells the circle. It may be true or a bluff.", not: "statement"}
+  - {term: Truth zone, ui_label: "Honest range", code_name: truth_zone, definition: "The range of claims that count as true: within 10% of the sealed number, with a minimum per unit.", not: "tolerance (fine in code comments)"}
+  - {term: Bluff, ui_label: "BLUFF", code_name: bluff, definition: "A claim outside the truth zone.", not: "lie (we never say 'lie' in UI)"}
+  - {term: Read, ui_label: "Call it: TRUTH or BLUFF", code_name: read, definition: "A voter's call on the claim: TRUE or BLUFF.", not: "vote (vote is fine in code; 'read' in UI)"}
+  - {term: Guess, ui_label: "Bonus guess", code_name: guess, definition: "A voter's estimate of the sealed number. Optional.", not: "bet"}
+  - {term: Reveal, ui_label: "The Reveal", code_name: reveal, definition: "The moment the sealed number and the TRUTH or BLUFF! stamp are shown.", not: ""}
+  - {term: Reveal time, ui_label: "Reveal time", code_name: reveal_at, definition: "The circle's chosen daily time for the reveal. Early reveal if everyone has voted.", not: ""}
+  - {term: Stat, ui_label: "(the stat's own name)", code_name: stat, definition: "A measurable habit used as game material, from the stat catalogue.", not: "metric (fine in code)"}
+  - {term: Spicy stat, ui_label: "🌶️ Spicy", code_name: sensitivity=spicy, definition: "A stat that can feel personal (late-night use, pickups). Needs an extra opt-in.", not: ""}
+  - {term: Health stat, ui_label: "Health", code_name: sensitivity=health, definition: "A stat that may count as health data (steps, sleep). Needs an extra opt-in and is never ranked.", not: ""}
+  - {term: Focus lane, ui_label: "Your lane", code_name: focus_lane, definition: "A member's chosen theme (fitness, less social media, sleep, productivity, just for fun) that decides their stats as Speaker.", not: "goal"}
+  - {term: Pass, ui_label: "Skip today", code_name: pass, definition: "Choosing not to take part today. Invisible to the circle.", not: "skip (internal only)"}
+  - {term: Away, ui_label: "(nothing shown)", code_name: away, definition: "A neutral status for a member who hasn't opened today's drop. No counts.", not: "absent, inactive"}
+  - {term: Rest day, ui_label: "Chill Day", code_name: card_type=rest, definition: "A weekly drop with a non-stat prompt.", not: ""}
+  - {term: Catch-up card, ui_label: "While you were away", code_name: catch_up, definition: "A short summary shown to a member returning after days away.", not: ""}
+  - {term: Title, ui_label: "Your title", code_name: title, definition: "A play-style award given to every member at the finale.", not: "badge (badges are for trust levels)"}
+  - {term: Trust badge, ui_label: "Receipts 🧾", code_name: trust_level, definition: "Shows how a seal was entered: typed, screenshot or auto-read. Never changes points.", not: "verified"}
+  - {term: My month, ui_label: "Just you", code_name: my_month, definition: "A member's private view of their own stats against their own baseline.", not: "dashboard"}
+  - {term: Our month, ui_label: "Our story", code_name: our_month, definition: "The circle's shared story of the season: moments, not numbers.", not: ""}
+  - {term: Live mode, ui_label: "Live", code_name: live, definition: "Playing a drop together in the same room with short timers.", not: "party mode"}
+  - {term: Day score, ui_label: "Today's points", code_name: day_score, definition: "A member's points for one drop.", not: ""}
+  - {term: Season score, ui_label: "Season points", code_name: season_score, definition: "The sum of a member's best 20 day scores in the season.", not: "total"}

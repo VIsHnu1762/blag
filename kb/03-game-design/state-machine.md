@@ -70,7 +70,7 @@ network failure don't double-submit ([API](../07-architecture/api-and-realtime.m
 | Backup cutoff | 18:00 | OPEN → REST |
 | Reveal | 21:00 | CLAIMED/REST → REVEALED |
 
-A scheduler job runs every few minutes and advances any drop whose time has
+A scheduler job runs every minute and advances any drop whose time has
 passed ([ADR-005](../07-architecture/adr/ADR-005-scheduled-drops.md)). Early
 reveal is triggered by the `read` action when it's the last missing read.
 

@@ -28,6 +28,7 @@ source: kb/data/risks.yaml
 | A-07 | Players will use focus lanes | Ask players to pick one in the test | Most pick a lane other than 'just for fun' | Untested |
 | A-08 | Players share the recap card | Count shares in the beta | A meaningful share of players post one | Untested |
 | A-09 | Players can find their numbers on their own phone in under a minute | Timed task with 10 people on mixed phones | Most succeed in under 60 seconds | Untested |
+| A-10 | In-app words (Today's Drop, Lock it in, Call it, Receipts, Season Wrap) are understood without explanation | Show screens to 10 people in the first market; ask what each word means | Most explain each word correctly | Untested |
 
 ## Risks
 

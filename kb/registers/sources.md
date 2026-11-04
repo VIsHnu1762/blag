@@ -88,3 +88,7 @@ source: kb/data/sources.yaml
 | S-70 | Supabase CLI: Edge Functions can import files outside the supabase directory (monorepos) | [Supabase](https://supabase.com/changelog/33613-deploy-edge-functions-from-cli-without-needing-docker-import-files-outside-of-supabase-directory) | A | 2026-11-04 |
 | S-71 | Supabase Queues: pull-based Postgres queue consumed by Edge Functions; failed messages stay for retry | [Supabase](https://supabase.com/docs/guides/queues/consuming-messages-with-edge-functions) | A | 2026-11-04 |
 | S-72 | Expo guidance on organising app folders for scale (src folder, components, server code) | [Expo](https://expo.dev/blog/expo-app-folder-structure-best-practices) | A | 2026-11-04 |
+| S-73 | C4 model: architecture diagrams at four levels (context, container, component, code) | [MockFlow glossary](https://mockflow.com/glossary/c4-model) | C | 2026-11-04 |
+| S-74 | Twelve-Factor App: store config in the environment, separate from code | [12factor.net](https://12factor.net/config) | A | 2026-11-04 |
+| S-75 | Conventional Commits: commit types that drive changelogs and semantic versions | [Conventional Commits](https://github.com/conventional-commits/conventionalcommits.org/blob/master/content/next/index.md) | A | 2026-11-04 |
+| S-76 | Laws of UX: Jakob's Law (familiar patterns) and Hick's Law (fewer choices, faster decisions) | [Fast Company](https://www.fastcompany.com/90157775/10-laws-of-ux-illustrated) | B | 2026-11-04 |

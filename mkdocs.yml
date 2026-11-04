@@ -92,16 +92,20 @@ nav:
   - "Design":
     - "Design": 06-design/README.md
     - "Emotional design": 06-design/emotional-design.md
+    - "UX language and moments map": 06-design/ux-language.md
     - "Screens": 06-design/screens.md
     - "Flows": 06-design/flows.md
     - "Accessibility": 06-design/accessibility.md
   - "Architecture":
     - "Architecture": 07-architecture/README.md
+    - "Backend blueprint": 07-architecture/backend-blueprint.md
     - "Data model": 07-architecture/data-model.md
     - "API and realtime": 07-architecture/api-and-realtime.md
     - "Sealing and fairness": 07-architecture/sealing-and-fairness.md
     - "Repository structure": 07-architecture/repository-structure.md
     - "Service map": 07-architecture/services.md
+    - "Enterprise standards scorecard": 07-architecture/enterprise-standards.md
+    - "Learning guide to the code structure": 07-architecture/learning-guide.md
     - "Architecture decision records":
       - "Architecture decision records": 07-architecture/adr/README.md
       - "ADR-001: Use React Native with Expo": 07-architecture/adr/ADR-001-expo-react-native.md
