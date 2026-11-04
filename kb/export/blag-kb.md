@@ -2975,10 +2975,12 @@ Build with **React Native + Expo + TypeScript**, using **development builds** (n
 | Flutter | Strong UI performance; one codebase | Team's existing skills are JavaScript; Supabase and Expo tooling fit better with TS |
 | Fully native (Swift + Kotlin) | Best platform access | Two codebases; too slow for a small team |
 | Bare React Native | Full control | More setup and upkeep than Expo for little gain |
+| Two native apps built with AI coding agents | Shopify moved this way in Sep 2026 because agents cut the cost of building twice [S-61] | Needs Swift and Kotlin skill to review agent output; two release tracks; game engine still shared only on the server |
+| Valdi (Snap) | TypeScript UI compiled to native views; proven inside Snapchat [S-47] | Still in beta as open source; small community |
 
 ### Consequences
 
-Fast start and shared code with the backend's game engine (TypeScript). Native work (Android Usage Access, Health Connect, HealthKit) will need Expo Modules and development builds. Keep game logic out of UI components.
+Fast start and shared code with the backend's game engine (TypeScript). Review this decision at the end of the prototype phase (D-19, Q-18); see [industry benchmarks](https://github.com/VIsHnu1762/blag/blob/main/kb/08-tech-stack/industry-benchmarks.md). Native work (Android Usage Access, Health Connect, HealthKit) will need Expo Modules and development builds. Keep game logic out of UI components.
 
 
 ---
@@ -3174,6 +3176,10 @@ Whatever is chosen, account deletion must be available in the app and on the web
 
 Status: **Proposal**. Each choice links to its ADR when there is one.
 
+**Benchmark:** see [industry benchmarks](https://github.com/VIsHnu1762/blag/blob/main/kb/08-tech-stack/industry-benchmarks.md) for what Snapchat,
+Duolingo, Wordle, BeReal, Discord, Bluesky and others use, and why BLAG keeps
+Expo for the MVP but reviews it after the prototype (D-19, Q-18).
+
 ### The stack
 
 | Layer | Choice | Why | ADR |
@@ -3187,7 +3193,7 @@ Status: **Proposal**. Each choice links to its ADR when there is one.
 | Realtime | Supabase Realtime private channels [S-44] | Per-circle events, members only | ADR-002 |
 | Game engine | Pure TS package shared by app and Edge Functions | Rules tested once, used everywhere | ADR-003 |
 | Push | Expo push notifications → APNs / FCM | One API for both platforms | — |
-| Animation | React Native Reanimated | Smooth reveal on mid-range phones | — |
+| Animation | React Native Reanimated; prototype the stamp in Rive (Q-19) | Smooth reveal on mid-range phones; Duolingo uses Rive for characters [S-50] | — |
 | Haptics | expo-haptics | Built in | — |
 | Local storage | Expo SecureStore (tokens), AsyncStorage or SQLite (offline queue) | Secure tokens; queued actions | — |
 | Analytics | Privacy-first, self-hostable option (e.g. PostHog) with no stat values sent *(Proposal)* | Measure retention without collecting habits | — |
@@ -3212,6 +3218,7 @@ Status: **Proposal**. Each choice links to its ADR when there is one.
 | Data region | India (Mumbai) vs EU vs US | Choose for latency and law; record in an ADR |
 | Analytics vendor | PostHog, Plausible-style, or none at MVP | Must not receive stat values |
 | Live mode web join (Q-08) | Expo web vs a small separate web app | Later |
+| Stay on Expo after the prototype? (Q-18) | Expo / two native apps with AI agents | See [benchmarks](https://github.com/VIsHnu1762/blag/blob/main/kb/08-tech-stack/industry-benchmarks.md#when-to-switch-to-native-review-at-the-end-of-the-prototype-q-18) |
 
 ### Cost notes *(Estimate, verify before committing)*
 
@@ -3219,6 +3226,113 @@ For the hand-run test: free. For the prototype and a small beta, the Supabase
 and Expo free tiers are likely enough; check current limits for database size,
 Edge Function invocations, Realtime connections and EAS builds before the beta.
 Store accounts: Apple Developer Program (yearly fee) and Google Play (one-time fee).
+
+
+---
+
+<!-- page: kb/08-tech-stack/industry-benchmarks.md · id: stack.benchmarks · status: research · updated: 2026-11-04 -->
+
+## Industry benchmarks
+
+> **In short:** most big social apps build two native apps, but small and fast-moving teams (Discord, Bluesky, Shopify until 2026) did very well with React Native; Shopify's 2026 switch back to native shows AI coding tools are changing that trade-off, so BLAG keeps Expo for the MVP and reviews the choice after the prototype.
+
+Status: **Research**. Stacks of private companies are known only from their
+engineering blogs, job posts and open-source code. Treat every row as "publicly
+visible signals", not a complete picture. Sources are in the
+[sources register](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md).
+
+### The table
+
+| App | Why it's relevant to BLAG | iOS | Android | Shared / cross-platform layer | Backend and infrastructure | Sources |
+|---|---|---|---|---|---|---|
+| **Snapchat** | Close-friends social, streaks | Native (Swift, Objective-C) | Native (Kotlin, Java) | **Valdi**, Snap's own framework: UI written in TypeScript, compiled to native views; in production for 8 years, open-sourced in 2025 | Microservices on Google Cloud **and** AWS (moved off a Google App Engine monolith) | S-47, S-48 |
+| **Duolingo** | Streaks, leagues, daily habit | Native (Swift) | Native (Kotlin) | TypeScript for web; **Rive** for character animation | Python and Kotlin services; Postgres and DynamoDB; AWS, Kubernetes, Terraform | S-49, S-50 |
+| **Wordle (original)** | Daily ritual, viral share | Web only | Web only | Plain JavaScript and web components; no backend | Static files | S-51 |
+| **Wordle / NYT Games** | Daily games at scale | NYT Games app hosts Wordle and Connections as **web apps** inside it; the new two-player Crossplay is a **native Swift** app | Same pattern | NYT rebuilt Wordle in React | NYT infrastructure (not public) | S-52 |
+| **BeReal** | Daily prompt, close friends | Native (Swift, SwiftUI) | Native (Kotlin, Compose) | — | Go and Node.js (NestJS); Spanner, Postgres, Redis; Google Cloud, GKE, Firebase | S-56 |
+| **Discord** | Friend groups, realtime | **React Native** since 2015 | **React Native** since 2022 | One React Native codebase, shared ideas with the React web app | Elixir for realtime messaging | S-53, S-54, S-65 |
+| **Bluesky** | Young social network, small team | **React Native + Expo** | **React Native + Expo** | One codebase for iOS, Android **and web** | Go service for web; AT Protocol | S-55 |
+| **Instagram** | Large social app | Native with **React Native** in parts | Native with **React Native** in parts | Mixed | Python and Django | S-57 |
+| **Strava** | Social fitness, kudos | Native (Swift, Objective-C, C++) | Native *(not verified)* | — | Ruby on Rails and Scala microservices on AWS | S-58, S-64 |
+| **Among Us** | Social deduction | **Unity** game engine | **Unity** | Same Unity project on mobile, PC and consoles | Unity Gaming Services for multiplayer | S-59 |
+| **Shopify** (not social, but the key data point) | The best-documented React Native story | React Native 2020–2026, now **back to Swift** | React Native 2020–2026, now **back to Kotlin** | Said React Native "remains an excellent framework" | — | S-60, S-61, S-62 |
+
+### Patterns
+
+#### 1. The biggest consumer apps mostly build two native apps
+Snapchat, Duolingo and BeReal have separate native iOS and Android apps, and
+Strava's iOS app is native [S-47, S-49, S-56, S-64]. They have large mobile teams and need the deepest
+camera, media and performance work.
+
+#### 2. Even native companies want shared UI code
+Snap built its own cross-platform layer (Valdi) and has used it in production
+for eight years [S-47]. Instagram mixes in React Native [S-57]. Cross-platform
+isn't a "beginner" choice; it's an efficiency choice.
+
+#### 3. Small, fast teams have thrived on React Native
+Discord's iOS app was built with React Native from day one, and its Android
+app moved to React Native in 2022 so both platforms ship together
+[S-53, S-54]. Bluesky ships iOS, Android and web from one React Native + Expo
+codebase [S-55].
+
+#### 4. The 2026 shift: AI agents make "build it twice" cheaper
+On 10 September 2026 Shopify announced it is moving every mobile app from
+React Native back to Swift and Kotlin. Its reason: coding agents have made
+building the same feature twice cheap enough that a shared codebase no longer
+pays for itself. Shopify also said its React Native apps were fast and the
+framework remains excellent [S-61]. Analysts read this as the economics
+changing, not React Native failing [S-62]. Shopify is also handing over or
+archiving React Native libraries it maintained (React Native Skia, FlashList,
+Restyle) [S-61].
+
+#### 5. Daily games can start very simple
+The original Wordle was plain JavaScript with no backend [S-51]. Even inside the
+NYT Games app, Wordle and Connections run as web apps; only the more complex
+two-player game is native [S-52]. Simplicity didn't stop it becoming a global
+ritual.
+
+#### 6. Real-time and social backends are boring and proven
+Python, Go, Ruby, Scala, Elixir; Postgres and Redis; one or two big clouds
+[S-48, S-49, S-56, S-58, S-65]. No one wins because of an exotic database.
+
+#### 7. Delight comes from animation tooling
+Duolingo uses Rive state machines so characters react, blink and lip-sync
+without shipping videos [S-50]. BLAG's reveal and stamp are its version of this.
+
+#### 8. Some features must be native whatever the framework
+Home-screen widgets on iOS must be written in SwiftUI with WidgetKit, even in
+React Native or Flutter apps [S-63]. The same applies to Screen Time
+extensions and health integrations ([mobile dependencies](https://github.com/VIsHnu1762/blag/blob/main/kb/09-mobile-dependencies/README.md)).
+
+### What this means for BLAG
+
+| Question | Answer for BLAG | Why |
+|---|---|---|
+| Native, React Native or Flutter? | **Expo + React Native for the MVP** (D-19, ADR-001) | Small student team; one TypeScript codebase shared with the game engine and Supabase; India is Android-heavy so both platforms matter from day one; BLAG's screens are simple (forms, cards, one animation) |
+| Should we worry about Shopify leaving? | **Watch, don't panic** (R-15) | Their reason (AI makes two codebases cheap) applies most to big teams with native experts. Revisit after the prototype (Q-18) |
+| Game engine like Unity? | **No** | Among Us needs real-time graphics; BLAG is a card-and-number game |
+| Web-first like Wordle? | **Use it for the hand-run and demos, not the product** | BLAG needs push notifications, private Speaker notices and later native data; a web version of live mode is possible later (Q-08) |
+| Backend | **Supabase (Postgres)** stays (ADR-002) | Same proven building blocks the big apps use, without running servers |
+| Animation | **Start with Reanimated; prototype the stamp in Rive** (Q-19) | Rive powers Duolingo's characters and has a React Native runtime *(verify current support)* |
+| Widgets and native data | **Expo Modules + native Swift/Kotlin where needed** | Widgets, Android usage access and health data need native code in any framework |
+
+#### When to switch to native (review at the end of the prototype, Q-18)
+
+Move to two native apps (SwiftUI + Jetpack Compose) if **two or more** are true:
+- The team has at least one confident Swift developer and one confident Kotlin developer.
+- The team is comfortable building features with AI coding agents and reviewing their output.
+- The prototype shows performance problems on mid-range Android phones that React Native can't fix.
+- Native-only features (widgets, Screen Time views, health data) become core to the product.
+
+Otherwise stay on Expo. The game engine (pure TypeScript) and the Supabase
+backend carry over either way, because the server does all scoring (ADR-003).
+
+### To do
+
+- [ ] Find primary sources for Instagram's current React Native use (S-57 is secondary)
+- [ ] Check Rive's current React Native and Expo support
+- [ ] Look up stacks of Locket and Opal (not found in this pass)
+- [ ] Re-check this page every six months; mobile stacks change fast
 
 
 ---
@@ -3730,10 +3844,10 @@ The full 290-word description is in the [vision](https://github.com/VIsHnu1762/b
 | [Idea bank](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/ideas.md) | 52 ideas | `kb/data/ideas.yaml` |
 | [Feature catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/features.md) | 23 features with acceptance criteria | `kb/data/features.yaml` |
 | [Stat catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/stats.md) | 16 stats | `kb/data/stats.yaml` |
-| [Decision log](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/decisions.md) | 18 decisions | `kb/data/decisions.yaml` |
-| [Open questions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/questions.md) | 16 open of 17 | `kb/data/questions.yaml` |
-| [Risks and assumptions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/risks.md) | 14 risks, 9 assumptions | `kb/data/risks.yaml` |
-| [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md) | 45 sources | `kb/data/sources.yaml` |
+| [Decision log](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/decisions.md) | 19 decisions | `kb/data/decisions.yaml` |
+| [Open questions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/questions.md) | 18 open of 19 | `kb/data/questions.yaml` |
+| [Risks and assumptions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/risks.md) | 15 risks, 9 assumptions | `kb/data/risks.yaml` |
+| [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md) | 64 sources | `kb/data/sources.yaml` |
 | [Glossary](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/glossary.md) | 34 terms | `kb/data/glossary.yaml` |
 
 The [decisions workbook](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/design-decisions-2026-11-01.xlsx) from 1 Nov 2026 is kept here for reference; the YAML files supersede it.
@@ -4083,6 +4197,7 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | D-16 | 2026-11-04 | Season score is the sum of each player's best 20 daily scores | Sum of all days; average per day played | Missing up to about 10 days costs nothing; playing more never hurts | Proposed |
 | D-17 | 2026-11-04 | Trust levels (typed, screenshot, auto-read) show badges only and never change points | Bonus points for verified numbers | iPhone players can't auto-read, so bonuses would be unfair | Proposed |
 | D-18 | 2026-11-04 | Voters never lose points for a wrong read | Negative points for wrong reads (original spec) | Forgive-by-default principle; keeps quiet players playing | Proposed |
+| D-19 | 2026-11-04 | Keep Expo + React Native for the MVP; review the choice at the end of the prototype phase in light of Shopify's return to native | Two native apps (SwiftUI + Compose) built with AI coding agents; Flutter | Small student team, one TypeScript codebase shared with the game engine, Android-first market; native's advantages matter less for BLAG's simple screens | Proposed |
 
 
 ---
@@ -4093,7 +4208,7 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 
 ## Open questions
 
-> **In short:** 16 questions still open. When one is answered, add a decision and set `status: Decided` with `decided_by`.
+> **In short:** 18 questions still open. When one is answered, add a decision and set `status: Decided` with `decided_by`.
 
 | ID | Question | Why it matters | Options (lean) | Owner | Status |
 |---|---|---|---|---|---|
@@ -4114,6 +4229,8 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | Q-15 | Should we request Apple's Family Controls entitlement at all? | Approval can take weeks and the data can't be shared anyway | No for MVP (lean) / Yes, to show a private 'check your number' view | Tech | Open |
 | Q-16 | Does Google Play require a declaration for the Usage Access permission? | Blocks Android auto-read release | Check policy and test a submission | Tech | Open |
 | Q-17 | How long are revealed numbers kept after a season ends? | Retention policy and yearbook design | 90 days (lean) / Until account deletion | Product + legal | Open |
+| Q-18 | After the prototype, stay on Expo/React Native or move to two native apps built with AI agents? | Shopify's 2026 switch shows native is cheaper than it was; BLAG's team skills and AI use decide it | Stay on Expo (lean) / Native iOS + Android / Hybrid with native widgets | Tech | Open |
+| Q-19 | Animation tool for the reveal and stamps: Reanimated only, Lottie, or Rive? | The reveal is BLAG's signature moment; Duolingo uses Rive state machines | Reanimated (lean for MVP) / Rive / Lottie | Design + tech | Open |
 
 
 ---
@@ -4158,6 +4275,7 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | R-12 | Apple's Family Controls entitlement takes weeks to approve | High | Low | Don't depend on it for MVP (Q-15) | S-40 |
 | R-13 | Store rejection for missing account deletion | Low | High | In-app deletion plus web deletion link from day one | S-37, S-38 |
 | R-14 | Hidden values leak before reveal through a bug in access rules | Medium | High | Seals in a private schema; automated access-rule tests |  |
+| R-15 | React Native ecosystem shifts (big users leaving, libraries changing maintainers) | Medium | Medium | Prefer Expo-maintained and widely used libraries; keep game logic in a pure TS package; review at Q-18 | S-61, S-62 |
 
 
 ---
@@ -4217,3 +4335,22 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | S-44 | Supabase Realtime authorization with private channels and RLS | [Supabase](https://supabase.com/docs/guides/realtime/authorization) | A | 2026-11-04 |
 | S-45 | Google Play: permissions and APIs that access sensitive information | [Google Play Console Help](https://support.google.com/googleplay/android-developer/answer/16558241) | A | 2026-11-04 |
 | S-46 | DPDP: breach notice to the Board within 72 hours; children's data rules | [The Week](https://www.theweek.in/theweek/business/2025/12/20/indias-dpdp-rules-2025-a-deep-dive-into-the-new-data-privacy-law.html) | B | 2026-11-04 |
+| S-47 | Snap's Valdi: TypeScript UI compiled to native views; used in Snap's apps for 8 years; open-sourced Nov 2025 (beta, MIT) | [Snap Inc. on GitHub](https://github.com/Snapchat/Valdi) | A | 2026-11-04 |
+| S-48 | Snap moved from Google App Engine to microservices on Google Cloud plus AWS (multi-cloud) | [Copy of a Protocol interview](https://onlinestatshubb.blogspot.com/2022/08/how-snap-rebuilt-infrastructure-that.html) | C | 2026-11-04 |
+| S-49 | Duolingo stack: Swift/Kotlin/TypeScript frontends; Python/Kotlin, Postgres, DynamoDB backend; AWS, Kubernetes, Terraform | [Duolingo hiring post on HN Who's Hiring](https://hnhiring.com/technologies/ios/months/march-2026) | B | 2026-11-04 |
+| S-50 | Duolingo uses Rive state machines for character animation and lip-sync | [Duolingo](https://blog.duolingo.com/world-character-visemes) | A | 2026-11-04 |
+| S-51 | Original Wordle: vanilla JavaScript and web components | [Syntax podcast](https://syntax.fm/show/430/creator-of-wordle-josh-wardle/transcript) | B | 2026-11-04 |
+| S-52 | NYT rebuilt Wordle in React; Wordle and Connections are web apps inside the NYT Games app; Crossplay is a native Swift app | [TechRadar](https://www.techradar.com/computing/websites-apps/we-had-to-do-a-lot-of-technological-work-that-was-sort-of-unprecedented-which-was-really-challenging-and-exciting-crossplay-producer-on-the-effort-to-bring-the-new-york-times-first-two-player-game-to-life) | B | 2026-11-04 |
+| S-53 | Discord adopted React Native for iOS from day one; Elixir backend | [Discord](https://discord.com/blog/why-discord-is-sticking-with-react-native) | A | 2026-11-04 |
+| S-54 | Discord rebuilt its Android app in React Native (2022) | [Discord](https://discord.com/blog/android-react-native-framework-update) | A | 2026-11-04 |
+| S-55 | Bluesky's official app is one React Native + Expo codebase for iOS, Android and web | [Bluesky on GitHub (via code index and forks)](https://github.com/bluesky-social/social-app) | B | 2026-11-04 |
+| S-56 | BeReal stack: Swift/SwiftUI, Kotlin/Compose; Go and Node.js (NestJS); Spanner, Postgres, Redis; GCP, GKE, Firebase | [Voodoo / BeReal job post](https://jobs.accel.com/companies/bereal-2/jobs/91946980-founding-engineer-bereal) | B | 2026-11-04 |
+| S-57 | Instagram uses React Native in its mobile apps and Python/Django on the backend | [ClickIT (secondary)](https://clickittech.com/?p=101614) | C | 2026-11-04 |
+| S-58 | Strava backend in Ruby (Rails) and Scala microservices on AWS | [Strava job post](https://jobs.girlboss.com/software-engineer-941812b2358a) | B | 2026-11-04 |
+| S-59 | Among Us is built with Unity and uses Unity Gaming Services | [Unity](https://unity.com/case-study/innersloth-among-us) | A | 2026-11-04 |
+| S-60 | Shopify went all-in on React Native in 2020 | [Shopify Engineering](https://shopify.engineering/react-native-future-mobile-shopify) | A | 2026-11-04 |
+| S-61 | Shopify moves its apps back to Swift and Kotlin because coding agents cut the cost of building twice (10 Sep 2026) | [Shopify Engineering](https://shopify.engineering/back-to-native) | A | 2026-11-04 |
+| S-62 | Analysis of Shopify's return to native and what it means for rewrites | [RedMonk](https://redmonk.com/kholterhoff/2026/09/22/shopify-native/) | B | 2026-11-04 |
+| S-63 | Home-screen widgets must be written natively (SwiftUI/WidgetKit) even in cross-platform apps | [Zenn (developer article)](https://zenn.dev/aki030402/articles/77d9e51301b255) | C | 2026-11-04 |
+| S-64 | Strava's iOS app is built with Swift, Objective-C and C/C++ (binary analysis) | [Tech Dev Notes](https://techdevnotes.com/apps/ios/strava/426826309/tech-stack/465.0.0) | C | 2026-11-04 |
+| S-65 | Discord engineering posts on scaling Elixir for realtime messaging | [Discord Engineering](https://medium.com/discord-engineering/engineering-posts/home) | A | 2026-11-04 |

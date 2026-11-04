@@ -805,7 +805,8 @@
       "last_updated": "2026-11-04",
       "related": [
         "arch.adr",
-        "arch.home"
+        "arch.home",
+        "stack.benchmarks"
       ],
       "audience": [
         "developers",
@@ -923,6 +924,7 @@
       "summary": "Proposed tools for every layer of BLAG (app, backend, scheduling, notifications, testing, docs) with reasons, alternatives and open choices.",
       "last_updated": "2026-11-04",
       "related": [
+        "stack.benchmarks",
         "arch.home",
         "adr.001",
         "adr.002",
@@ -934,6 +936,27 @@
         "judges"
       ],
       "path": "kb/08-tech-stack/README.md"
+    },
+    {
+      "id": "stack.benchmarks",
+      "title": "Industry benchmarks",
+      "section": "08-tech-stack",
+      "status": "research",
+      "summary": "What technology Snapchat, Duolingo, Wordle, BeReal, Discord, Bluesky, Instagram, Strava, Among Us and Shopify use for mobile and backend, the patterns across them, and what it means for BLAG's stack.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "stack.home",
+        "adr.001",
+        "adr.002",
+        "idea.inspiration"
+      ],
+      "audience": [
+        "developers",
+        "product",
+        "judges",
+        "agents"
+      ],
+      "path": "kb/08-tech-stack/industry-benchmarks.md"
     },
     {
       "id": "mobile.home",

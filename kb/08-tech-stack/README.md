@@ -6,7 +6,7 @@ status: proposal
 summary: "Proposed tools for every layer of BLAG (app, backend, scheduling, notifications, testing, docs) with reasons, alternatives and open choices."
 last_updated: 2026-11-04
 audience: [developers, agents, judges]
-related: [arch.home, adr.001, adr.002, mobile.home]
+related: [stack.benchmarks, arch.home, adr.001, adr.002, mobile.home]
 ---
 
 # Tech stack
@@ -14,6 +14,10 @@ related: [arch.home, adr.001, adr.002, mobile.home]
 > **In short:** TypeScript everywhere: Expo and React Native for the app, Supabase for the backend, a shared pure game engine, and managed services wherever possible.
 
 Status: **Proposal**. Each choice links to its ADR when there is one.
+
+**Benchmark:** see [industry benchmarks](industry-benchmarks.md) for what Snapchat,
+Duolingo, Wordle, BeReal, Discord, Bluesky and others use, and why BLAG keeps
+Expo for the MVP but reviews it after the prototype (D-19, Q-18).
 
 ## The stack
 
@@ -28,7 +32,7 @@ Status: **Proposal**. Each choice links to its ADR when there is one.
 | Realtime | Supabase Realtime private channels [S-44] | Per-circle events, members only | ADR-002 |
 | Game engine | Pure TS package shared by app and Edge Functions | Rules tested once, used everywhere | ADR-003 |
 | Push | Expo push notifications → APNs / FCM | One API for both platforms | — |
-| Animation | React Native Reanimated | Smooth reveal on mid-range phones | — |
+| Animation | React Native Reanimated; prototype the stamp in Rive (Q-19) | Smooth reveal on mid-range phones; Duolingo uses Rive for characters [S-50] | — |
 | Haptics | expo-haptics | Built in | — |
 | Local storage | Expo SecureStore (tokens), AsyncStorage or SQLite (offline queue) | Secure tokens; queued actions | — |
 | Analytics | Privacy-first, self-hostable option (e.g. PostHog) with no stat values sent *(Proposal)* | Measure retention without collecting habits | — |
@@ -53,6 +57,7 @@ Status: **Proposal**. Each choice links to its ADR when there is one.
 | Data region | India (Mumbai) vs EU vs US | Choose for latency and law; record in an ADR |
 | Analytics vendor | PostHog, Plausible-style, or none at MVP | Must not receive stat values |
 | Live mode web join (Q-08) | Expo web vs a small separate web app | Later |
+| Stay on Expo after the prototype? (Q-18) | Expo / two native apps with AI agents | See [benchmarks](industry-benchmarks.md#when-to-switch-to-native-review-at-the-end-of-the-prototype-q-18) |
 
 ## Cost notes *(Estimate, verify before committing)*
 

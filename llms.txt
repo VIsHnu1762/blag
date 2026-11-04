@@ -75,6 +75,7 @@ Agents: read AGENTS.md first. The single-file export is kb/export/blag-kb.md. Da
 
 ## 08-tech-stack
 - [Tech stack](https://github.com/VIsHnu1762/blag/blob/main/kb/08-tech-stack/README.md): Proposed tools for every layer of BLAG (app, backend, scheduling, notifications, testing, docs) with reasons, alternatives and open choices.
+- [Industry benchmarks](https://github.com/VIsHnu1762/blag/blob/main/kb/08-tech-stack/industry-benchmarks.md): What technology Snapchat, Duolingo, Wordle, BeReal, Discord, Bluesky, Instagram, Strava, Among Us and Shopify use for mobile and backend, the patterns across them, and what it means for BLAG's stack.
 
 ## 09-mobile-dependencies
 - [Mobile dependencies](https://github.com/VIsHnu1762/blag/blob/main/kb/09-mobile-dependencies/README.md): What iOS and Android actually allow for screen time, app usage and health data, with confidence levels, sources and consequences for BLAG.

@@ -27,3 +27,4 @@ risks:
   - {id: R-12, risk: "Apple's Family Controls entitlement takes weeks to approve", likelihood: High, impact: Low, mitigation: "Don't depend on it for MVP (Q-15)", evidence: "S-40"}
   - {id: R-13, risk: "Store rejection for missing account deletion", likelihood: Low, impact: High, mitigation: "In-app deletion plus web deletion link from day one", evidence: "S-37, S-38"}
   - {id: R-14, risk: "Hidden values leak before reveal through a bug in access rules", likelihood: Medium, impact: High, mitigation: "Seals in a private schema; automated access-rule tests", evidence: ""}
+  - {id: R-15, risk: "React Native ecosystem shifts (big users leaving, libraries changing maintainers)", likelihood: Medium, impact: Medium, mitigation: "Prefer Expo-maintained and widely used libraries; keep game logic in a pure TS package; review at Q-18", evidence: "S-61, S-62"}

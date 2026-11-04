@@ -47,3 +47,4 @@ source: kb/data/risks.yaml
 | R-12 | Apple's Family Controls entitlement takes weeks to approve | High | Low | Don't depend on it for MVP (Q-15) | S-40 |
 | R-13 | Store rejection for missing account deletion | Low | High | In-app deletion plus web deletion link from day one | S-37, S-38 |
 | R-14 | Hidden values leak before reveal through a bug in access rules | Medium | High | Seals in a private schema; automated access-rule tests |  |
+| R-15 | React Native ecosystem shifts (big users leaving, libraries changing maintainers) | Medium | Medium | Prefer Expo-maintained and widely used libraries; keep game logic in a pure TS package; review at Q-18 | S-61, S-62 |

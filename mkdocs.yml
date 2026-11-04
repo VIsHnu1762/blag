@@ -111,6 +111,7 @@ nav:
       - "ADR-007: Sign-in method": 07-architecture/adr/ADR-007-authentication.md
   - "Tech stack":
     - "Tech stack": 08-tech-stack/README.md
+    - "Industry benchmarks": 08-tech-stack/industry-benchmarks.md
   - "Mobile dependencies":
     - "Mobile dependencies": 09-mobile-dependencies/README.md
     - "Permissions": 09-mobile-dependencies/permissions.md

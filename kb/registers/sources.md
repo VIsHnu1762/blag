@@ -62,3 +62,22 @@ source: kb/data/sources.yaml
 | S-44 | Supabase Realtime authorization with private channels and RLS | [Supabase](https://supabase.com/docs/guides/realtime/authorization) | A | 2026-11-04 |
 | S-45 | Google Play: permissions and APIs that access sensitive information | [Google Play Console Help](https://support.google.com/googleplay/android-developer/answer/16558241) | A | 2026-11-04 |
 | S-46 | DPDP: breach notice to the Board within 72 hours; children's data rules | [The Week](https://www.theweek.in/theweek/business/2025/12/20/indias-dpdp-rules-2025-a-deep-dive-into-the-new-data-privacy-law.html) | B | 2026-11-04 |
+| S-47 | Snap's Valdi: TypeScript UI compiled to native views; used in Snap's apps for 8 years; open-sourced Nov 2025 (beta, MIT) | [Snap Inc. on GitHub](https://github.com/Snapchat/Valdi) | A | 2026-11-04 |
+| S-48 | Snap moved from Google App Engine to microservices on Google Cloud plus AWS (multi-cloud) | [Copy of a Protocol interview](https://onlinestatshubb.blogspot.com/2022/08/how-snap-rebuilt-infrastructure-that.html) | C | 2026-11-04 |
+| S-49 | Duolingo stack: Swift/Kotlin/TypeScript frontends; Python/Kotlin, Postgres, DynamoDB backend; AWS, Kubernetes, Terraform | [Duolingo hiring post on HN Who's Hiring](https://hnhiring.com/technologies/ios/months/march-2026) | B | 2026-11-04 |
+| S-50 | Duolingo uses Rive state machines for character animation and lip-sync | [Duolingo](https://blog.duolingo.com/world-character-visemes) | A | 2026-11-04 |
+| S-51 | Original Wordle: vanilla JavaScript and web components | [Syntax podcast](https://syntax.fm/show/430/creator-of-wordle-josh-wardle/transcript) | B | 2026-11-04 |
+| S-52 | NYT rebuilt Wordle in React; Wordle and Connections are web apps inside the NYT Games app; Crossplay is a native Swift app | [TechRadar](https://www.techradar.com/computing/websites-apps/we-had-to-do-a-lot-of-technological-work-that-was-sort-of-unprecedented-which-was-really-challenging-and-exciting-crossplay-producer-on-the-effort-to-bring-the-new-york-times-first-two-player-game-to-life) | B | 2026-11-04 |
+| S-53 | Discord adopted React Native for iOS from day one; Elixir backend | [Discord](https://discord.com/blog/why-discord-is-sticking-with-react-native) | A | 2026-11-04 |
+| S-54 | Discord rebuilt its Android app in React Native (2022) | [Discord](https://discord.com/blog/android-react-native-framework-update) | A | 2026-11-04 |
+| S-55 | Bluesky's official app is one React Native + Expo codebase for iOS, Android and web | [Bluesky on GitHub (via code index and forks)](https://github.com/bluesky-social/social-app) | B | 2026-11-04 |
+| S-56 | BeReal stack: Swift/SwiftUI, Kotlin/Compose; Go and Node.js (NestJS); Spanner, Postgres, Redis; GCP, GKE, Firebase | [Voodoo / BeReal job post](https://jobs.accel.com/companies/bereal-2/jobs/91946980-founding-engineer-bereal) | B | 2026-11-04 |
+| S-57 | Instagram uses React Native in its mobile apps and Python/Django on the backend | [ClickIT (secondary)](https://clickittech.com/?p=101614) | C | 2026-11-04 |
+| S-58 | Strava backend in Ruby (Rails) and Scala microservices on AWS | [Strava job post](https://jobs.girlboss.com/software-engineer-941812b2358a) | B | 2026-11-04 |
+| S-59 | Among Us is built with Unity and uses Unity Gaming Services | [Unity](https://unity.com/case-study/innersloth-among-us) | A | 2026-11-04 |
+| S-60 | Shopify went all-in on React Native in 2020 | [Shopify Engineering](https://shopify.engineering/react-native-future-mobile-shopify) | A | 2026-11-04 |
+| S-61 | Shopify moves its apps back to Swift and Kotlin because coding agents cut the cost of building twice (10 Sep 2026) | [Shopify Engineering](https://shopify.engineering/back-to-native) | A | 2026-11-04 |
+| S-62 | Analysis of Shopify's return to native and what it means for rewrites | [RedMonk](https://redmonk.com/kholterhoff/2026/09/22/shopify-native/) | B | 2026-11-04 |
+| S-63 | Home-screen widgets must be written natively (SwiftUI/WidgetKit) even in cross-platform apps | [Zenn (developer article)](https://zenn.dev/aki030402/articles/77d9e51301b255) | C | 2026-11-04 |
+| S-64 | Strava's iOS app is built with Swift, Objective-C and C/C++ (binary analysis) | [Tech Dev Notes](https://techdevnotes.com/apps/ios/strava/426826309/tech-stack/465.0.0) | C | 2026-11-04 |
+| S-65 | Discord engineering posts on scaling Elixir for realtime messaging | [Discord Engineering](https://medium.com/discord-engineering/engineering-posts/home) | A | 2026-11-04 |
