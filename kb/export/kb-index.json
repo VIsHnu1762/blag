@@ -671,6 +671,27 @@
       "path": "kb/06-design/ux-language.md"
     },
     {
+      "id": "design.toolkit",
+      "title": "Design toolkit",
+      "section": "06-design",
+      "status": "agreed",
+      "summary": "The five design references BLAG uses (Design with Intent, Perception-First Design, Impeccable, Taste Skill, React Bits), one job each, how each screen type maps to a design mode, the five-step process every screen goes through, and installs and licences.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "design.home",
+        "design.language",
+        "design.emotional",
+        "quality.home",
+        "design.accessibility"
+      ],
+      "audience": [
+        "design",
+        "developers",
+        "agents"
+      ],
+      "path": "kb/06-design/design-toolkit.md"
+    },
+    {
       "id": "design.screens",
       "title": "Screens",
       "section": "06-design",
@@ -773,13 +794,17 @@
       "title": "Data model",
       "section": "07-architecture",
       "status": "draft",
-      "summary": "Proposed Postgres tables for circles, seasons, drops, rounds, seals, reads and results, with relationships and who can read each table.",
+      "summary": "BLAG's Postgres schema as built in supabase/migrations: one schema per service, every table and its rules, who can read and run what, the round lifecycle, deletion and retention, and how the 49 pgTAP tests prove it.",
       "last_updated": "2026-11-04",
       "related": [
         "arch.home",
         "arch.fairness",
+        "arch.services",
+        "arch.repo",
         "privacy.inventory",
-        "game.state"
+        "game.state",
+        "adr.011",
+        "adr.012"
       ],
       "audience": [
         "developers",
@@ -1031,8 +1056,8 @@
       "id": "adr.007",
       "title": "ADR-007: Sign-in method",
       "section": "07-architecture",
-      "status": "proposal",
-      "summary": "ADR-007: Sign-in method. Status: Proposed (Q-13 open).",
+      "status": "agreed",
+      "summary": "ADR-007: Sign-in method. Status: Accepted (D-26).",
       "last_updated": "2026-11-04",
       "related": [
         "arch.adr",
@@ -1097,6 +1122,46 @@
         "agents"
       ],
       "path": "kb/07-architecture/adr/ADR-010-domain-services.md"
+    },
+    {
+      "id": "adr.011",
+      "title": "ADR-011: Plain SQL migrations instead of Prisma",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "ADR-011: Plain SQL migrations instead of Prisma. Status: Proposed (D-40).",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.data",
+        "adr.002",
+        "adr.012"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-011-sql-first-database.md"
+    },
+    {
+      "id": "adr.012",
+      "title": "ADR-012: One database role per service; the app only reads",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "ADR-012: One database role per service; the app only reads. Status: Proposed (D-41).",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.data",
+        "arch.services",
+        "adr.003",
+        "adr.010",
+        "adr.011"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-012-service-database-roles.md"
     },
     {
       "id": "stack.home",

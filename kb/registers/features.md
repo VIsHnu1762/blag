@@ -37,6 +37,8 @@ source: kb/data/features.yaml
 | F-16 | My month | Personal | Could | P-28 |
 | F-17 | Notifications | Platform | Must |  |
 | F-18 | Delete my data | Account | Must | P-26 |
+| F-24 | Report and block | Safety | Must |  |
+| F-25 | Rounds per day | Circles | Should |  |
 
 ## Next
 
@@ -60,6 +62,8 @@ source: kb/data/features.yaml
 - [ ] A new person can create an account in under 2 minutes
 - [ ] Sign-up asks the person to confirm they are 18 or older; under-18s can't continue (Q-03)
 - [ ] No contacts or usage permissions are requested at sign-up
+- [ ] Sign-in by email one-time code or Google; Sign in with Apple is offered with equal prominence on iPhone (D-26)
+- [ ] Only the 18+ attestation time is stored, never the date of birth (D-27)
 
 ### F-02 · Create a circle
 
@@ -90,7 +94,7 @@ source: kb/data/features.yaml
 
 - [ ] Speaker enters the real number first; it is stored server-side and cannot be changed after the claim
 - [ ] Speaker then sees the truth zone and enters a claim
-- [ ] Optional screenshot proof can be attached to the seal
+- [ ] Screenshot proof is deferred past the MVP; MVP seals are typed (D-43)
 - [ ] Seal and claim take under 2 minutes for a first-time Speaker
 
 ### F-07 · Read and guess
@@ -178,4 +182,17 @@ source: kb/data/features.yaml
 
 - [ ] With Usage Access granted, the seal can be filled from UsageStatsManager; if the member edits the value, the badge becomes Typed
 - [ ] Shows an 'auto-read' trust badge; no extra points (D-17)
+
+### F-24 · Report and block
+
+- [ ] Any member can report a display name, circle name, avatar or behaviour; the founder sees open reports and responds within 24 hours (D-42)
+- [ ] Blocking someone stops them joining any circle you are in through future invites; shared circles prompt you to leave or ask the organiser
+- [ ] Display and circle names are checked against a blocked-terms list before saving
+- [ ] Terms of use state zero tolerance for objectionable content; a contact email is shown in Settings
+
+### F-25 · Rounds per day
+
+- [ ] The organiser chooses 1 or 2 rounds per day; the change takes effect from the next day (D-29)
+- [ ] With 2 rounds, the two reveal times are at least 3 hours apart and each round has a different Speaker
+- [ ] After 7 days in which everyone read every round, the app suggests a second round; after 3 days under half participation it suggests going back to one
 

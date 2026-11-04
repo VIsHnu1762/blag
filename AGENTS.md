@@ -28,8 +28,9 @@ Follow `related` to find neighbouring pages.
 | Game rules, scoring, titles | `kb/03-game-design/` | `stats.yaml` |
 | New or changed feature | `kb/04-features/`, `kb/registers/features.md` | `features.yaml` |
 | UI copy or tone | `kb/05-brand/voice-and-tone.md` | — |
-| Screens or flows | `kb/06-design/` | — |
+| Screens or flows | `kb/06-design/`, then follow `kb/06-design/design-toolkit.md` (skills in `.claude/skills`, product record in `PRODUCT.md`) | — |
 | Database, API, backend | `kb/07-architecture/` | add an ADR in `kb/07-architecture/adr/` |
+| Database schema or access rules | `supabase/migrations` (source of truth), `kb/07-architecture/data-model.md` | new migration file + pgTAP test in `supabase/tests` |
 | Where code goes, folder layout | `kb/07-architecture/repository-structure.md` | — |
 | Which backend service owns something | `kb/07-architecture/services.md` | — |
 | Platform capability (iOS/Android) | `kb/09-mobile-dependencies/` | `sources.yaml`, `risks.yaml` |
@@ -94,6 +95,11 @@ independent of the UI and testable on its own (`kb/07-architecture/README.md`).
 Follow the folder layout, dependency rules and where-does-it-go table in
 `kb/07-architecture/repository-structure.md`, and the data-ownership rules in
 `kb/07-architecture/services.md` (only the owning service writes a table).
+
+Database rules: never edit an applied migration; add a new file. Every new write
+function gets an explicit `GRANT EXECUTE` to its own service role and a pgTAP test
+proving other roles can't run it (ADR-012). Run `scripts/db/test-local.sh` or
+`supabase test db` before pushing. Work happens on `main` during the MVP (D-35).
 
 ## 6. Writing style for human readers
 

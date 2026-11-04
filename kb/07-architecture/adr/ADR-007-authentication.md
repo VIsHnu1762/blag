@@ -2,8 +2,8 @@
 id: adr.007
 title: "ADR-007: Sign-in method"
 section: 07-architecture
-status: proposal
-summary: "ADR-007: Sign-in method. Status: Proposed (Q-13 open)."
+status: agreed
+summary: "ADR-007: Sign-in method. Status: Accepted (D-26)."
 last_updated: 2026-11-04
 audience: [developers, agents]
 related: [arch.adr, arch.home]
@@ -11,9 +11,9 @@ related: [arch.adr, arch.home]
 
 # ADR-007: Sign-in method
 
-> **In short:** Not decided.
+> **In short:** Email one-time code, Google, and Sign in with Apple on iPhone; phone numbers after the MVP.
 
-**Status:** Proposed (Q-13 open)
+**Status:** Accepted (D-26, 2026-11-04)
 
 ## Context
 
@@ -21,7 +21,10 @@ Members must be able to sign in easily and recover their account; stores have ru
 
 ## Decision
 
-Not decided. Leading option: **email one-time link or code** plus **Sign in with Apple** and **Google**, with no phone-number requirement. Check the current App Store rules on offering Sign in with Apple alongside other social logins before deciding.
+- **Email one-time code** (Supabase Auth), **Google**, and **Sign in with Apple** on iPhone, shown with equal prominence.
+- Apple guideline 4.8 requires an equivalent privacy-focused login whenever Google or another social login sets up the main account; Sign in with Apple is the option known to satisfy it [S-77, S-78].
+- **Phone-number sign-in comes after the MVP**: every text message costs money, and business SMS in India needs sender registration.
+- Age: 18+ self-attestation at sign-up; the date of birth is not stored (D-27).
 
 ## Options considered
 
@@ -29,7 +32,7 @@ Not decided. Leading option: **email one-time link or code** plus **Sign in with
 |---|---|---|
 | Phone OTP | Familiar in India | SMS costs; phone numbers are sensitive; SIM changes |
 | Email link/code | Cheap; no password | Slower first sign-in |
-| Apple / Google sign-in | One tap | Store rules to check; platform lock-in for some users |
+| Apple / Google sign-in | One tap | Google requires Apple as well on iOS [S-77] |
 
 ## Consequences
 

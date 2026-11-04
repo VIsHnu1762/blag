@@ -34,4 +34,4 @@ Split the backend into **seven services** (identity, circles, game, league, sche
 
 ## Consequences
 
-Event handlers must be idempotent. Extraction triggers and steps are in the [service map](../services.md#when-to-extract-a-service-into-its-own-microservice).
+The proofs service is deferred past the MVP (D-43). Inside the database, each service's ownership is enforced with its own role (ADR-012). Event handlers must be idempotent. Extraction triggers and steps are in the [service map](../services.md#when-to-extract-a-service-into-its-own-microservice).

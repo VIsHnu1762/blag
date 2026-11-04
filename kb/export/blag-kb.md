@@ -1088,6 +1088,9 @@ fair), A-05 (ten minutes), A-07 (focus lanes).
 
 #### Setup
 
+Timing: runs alongside the first two weeks of the build (D-45). To mimic the seal, the Speaker sends the real number to the game master by private message **before** posting the claim in the group.
+
+
 1. Recruit **three friend groups** of 4–6 people: a hostel group, a class
    group and a long-distance group.
 2. Each group gets a **WhatsApp group** and a **shared sheet**. One team member
@@ -1474,6 +1477,17 @@ local time. All values *(tunable)* by the organiser within limits.
 | 21:00 | **Reveal**, or earlier as soon as every active reader has read |
 
 Every Sunday is a **rest day** with a non-stat prompt *(tunable)*.
+
+#### One or two rounds a day
+
+Each circle plays **1 or 2 rounds a day** (D-29). The organiser changes it, and the change applies from the next day.
+The app suggests a second round after 7 days in which everyone read every round, and suggests going back to one
+after 3 days with under half the circle reading.
+
+- Both rounds open at the drop time and each has its own reveal time, at least 3 hours apart (for example 14:00 and 21:00).
+- The Speaker and backup cutoffs split each round's window 5:5:3, which gives 13:00 and 18:00 with the defaults above.
+- The two rounds have **different Speakers**.
+- A day can score up to 8 (two rounds × 4); the season still counts the best 20 days (D-16). Everyone in a circle plays the same number of rounds, so changing it mid-month stays fair.
 
 ### Step by step
 
@@ -1883,6 +1897,8 @@ stateDiagram-v2
 ```
 
 A rest day is scheduled directly as `REST` at the drop time.
+
+In the database (`game.round_state`), REVEALED and CLOSED are one step, because points are already computed on every read (D-22). With two rounds a day, each round runs this machine on its own ([data model](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/data-model.md#round-lifecycle-in-the-database)).
 
 ### Who can do what
 
@@ -2387,6 +2403,7 @@ Sounds off by default *(Proposal)* with a clear toggle; haptics follow the syste
 |---|---|
 | [Emotional design](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/emotional-design.md) | The feelings BLAG creates, the emotional arc of a day and a season, and the review that shaped it |
 | [UX language and moments map](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/ux-language.md) | In-app words, and each moment's feeling, proven pattern, twist and backend guarantee |
+| [Design toolkit](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/design-toolkit.md) | The five design references, one job each, screen modes and the five-step process (D-24, D-25) |
 | [Screens](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/screens.md) | Every MVP screen with purpose, contents and states |
 | [Flows](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/flows.md) | Diagrams of the main flows |
 | [Accessibility](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/accessibility.md) | WCAG 2.2 AA checklist applied to BLAG |
@@ -2399,13 +2416,15 @@ Sounds off by default *(Proposal)* with a clear toggle; haptics follow the syste
 4. **Thumb-first.** Primary actions sit in the bottom third of the screen.
 5. **Nothing that shames.** Every screen passes the [voice checklist](https://github.com/VIsHnu1762/blag/blob/main/kb/05-brand/voice-and-tone.md#checklist-for-any-new-copy).
 6. **Works on a mid-range Android on patchy data** ([users](https://github.com/VIsHnu1762/blag/blob/main/kb/02-users/README.md)).
+7. **Native plumbing, expressive game moments** (D-24): settings feel like the phone; the game feels like BLAG.
+8. **Low-fidelity first** (D-36): layout and flow before colour and type.
 
 ### To do
 
-- [ ] Low-fidelity wireframes for every MVP screen
+- [ ] Low-fidelity wireframes for every MVP screen, through the [five steps](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/design-toolkit.md#the-five-steps-every-screen-goes-through)
 - [ ] Clickable prototype for usability testing ([research plan](https://github.com/VIsHnu1762/blag/blob/main/kb/02-users/research-plan.md))
 - [ ] Reveal animation prototype
-- [ ] Design tokens file once the palette is agreed (Q-05)
+- [ ] Design tokens file once the core works and the palette is chosen (Q-05 parked, D-36)
 
 
 ---
@@ -2588,6 +2607,84 @@ borrows, BLAG's twist, and the backend step that makes it reliable.
 - Never use words that judge habits ([voice and tone](https://github.com/VIsHnu1762/blag/blob/main/kb/05-brand/voice-and-tone.md)).
 - English first; keep every string in the catalogue so it can be translated and changed without code.
 - Test with real users in the hand-run test and usability tests; replace anything that needs explaining.
+
+
+---
+
+<!-- page: kb/06-design/design-toolkit.md · id: design.toolkit · status: agreed · updated: 2026-11-04 -->
+
+## Design toolkit
+
+> **In short:** five references the founder has used for a long time, each with one job so they never argue: Intent decides *why*, Perception-First Design checks *what people will perceive*, Impeccable builds and polishes the app, Taste Skill builds the web pages, React Bits only inspires motion (D-25).
+
+### One job per tool
+
+| Tool | Job in BLAG | When | Licence |
+|---|---|---|---|
+| **Design with Intent** [S-87] | UX strategy, journeys, structure, wireframes, accessibility, and the dark-pattern check | Before any screen, and as a check after | CC0 |
+| **Perception-First Design** [S-89] | Diagnoses a screen through five layers: cognitive load, first impression, processing fluency, perception bias, decision architecture | The five key screens: first run, Today's Drop, seal and claim, read, reveal | CC BY-SA 4.0 (applying it is exempt) |
+| **Impeccable** [S-86] | Main design system for the app: `PRODUCT.md`, `DESIGN.md`, iOS and Android rules, native audit, critique, later typeset, colour, motion and polish | Low-fidelity now; visuals after the core works | Apache 2.0 |
+| **Taste Skill** [S-88] | Public web pages only (landing, invite): art direction, real browser checks at three widths | Near release | MIT |
+| **React Bits** [S-90] | Motion ideas only; effects are rebuilt from scratch in Reanimated | After the core works | MIT + Commons Clause: no redistribution or ports |
+
+Anthropic's frontend-design skill is not used separately: Impeccable builds on it.
+
+### Design modes for BLAG's screens (D-24)
+
+Impeccable names what success looks like on each surface. BLAG's rule: **native plumbing, expressive game moments.**
+
+| Mode | BLAG surfaces | Rule |
+|---|---|---|
+| **Operate** (get a task done) | Sign-in, settings, invite, members, notifications | Feel native: platform controls, system font, back gesture, 44 pt (iOS) / 48 dp (Android) targets |
+| **Experience** (you are inside the game) | Seal, claim, read, reveal, finale | BLAG's own look, motion and sound live here |
+| **Read** | Privacy, help, my month | Calm and easy to read |
+| **Persuade** | Landing page, store listing, invite web page | Taste Skill + Impeccable, aimed at the install |
+
+### The five steps every screen goes through
+
+1. **Why and where.** Intent `/journey` places the screen in the day or season loop. Perception-First Design runs its five-layer analysis (5 passes for a key screen, 1 for a small one). Output: requirements, not pixels.
+2. **Layout.** Intent `/wireframe` writes the low-fidelity layout; Impeccable `shape` turns it into a UX plan.
+3. **Build low-fidelity.** Greyscale React Native screen, system font, real words from the text catalogue (`src/i18n/en.ts`), proper layout (D-36).
+4. **Check.** Impeccable `audit` (native) and `critique`, Intent `/evaluate` for dark patterns, Perception-First Design `evaluate`. Fix what they find; the [quality page](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.md) lists the bar.
+5. **Later, once the core works.** Impeccable `typeset`, `colorize`, `animate`, `delight` and `polish`; motion inspired by React Bits and built with Reanimated; then `/impeccable document` writes `DESIGN.md` from what shipped.
+
+### The ethics check agrees with our red lines
+
+Intent's ethical-design guide independently says what BLAG's [principles](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/05-principles-and-red-lines.md) say:
+breaking a streak must carry no penalty, and notifications should arrive because something real happened, never
+at an algorithm-chosen "best moment". Every notification and every missed-day screen goes through Intent `/evaluate`.
+
+### Installed in the repo
+
+| Skill | Source | Where |
+|---|---|---|
+| `impeccable` (4.8) | `pbakaus/impeccable` | `.claude/skills/impeccable` |
+| `intent`, `journey`, `organize`, `wireframe`, `evaluate`, `include`, `localize`, `specify` (1.7) | `ghaida/intent` | `.claude/skills/<name>` |
+| `design-taste-frontend` | `Leonxlnx/taste-skill` | `.claude/skills/design-taste-frontend` |
+
+Sources and content hashes are pinned in `skills-lock.json`; update with `npx skills update -p`.
+`PRODUCT.md` at the repo root is the product record Impeccable reads (platform: `adaptive`).
+
+**Perception-First Design is not committed**: copying its CC BY-SA text into this public repo would put that copy
+under share-alike. Install it per person:
+
+```text
+/plugin marketplace add skovalik/perception-first-design
+/plugin install perception-first-design@perception-first-design
+```
+
+**Impeccable's design-check hook** (`/impeccable hooks on`) is for the web pages only; its detector reads web code,
+and native screens are audited from source by `audit` instead.
+
+### Using the toolkit with an agent
+
+| You want | Ask for |
+|---|---|
+| Plan a new screen | "Run Intent journey and wireframe for the reveal screen, then Impeccable shape" |
+| Check a built screen | "Impeccable audit and critique the read screen; Intent evaluate it for dark patterns" |
+| Check first impressions | "Perception-First Design evaluate the first-run flow" |
+| Polish after the core works | "Impeccable typeset, then colorize, then animate the reveal" |
+| Build the landing page | "Taste skill: build apps/web/index.html under 30 KB" |
 
 
 ---
@@ -3110,76 +3207,181 @@ minutes, about 60 reads per second, well within a managed Postgres.
 
 ## Data model
 
-> **In short:** circles contain seasons, seasons contain daily drops, each drop has one round; the sealed value lives in a private table that only the server can read.
+> **In short:** one Postgres schema per service; the app can only *read*, through `api` views that show each person their own circles; every write goes through an Edge Function that may only run its own service's functions; the sealed number sits in a `private` schema nobody can read and is deleted at the reveal.
 
-Replaces the original spec's temporary "rooms" model (D-03). Names follow the
-[glossary](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/glossary.md) code names.
+The schema is real: it lives in [`supabase/migrations`](https://github.com/VIsHnu1762/blag/tree/main/supabase/migrations)
+(13 files, plain SQL, ADR-011) and is tested by [`supabase/tests`](https://github.com/VIsHnu1762/blag/tree/main/supabase/tests)
+(49 pgTAP checks). When this page and the migrations disagree, **the migrations win**; fix this page.
+Names follow the [glossary](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/glossary.md) code names.
+
+### Schemas
+
+| Schema | Owner (service) | Holds | Exposed to the app? |
+|---|---|---|---|
+| `identity` | identity | profiles, consents, stat preferences | No (read through `api`) |
+| `circles` | circles | circles, schedule versions, members, away, invites, blocks, reports | No |
+| `game` | game | stat catalogue, rounds, reads, results, reactions, rest answers | No |
+| `league` | league | seasons, day scores, standings, titles | No |
+| `notify` | notifications | devices, preferences, delivery log | No |
+| `ops` | scheduler + platform | idempotency keys, audit log, feature flags, blocked terms, deletion requests | No |
+| `private` | game | sealed numbers | **Never**: no grants, no policies |
+| `api` | (read model) | views and two read-only functions | **Yes, the only one** |
 
 ### Entity diagram
 
 ```mermaid
 erDiagram
-    profiles ||--o{ circle_members : joins
-    circles ||--o{ circle_members : has
+    profiles ||--o{ members : joins
+    circles ||--o{ members : has
+    circles ||--o{ schedule_versions : "is scheduled by"
+    members ||--o{ away : "marks (private)"
+    circles ||--o{ invites : issues
     circles ||--o{ seasons : runs
-    seasons ||--o{ drops : contains
-    drops ||--|| rounds : has
+    seasons ||--o{ rounds : contains
+    stat_catalog ||--o{ rounds : "asked in"
     rounds ||--o| seals : "sealed by (private)"
-    rounds ||--o| claims : "claimed by"
     rounds ||--o{ reads : receives
+    rounds ||--o{ round_results : "scored as"
     rounds ||--o{ reactions : receives
-    rounds ||--o| round_results : "scored as"
+    rounds ||--o{ rest_answers : receives
     seasons ||--o{ day_scores : totals
+    seasons ||--o{ standings : ranks
     seasons ||--o{ titles : awards
-    profiles ||--o{ stat_consents : grants
-    profiles ||--o{ push_tokens : registers
+    profiles ||--o{ consents : records
+    profiles ||--o{ stat_preferences : chooses
+    profiles ||--o{ devices : registers
 ```
+
+A **drop** is not a table: it is all rounds of one circle on one day, `(circle_id, play_date)`, with `slot` 1 or 2 (D-29).
 
 ### Tables
 
-| Table | Key columns | Notes |
+Every column, type and constraint is in the migration files; this is the map.
+
+| Table | What it holds | Key rules |
 |---|---|---|
-| `profiles` | `id` (= auth user), `display_name`, `avatar_color`, `adult_confirmed_at`, `created_at` | No real name required |
-| `circles` | `id`, `name`, `home_tz`, `drop_time`, `speaker_cutoff`, `backup_cutoff`, `reveal_time`, `invite_code_hash`, `created_by`, `archived_at` | Invite code stored hashed |
-| `circle_members` | `circle_id`, `user_id`, `role` (owner/member), `focus_lane`, `paused`, `joined_at`, `left_at` | Max 8 active per circle (enforced in function) |
-| `stat_consents` | `user_id`, `stat_id`, `granted_at`, `extra_confirmed_at`, `revoked_at` | One row per stat; catalogue ids from `stats.yaml` |
-| `seasons` | `id`, `circle_id`, `starts_on`, `ends_on`, `status` | One per calendar month |
-| `drops` | `id`, `circle_id`, `season_id`, `local_date`, `card_type` (stat/rest), `state`, `opens_at`, `speaker_cutoff_at`, `backup_cutoff_at`, `reveal_at` | Unique (`circle_id`, `local_date`); times stored in UTC |
-| `rounds` | `id`, `drop_id`, `stat_id`, `prompt_key`, `speaker_id`, `speaker_attempt`, `claimed_at`, `revealed_at` | `speaker_id` hidden from others until `claimed_at` (see below) |
-| `private.seals` | `round_id`, `value`, `trust_level`, `proof_path`, `sealed_at`, `locked` | **Private schema: no client access** |
-| `claims` | `round_id`, `value`, `is_truth` (null until reveal) | `is_truth` written only at reveal |
-| `reads` | `round_id`, `reader_id`, `read` (TRUE/BLUFF), `guess`, `updated_at` | Unique (`round_id`, `reader_id`) |
-| `round_results` | `round_id`, `revealed_value`, `half_width`, `points` (jsonb by user), `computed_at` | Written once by the server |
-| `day_scores` | `season_id`, `user_id`, `local_date`, `points` | Feeds the best-20 season score |
-| `titles` | `season_id`, `user_id`, `title_key`, `reason_key` | Exactly one per qualifying member |
-| `reactions` | `round_id`, `user_id`, `emoji`, `created_at` | Emoji from a fixed list; never aggregated in UI |
-| `rest_answers` | `drop_id`, `user_id`, `choice` | Hidden until reveal |
-| `push_tokens` | `user_id`, `token`, `platform`, `updated_at` | Deleted on sign-out and account deletion |
-| `idempotency_keys` | `user_id`, `key`, `action`, `response`, `created_at` | Expire after 48 hours |
+| `game.stat_catalog` | One row per stat (`ST-01`…) with unit, range and honest-range floor | Seeded from `kb/data/stats.yaml`; `is_health` marks steps and sleep (D-39) |
+| `identity.profiles` | Display name, preset avatar, locale, time zone | 1–24 character name; **no date of birth**, only `age_attested_at` (D-27) |
+| `identity.consents` | Append-only ledger: purpose, stat, granted or withdrawn, notice version | Health stats need their own `health_stats` consent (D-39) |
+| `identity.stat_preferences` | Which stats a person will be asked about (their focus lane) | Enabling needs a granted consent (checked in the write function) |
+| `circles.circles` | Name, home time zone, member cap 3–8 | |
+| `circles.schedule_versions` | Drop time, rounds per day, reveal times, from a date | Takes effect from a future date; 2 reveals ≥ 3 hours apart; first reveal ≥ 4 hours after the drop (D-29) |
+| `circles.members` | Membership, organiser role, joined and left times | One active organiser per circle |
+| `circles.away` | Away days (F-13) | Readable only by the member themselves |
+| `circles.invites` | 8-character code, expiry (7 days), max uses (7) | Members-only; purged a day after expiry |
+| `circles.blocks`, `circles.reports` | Block list and reports (Apple 1.2, D-42) | Reports answered within 24 hours |
+| `league.seasons` | One per calendar month per circle | Seasons in a circle can never overlap; one active at a time |
+| `game.rounds` | One round: card type, state, stat, prompt, Speaker, four times, claim, revealed value, truth zone | Unique per circle, date and slot; the times must be in order; a revealed stat round must carry its value, zone and verdict |
+| `private.seals` | The real number | Written once; deleted at the reveal, or when a backup Speaker takes over |
+| `game.reads` | TRUE or BLUFF plus an optional guess | Changeable until the reveal |
+| `game.round_results` | Points per person per round | Rebuilt on every read (D-22); reader 0–4, Speaker 0–3 |
+| `game.reactions` | Emoji from a fixed set of six | No free text (D-42) |
+| `game.rest_answers` | Rest-card choice, as an option key | Hidden until the reveal; no points |
+| `league.day_scores` | Points per person per day | 0–8 (two rounds × 4) |
+| `league.standings` | Best-20 total, days played, rank | D-16 |
+| `league.titles` | One title per member per season | |
+| `notify.devices`, `notify.preferences`, `notify.deliveries` | Push tokens, quiet hours, daily cap, delivery log | Log kept 30 days; `dedupe_key` stops double sends |
+| `ops.*` | Idempotency (48 h), audit log (never stat values), flags, blocked terms, deletion requests | No client access |
 
-### Who can read what (row-level security)
+### Round lifecycle in the database
 
-| Table | Member of the circle can read | Notes |
+Follows the [state machine](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/state-machine.md).
+
+| State | Meaning | Who moves it on |
 |---|---|---|
-| circles, circle_members, seasons, drops | Yes | Members see `paused` only for themselves |
-| rounds | Yes, but `speaker_id` only after `claimed_at`, or if they *are* the Speaker | Expose via a view that nulls `speaker_id` |
-| private.seals | **No one** (service role only) | Value copied to `round_results` at reveal |
-| claims | After `claimed_at` | `is_truth` null until reveal |
-| reads, rest_answers | Own row always; others' rows only after `revealed_at` | |
-| round_results, day_scores, titles | Yes | |
-| reactions | After reveal | |
-| stat_consents, push_tokens | Own rows only | |
-| profiles | Own row; display name and avatar of people sharing a circle | |
+| `scheduled` | Created ahead of the drop | scheduler at drop time → `open`, or `paused` if under 3 members |
+| `open` | The Speaker may seal, then claim, before their cutoff | `game.claim` → `claimed`; scheduler picks a backup at the first cutoff; at the backup cutoff it becomes a rest card (`rest`) |
+| `claimed` | Members read | last read reveals early; otherwise the scheduler reveals at `reveal_at` |
+| `rest` | Rest card (Sundays, or no claim) | scheduler at `reveal_at` |
+| `revealed` | Everything visible; events sent | final |
 
-Every rule above becomes an automated test ([quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.md)).
+`REVEALED` and `CLOSED` from the state machine are one step here: points already exist when the round reveals.
+
+### Who can do what
+
+| Role | Can | Cannot |
+|---|---|---|
+| `anon` (not signed in) | Nothing | Anything |
+| `authenticated` (app user) | `SELECT` on chosen columns, filtered by RLS; read `api` views; call `api.me()` and `api.round_progress()` | Write any table; call any write function; read `private`, `ops`, `seed` or `speaker_attempt` |
+| `svc_<service>` (one per Edge Function) | Run its own service's write functions | Read or write tables directly; run another service's functions |
+| Table owner (migrations) | Owns everything; write functions run as owner | |
+| `service_role` key | Not used by app code (CI and admin scripts only) | |
+
+#### What a member sees (RLS)
+
+| Data | Visible to |
+|---|---|
+| Circle, schedule, members, invites, seasons, standings, titles, day scores | Active members of that circle |
+| Rounds | Members; **the Speaker's identity only after the claim**, except to the Speaker (D-15, via `api.rounds`) |
+| The real number | Nobody until the reveal (it is copied to the round at the reveal) |
+| Reads, rest answers | Your own always; everyone's after the reveal |
+| Results, reactions | After the reveal |
+| "4 of 6 have read" | Members, as counts only (`api.round_progress`) |
+| Away days, consents, stat preferences, devices, blocks, your reports | Only you |
+| Profiles | Your own, plus name and avatar of people who share a circle with you |
+| Realtime broadcasts on `circle:<id>` | Members only; nobody may send; payloads carry ids, never numbers |
+
+### How a write happens
+
+```mermaid
+sequenceDiagram
+    participant App
+    participant Fn as Edge Function (game)
+    participant DB as Postgres (as svc_game)
+    App->>Fn: POST game/read + JWT + idempotency key
+    Fn->>Fn: verify JWT, validate with contracts
+    Fn->>DB: select game.cast_read(actor, round, verdict, guess)
+    DB->>DB: checks · upsert read · rebuild results · ping circle
+    DB-->>Fn: ok, or an error key such as reading_closed
+    Fn-->>App: 200, or the mapped error
+```
+
+Error keys raised by the functions (`not_speaker`, `speaker_window_closed`, `seal_first`, `already_sealed`,
+`value_out_of_range`, `not_member`, `speaker_cannot_read`, `reading_closed`, `round_not_found`) map one-to-one
+to `@blag/contracts` errors.
+
+### Events and jobs
+
+| Event | From | To queue |
+|---|---|---|
+| `round.revealed` | game | `league_inbox` (stat rounds), `notify_inbox` (all) |
+| `member.left` | circles | `game_inbox` |
+| `user.deletion_due` | identity | `circles_inbox`, `game_inbox` |
+| `season.closed` | league | `notify_inbox` |
+
+Each inbox has a `*_dlq` dead-letter queue (after 5 attempts). `pg_cron` calls the scheduler every minute and
+purges expired idempotency keys, old delivery logs and expired invites. The project URL and scheduler secret come
+from Supabase Vault.
 
 ### Deletion behaviour
 
 | When | What happens |
 |---|---|
-| Member leaves a circle | `left_at` set; future drops exclude them; their past rows stay for the circle's history |
-| Account deleted | Profile, consents, tokens, seals and reads deleted; `round_results.points` keys replaced by an anonymous id; display shows "a former member" |
-| Circle archived | All drops stop; data retained per the [retention policy](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/data-inventory.md) |
+| Member leaves a circle | `left_at` set; future rounds exclude them; past rows stay for the circle's history |
+| Account deleted | After the undo window the identity service deletes the auth user through the Auth admin API; profile, consents, preferences, devices, memberships, reads, results, reactions and any unrevealed seal cascade away. Rounds they spoke in keep their numbers as anonymous circle history with `speaker_id = null`, shown as "a former member" |
+| Round revealed | The sealed row is deleted in the same transaction |
+| Circle archived | Rounds stop; data retained per the [retention policy](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/data-inventory.md) |
+
+### Testing
+
+| Suite | Checks |
+|---|---|
+| `supabase/tests/sql/game_rules.test.sql` (25) | Truth zone, guards, seal-once, scoring with ties, early reveal, timed reveal, rest cards, seal deletion, queued events, schedule rules |
+| `supabase/tests/rls/access_rules.test.sql` (24) | Speaker secrecy, own-read-only before reveal, counts-only progress, `private` denied, hidden columns, no direct writes, away privacy, realtime for members only, outsiders see nothing, service roles limited to functions |
+
+Run with `supabase test db` (needs Docker), or without Docker:
+`PGTAP_SQL=/path/to/pgtap.sql scripts/db/test-local.sh` against any local Postgres.
+
+### Changed from the first model
+
+| Before | Now | Why |
+|---|---|---|
+| `drops` table with one round each | Rounds keyed by date and slot | 1 or 2 rounds a day (D-29) |
+| Invite code stored hashed | Plain code, members-only, 7 days, 7 uses | Members must be able to re-share it; short life limits risk |
+| `round_results.points` as JSON | One row per person per round | Simpler access rules and queries |
+| `trust_level` and `proof_path` on seals | `input_method` only | Screenshot proof deferred (D-43) |
+| `paused` column on members | `circles.away` table | Readable only by the member |
+| Idempotency keys 48 h | Unchanged (48 h) | |
 
 
 ---
@@ -3326,7 +3528,7 @@ See [quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.
 
 > **In short:** one monorepo with an `apps/` folder (the Expo app now, a small web app later), a `packages/` folder for code shared across apps and the server (game engine, contracts, config), and `supabase/` for the database and server functions; features are self-contained folders with strict import rules, so the codebase can grow from one developer to a team without a rewrite.
 
-Status: **Proposal** (ADR-008, ADR-009, ADR-010). Nothing here exists yet.
+Status: **Proposal** (ADR-008, ADR-009, ADR-010). What exists today: `supabase/migrations` (13 files), `supabase/tests` (pgTAP) and `scripts/db`. Everything else is the plan.
 Create folders **only when the first file needs them** (see [growth plan](#growth-plan-create-folders-only-when-needed)).
 
 How this measures up against enterprise practice is in the [enterprise standards scorecard](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/enterprise-standards.md); a plain-language tour of every part is in the [learning guide](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/learning-guide.md).
@@ -3349,7 +3551,7 @@ How this measures up against enterprise practice is in the [enterprise standards
 blag/
 ├── apps/
 │   ├── mobile/                  # Expo + React Native app (iOS, Android)            ← MVP
-│   └── web/                     # Small web app: account-deletion page, later live-mode web join   ← MVP (deletion page only)
+│   └── web/                     # Plain static pages: landing, invite, privacy, account deletion (D-31)   ← MVP
 ├── packages/
 │   ├── game-engine/             # Pure TypeScript game rules: truth zone, scoring, titles, Speaker choice  ← MVP
 │   ├── contracts/               # Shared API types, validation schemas, error codes, realtime events     ← MVP
@@ -3364,9 +3566,23 @@ blag/
 │   ├── tests/                   # SQL tests for access rules (pgTAP)
 │   └── seed.sql                 # Local test data (fake circles, never real people)
 ├── kb/                          # This knowledge base
-├── scripts/                     # Repo tools: kb.py, codegen, release helpers
-├── .github/                     # workflows (ci, e2e, deploy-backend, codeql, kb), CODEOWNERS, PR and issue templates, renovate.json
-├── .changeset/                  # release notes and versions
+├── scripts/
+│   ├── kb.py                    # Knowledge-base build and check
+│   ├── db/                      # test-local.sh + supabase-stubs.sql: run migrations and pgTAP without Docker
+│   ├── gen-stats-catalog.ts     # kb/data/stats.yaml → game-engine catalogue + SQL seed     ← Prototype
+│   ├── gen-db-types.sh          # supabase gen types → packages/db-types                     ← Prototype
+│   └── seed-demo.ts             # Fake circles for local play, never real people              ← Prototype
+├── .github/
+│   ├── workflows/               # ci.yml, kb.yml, deploy-backend.yml, codeql.yml, e2e.yml
+│   ├── PULL_REQUEST_TEMPLATE.md # Only if a branch workflow is ever added (D-35)
+│   ├── ISSUE_TEMPLATE/          # bug.yml, feature.yml
+│   ├── renovate.json            # Dependency updates
+│   └── CODEOWNERS               # ← Later, when a second person joins
+├── .changeset/                  # Release notes and versions (Changesets, D-32)
+├── .claude/skills/              # Design skills for agents: impeccable, intent (8), taste (D-25)
+├── skills-lock.json             # Pinned sources and hashes of those skills
+├── .vscode/                     # Recommended extensions and settings
+├── PRODUCT.md                   # Product context read by the Impeccable design skill
 ├── AGENTS.md  CLAUDE.md  README.md  CONTRIBUTING.md  SECURITY.md  CHANGELOG.md  LICENSE
 ├── commitlint.config.js         # Conventional Commits check
 ├── package.json                 # Root: workspace scripts only, no app code
@@ -3391,19 +3607,28 @@ apps/mobile/
 ├── assets/                      # Icons, splash, fonts, sounds, Rive/Lottie files
 ├── src/
 │   ├── app/                     # ROUTES ONLY (Expo Router). Thin files that render feature screens
-│   │   ├── _layout.tsx          # Root providers, fonts, error boundary
-│   │   ├── (auth)/              # sign-in, age gate
-│   │   ├── (onboarding)/        # welcome cards, lane and stats
+│   │   ├── _layout.tsx          # Root: AppProviders, fonts, error boundary
+│   │   ├── +not-found.tsx
+│   │   ├── join/[code].tsx      # Invite deep link (universal link / app link)
+│   │   ├── (auth)/
+│   │   │   ├── sign-in.tsx      # Email code, Google, Sign in with Apple (D-26)
+│   │   │   ├── verify.tsx       # Enter the one-time code
+│   │   │   └── age-check.tsx    # 18+ attestation (D-27)
+│   │   ├── (onboarding)/
+│   │   │   ├── welcome.tsx  lane.tsx  first-stat.tsx
 │   │   ├── (main)/
-│   │   │   ├── index.tsx        # Home: list of circles
+│   │   │   ├── index.tsx        # Home: my circles
+│   │   │   ├── circle/new.tsx
 │   │   │   ├── circle/[circleId]/
-│   │   │   │   ├── index.tsx    # Today (the drop)
-│   │   │   │   ├── seal.tsx  claim.tsx  read.tsx  reveal.tsx
-│   │   │   │   ├── league.tsx
+│   │   │   │   ├── index.tsx    # Today's Drop (1 or 2 rounds, D-29)
+│   │   │   │   ├── seal.tsx  claim.tsx  read.tsx
+│   │   │   │   ├── reveal/[roundId].tsx
+│   │   │   │   ├── league.tsx  invite.tsx  members.tsx
 │   │   │   │   └── finale/[seasonId].tsx
 │   │   │   ├── my-month.tsx
-│   │   │   └── settings/        # notifications, stats, privacy, delete account
-│   │   └── join/[code].tsx      # Invite deep link
+│   │   │   └── settings/
+│   │   │       ├── index.tsx  notifications.tsx  stats.tsx  privacy.tsx
+│   │   │       └── delete-account.tsx
 │   ├── features/                # One folder per product feature (see anatomy below)
 │   │   ├── auth/
 │   │   ├── onboarding/
@@ -3418,18 +3643,23 @@ apps/mobile/
 │   │   └── account/             # settings, deletion
 │   ├── cards/                   # Card-type UI plugins: stat (MVP), rest (MVP), movie/meme/music (later)
 │   ├── ui/                      # App design system: Button, Card, Stamp, NumberPad, Avatar, Sheet
+│   ├── providers/
+│   │   └── AppProviders.tsx     # Query client, auth session, theme, i18n
 │   ├── lib/                     # Infrastructure, no product logic
 │   │   ├── supabase/            # Client, auth session, typed queries
 │   │   ├── api/                 # Calls to Edge Functions with idempotency keys
 │   │   ├── query/               # TanStack Query client, cache keys
 │   │   ├── realtime/            # Circle channel subscription
+│   │   ├── haptics/             # Seal, stamp and reveal haptics
+│   │   ├── sound/               # Reveal and stamp sounds (respect silent mode)
 │   │   ├── offline/             # Action queue for poor connections
 │   │   ├── analytics/           # Wrapper that blocks stat values by design
 │   │   ├── logging/             # Crash reporting with scrubbing
 │   │   └── storage/             # SecureStore and local storage helpers
-│   ├── i18n/                    # String catalogues (en first), number formatting
+│   ├── i18n/                    # en.ts (the text catalogue), format.ts (numbers, durations)
 │   ├── theme/                   # Reads tokens; light and dark themes
-│   └── config/                  # Typed environment and feature flags
+│   ├── config/                  # env.ts (typed environment), flags.ts (feature flags)
+│   └── test/                    # Test helpers, fake API, fixtures
 ├── modules/                     # Local native modules (Expo Modules), added only when needed
 │   ├── today-widget/            # iOS WidgetKit (Swift) + Android widget (Kotlin)    ← Later
 │   └── android-usage/           # UsageStatsManager reader (Kotlin)                   ← Later
@@ -3462,6 +3692,22 @@ features/round/
 Rules: a feature never imports another feature's internals, only its `index.ts`.
 Shared logic moves down into `ui/`, `lib/` or a package.
 
+### `apps/web`
+
+Plain static HTML on free hosting; under 30 KB per page, no framework (D-31).
+
+```text
+apps/web/
+├── index.html                   # Landing page (built with the Taste skill, D-25)
+├── privacy.html                 # Privacy policy
+├── delete-account.html          # The only page with sign-in (email code), for deletion from the web
+├── join/index.html              # Invite page: reads the code from the URL, opens the app or shows store buttons; loads no data
+├── .well-known/
+│   ├── apple-app-site-association   # iOS universal links for /join
+│   └── assetlinks.json              # Android app links for /join
+└── assets/                      # One small CSS file, icons
+```
+
 ### `packages/`
 
 ```text
@@ -3476,13 +3722,14 @@ packages/game-engine/
 │   ├── cards/                   # Card-type rules: stat.ts, rest.ts (one interface for all)
 │   ├── catalog/stats.ts         # Generated from kb/data/stats.yaml
 │   └── index.ts
-├── test/                        # Unit tests from every worked example in kb/03-game-design
+├── test/                        # Unit + property tests (Vitest, fast-check); edge-cases.test.ts covers E-1..E-25
 └── package.json                 # No runtime dependencies. No React, no Supabase, no I/O
 
 packages/contracts/
 ├── src/
-│   ├── actions/                 # Request and response shapes for each server action
-│   ├── events.ts                # Realtime event names and payloads (ids only)
+│   ├── actions/                 # Request and response shapes, one file per service (identity.ts, circles.ts, game.ts …)
+│   ├── events.ts                # Queue events between services (round.revealed …)
+│   ├── realtime.ts              # Realtime event names and payloads (ids only)
 │   ├── errors.ts                # Error codes shared by app and server
 │   └── index.ts
 └── package.json                 # Depends only on a schema library (e.g. zod)
@@ -3501,26 +3748,39 @@ the real result).
 
 ```text
 supabase/
-├── config.toml
-├── migrations/
-│   ├── 20261110000000_core_schema.sql
-│   ├── 20261110000100_rls_policies.sql
-│   └── …                         # One change per file, never edited after merge
+├── config.toml                  # Created by `supabase init` at kick-off; exposes only the `api` schema
+├── migrations/                  # EXISTS. One change per file, never edited after it is applied
+│   ├── 20261104000100_extensions.sql      # extensions, one schema per service, service roles
+│   ├── 20261104000200_enums.sql
+│   ├── 20261104000300_identity.sql        # stat catalogue, profiles, consents, stat preferences
+│   ├── 20261104000400_circles.sql         # circles, schedule versions, members, away, invites, blocks, reports
+│   ├── 20261104000500_league.sql          # seasons, day scores, standings, titles
+│   ├── 20261104000600_game.sql            # rounds, reads, results, reactions, rest answers
+│   ├── 20261104000700_private.sql         # sealed numbers
+│   ├── 20261104000800_notifications.sql
+│   ├── 20261104000900_ops.sql             # idempotency, audit, flags, blocked terms, deletion requests
+│   ├── 20261104001000_rls.sql             # access helpers + row-level security
+│   ├── 20261104001100_game_functions.sql  # truth zone, scoring, seal, claim, read, reveal
+│   ├── 20261104001200_grants_api.sql      # least-privilege grants + api read views
+│   └── 20261104001300_events_cron.sql     # queues and scheduled jobs
 ├── functions/                   # One folder per service (see the service map)
-│   ├── _shared/                 # Auth check, errors, idempotency, db client, rate limits, event outbox
-│   ├── identity/                # profile, device registration, account deletion
-│   ├── circles/                 # create, join, leave, invite-reset, lane-set, consent-set
-│   ├── game/                    # seal, claim, pass, read, react (uses packages/game-engine)
+│   ├── deno.json                # Imports, including the shared packages
+│   ├── _shared/                 # JWT check, errors, idempotency, db client per service role, rate limits
+│   ├── identity/                # profile, consent, device registration, account deletion
+│   ├── circles/                 # create, join, leave, invite, schedule, away, block, report
+│   ├── game/                    # seal, claim, read, react, rest answer (uses packages/game-engine)
 │   ├── league/                  # day scores, season close, titles (uses packages/game-engine)
-│   ├── scheduler/               # drops-tick, season-tick (called by pg_cron)
-│   ├── notifications/           # reads the event queue, sends pushes
-│   ├── proofs/                  # upload and view URLs for screenshot proofs
-│   └── deno.json                # Imports, including the shared packages
-├── tests/
-│   ├── rls_seals.test.sql       # "A member can't read private.seals" …
-│   └── rls_reads.test.sql
-└── seed.sql
+│   ├── scheduler/               # tick: open drops, pick backups, rest cards, reveals (called by pg_cron)
+│   ├── notifications/           # reads its queue, sends pushes
+│   └── proofs/                  # screenshot proofs   ← Later (D-43)
+├── tests/                       # EXISTS. pgTAP, run by `supabase test db`
+│   ├── sql/game_rules.test.sql      # truth zone, scoring, guards, early and timed reveal
+│   ├── rls/access_rules.test.sql    # who can see and run what
+│   └── functions/               # Deno tests for Edge Functions   ← Prototype
+└── seed.sql                     # Local test data (fake circles, never real people)
 ```
+
+The database design, access rules and test commands are in the [data model](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/data-model.md).
 
 Supabase recommends keeping shared function code in a folder whose name starts
 with an underscore, and building a few larger functions that combine related
@@ -3629,13 +3889,12 @@ fake value.
 | Phase ([roadmap](https://github.com/VIsHnu1762/blag/blob/main/kb/12-roadmap/README.md)) | What exists |
 |---|---|
 | 2. Prototype | `apps/mobile` (auth, circles, round, a basic league), `packages/game-engine`, `packages/contracts`, `packages/config`, `supabase/` with `game` and `scheduler` services |
-| 3. MVP | All MVP features, `apps/web` with the deletion page, `packages/db-types`, the remaining services (identity, circles, league, notifications, proofs), the event queue, e2e flows, CI |
+| 3. MVP | All MVP features, `apps/web` static pages, `packages/db-types`, the remaining services (identity, circles, league, notifications), e2e flows, CI |
 | 4. Beta | `packages/tokens`, analytics and crash reporting in `lib/`, preview environment |
-| Later | `modules/today-widget`, `modules/android-usage`, new card types, `packages/ui` if a second app shares components |
+| Later | `modules/today-widget`, `modules/android-usage`, the proofs service (D-43), new card types, `packages/ui` if a second app shares components |
 
 ### Open questions
 
-- Package manager: pnpm (lean) or Bun. Expo supports both; isolated installs work from SDK 54, but some React Native libraries may still break with them [S-67]. Start pnpm with hoisted installs and revisit.
 - Exact deploy command for Edge Functions importing `packages/` [S-70].
 
 
@@ -4049,10 +4308,12 @@ picture.
 | [ADR-004](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-004-stat-providers.md) | Manual entry first, behind a provider interface | Accepted |
 | [ADR-005](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-005-scheduled-drops.md) | Drive drops with a scheduler job | Proposed |
 | [ADR-006](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-006-persistent-circles.md) | Persistent circles instead of temporary rooms | Accepted |
-| [ADR-007](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-007-authentication.md) | Sign-in method | Proposed (Q-13 open) |
+| [ADR-007](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-007-authentication.md) | Sign-in: email code, Google, Apple | Accepted (D-26) |
 | [ADR-008](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-008-monorepo.md) | Monorepo with pnpm workspaces and Turborepo | Proposed |
 | [ADR-009](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-009-feature-modules.md) | Feature modules with enforced import boundaries | Proposed |
 | [ADR-010](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-010-domain-services.md) | Domain services as grouped Edge Functions, connected by events | Proposed |
+| [ADR-011](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-011-sql-first-database.md) | Plain SQL migrations instead of Prisma | Proposed (D-40) |
+| [ADR-012](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-012-service-database-roles.md) | One database role per service; the app only reads | Proposed (D-41) |
 
 ### Writing a new ADR
 
@@ -4253,13 +4514,13 @@ Retention and deletion rules matter more ([data inventory](https://github.com/VI
 
 ---
 
-<!-- page: kb/07-architecture/adr/ADR-007-authentication.md · id: adr.007 · status: proposal · updated: 2026-11-04 -->
+<!-- page: kb/07-architecture/adr/ADR-007-authentication.md · id: adr.007 · status: agreed · updated: 2026-11-04 -->
 
 ## ADR-007: Sign-in method
 
-> **In short:** Not decided.
+> **In short:** Email one-time code, Google, and Sign in with Apple on iPhone; phone numbers after the MVP.
 
-**Status:** Proposed (Q-13 open)
+**Status:** Accepted (D-26, 2026-11-04)
 
 ### Context
 
@@ -4267,7 +4528,10 @@ Members must be able to sign in easily and recover their account; stores have ru
 
 ### Decision
 
-Not decided. Leading option: **email one-time link or code** plus **Sign in with Apple** and **Google**, with no phone-number requirement. Check the current App Store rules on offering Sign in with Apple alongside other social logins before deciding.
+- **Email one-time code** (Supabase Auth), **Google**, and **Sign in with Apple** on iPhone, shown with equal prominence.
+- Apple guideline 4.8 requires an equivalent privacy-focused login whenever Google or another social login sets up the main account; Sign in with Apple is the option known to satisfy it [S-77, S-78].
+- **Phone-number sign-in comes after the MVP**: every text message costs money, and business SMS in India needs sender registration.
+- Age: 18+ self-attestation at sign-up; the date of birth is not stored (D-27).
 
 ### Options considered
 
@@ -4275,7 +4539,7 @@ Not decided. Leading option: **email one-time link or code** plus **Sign in with
 |---|---|---|
 | Phone OTP | Familiar in India | SMS costs; phone numbers are sensitive; SIM changes |
 | Email link/code | Cheap; no password | Slower first sign-in |
-| Apple / Google sign-in | One tap | Store rules to check; platform lock-in for some users |
+| Apple / Google sign-in | One tap | Google requires Apple as well on iOS [S-77] |
 
 ### Consequences
 
@@ -4374,7 +4638,78 @@ Split the backend into **seven services** (identity, circles, game, league, sche
 
 ### Consequences
 
-Event handlers must be idempotent. Extraction triggers and steps are in the [service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md#when-to-extract-a-service-into-its-own-microservice).
+The proofs service is deferred past the MVP (D-43). Inside the database, each service's ownership is enforced with its own role (ADR-012). Event handlers must be idempotent. Extraction triggers and steps are in the [service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md#when-to-extract-a-service-into-its-own-microservice).
+
+
+---
+
+<!-- page: kb/07-architecture/adr/ADR-011-sql-first-database.md · id: adr.011 · status: proposal · updated: 2026-11-04 -->
+
+## ADR-011: Plain SQL migrations instead of Prisma
+
+> **In short:** Write the database as plain SQL migration files and generate TypeScript types from it; no ORM for the MVP.
+
+**Status:** Proposed (D-40)
+
+### Context
+
+The founder asked whether Prisma would make the PostgreSQL work easier. Most of BLAG's safety lives inside the database: row-level security, sealed values in a private schema, SECURITY DEFINER write functions, per-service roles, queues and cron jobs. An ORM maps tables to code; it does not help write those.
+
+- Prisma connects with the service role or database URL in most setups, which bypasses Supabase RLS [S-83].
+- Prisma Next added Supabase support and RLS policy authoring only in July 2026 [S-82]; too new to build a learner's production base on.
+- Our server code runs in Deno Edge Functions and mostly calls one SQL function per use case (D-22), so a query builder adds little.
+- Drizzle can define RLS policies and Supabase roles in TypeScript [S-84] and is the fallback if a TypeScript schema is ever wanted.
+
+### Decision
+
+The schema is written as **plain SQL** in `supabase/migrations` (one change per file, never edited after it is applied). TypeScript types are generated with `supabase gen types` into `packages/db-types`. Access rules and game functions are tested with **pgTAP** (`supabase test db`).
+
+### Options considered
+
+| Option | For | Against |
+|---|---|---|
+| **Plain SQL migrations** | Full Postgres: RLS, functions, roles, queues, cron; teaches Postgres directly; Supabase's default | More SQL to write by hand |
+| Prisma (classic) | Familiar schema file, typed client | Bypasses RLS with privileged connections [S-83]; doesn't model functions, roles or queues |
+| Prisma Next | RLS authoring, Supabase extension [S-82] | Brand new; still an ORM layer we barely use |
+| Drizzle | TypeScript schema with RLS policies [S-84] | Second source of truth next to the SQL functions |
+
+### Consequences
+
+The SQL game rules must match `@blag/game-engine`; one shared set of test cases runs against both (D-44). Revisit if the app ever needs complex ad-hoc queries from a Node server.
+
+
+---
+
+<!-- page: kb/07-architecture/adr/ADR-012-service-database-roles.md · id: adr.012 · status: proposal · updated: 2026-11-04 -->
+
+## ADR-012: One database role per service; the app only reads
+
+> **In short:** The app reads through `api` views under RLS and never writes tables; each Edge Function connects as its own Postgres role that can only run its own service's functions.
+
+**Status:** Proposed (D-41)
+
+### Context
+
+ADR-010 splits the backend into services that each own their tables. Without enforcement, any function holding the service-role key could write any table, and a bug in one service could corrupt another's data. Supabase Edge Functions may connect to Postgres directly with any Postgres client [S-85].
+
+### Decision
+
+- **App users** (`authenticated`) get `SELECT` on chosen columns only, filtered by RLS, and read through views in the `api` schema, the only schema exposed by the Data API.
+- **Each service** has a `NOLOGIN` role in the migrations (`svc_identity`, `svc_circles`, `svc_game`, `svc_league`, `svc_notify`, `svc_scheduler`). Per environment, a one-off script reading the secret store gives each role `LOGIN` and a password; the function's database URL lives in its own secret.
+- Service roles get **no table grants**, only `EXECUTE` on their own SECURITY DEFINER functions. The Edge Function verifies the caller's JWT and passes the user id as `p_actor`.
+- The **service-role key** is not used by app code (CI and admin scripts only).
+
+### Options considered
+
+| Option | For | Against |
+|---|---|---|
+| **Role per service, functions only** | Ownership enforced by the database; least privilege; matches ADR-010 | Six roles and secrets to manage |
+| App writes tables under RLS | Fewer moving parts | Game rules in policies; hard to keep the seal fair (ADR-003) |
+| One shared service-role key | Simplest | Any bug can touch any table; bypasses RLS |
+
+### Consequences
+
+Edge Functions connect through the pooler with prepared statements disabled [S-85]. Every new write function needs an explicit `GRANT EXECUTE` to its service role, and a pgTAP test proves the other roles can't run it.
 
 
 ---
@@ -4404,12 +4739,17 @@ Expo for the MVP but reviews it after the prototype (D-19, Q-18).
 | Realtime | Supabase Realtime private channels [S-44] | Per-circle events, members only | ADR-002 |
 | Game engine | Pure TS package shared by app and Edge Functions | Rules tested once, used everywhere | ADR-003 |
 | Push | Expo push notifications → APNs / FCM | One API for both platforms | — |
-| Animation | React Native Reanimated; prototype the stamp in Rive (Q-19) | Smooth reveal on mid-range phones; Duolingo uses Rive for characters [S-50] | — |
+| Animation | React Native Reanimated for the MVP; try Rive after the core works (D-33) | Smooth reveal on mid-range phones; Duolingo uses Rive for characters [S-50] | — |
 | Haptics | expo-haptics | Built in | — |
 | Local storage | Expo SecureStore (tokens), AsyncStorage or SQLite (offline queue) | Secure tokens; queued actions | — |
 | Analytics | Privacy-first, self-hostable option (e.g. PostHog) with no stat values sent *(Proposal)* | Measure retention without collecting habits | — |
 | Crash reporting | Sentry (Expo integration) with personal data scrubbing *(Proposal)* | Find crashes fast | — |
-| Testing | Vitest (game engine), pgTAP or SQL tests (row-level security), Maestro (end-to-end flows) | See [quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.md) | — |
+| Database | Plain SQL migrations, one schema per service, generated types; no ORM (D-40) | RLS, sealed values, functions and queues live in Postgres | ADR-011, ADR-012 |
+| Sign-in | Supabase Auth: email one-time code, Google, Sign in with Apple; phone later (D-26) | Apple 4.8 requires Apple sign-in alongside Google [S-77] | ADR-007 |
+| Monorepo tooling | pnpm workspaces (D-30) + Turborepo; Changesets for release notes (D-32) | Best-supported for Expo monorepos | ADR-008 |
+| Public web pages | Plain static HTML on free hosting, under 30 KB per page (D-31) | Instant load; the invite page loads no data | — |
+| Testing | Vitest + fast-check (game engine), pgTAP (database and access rules), Deno test (Edge Functions), Jest + React Native Testing Library (screens), Maestro (end-to-end) (D-44) | See [quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.md) | — |
+| Design skills | Intent, Perception-First Design, Impeccable, Taste Skill; React Bits for motion ideas (D-25) | See [design toolkit](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/design-toolkit.md) | — |
 | Docs | This KB: Markdown + YAML, `scripts/kb.py`, MkDocs Material site | People and agents read the same files (D-14) | — |
 
 ### Native work (later, not MVP)
@@ -4425,7 +4765,6 @@ Expo for the MVP but reviews it after the prototype (D-19, Q-18).
 
 | Question | Options | Notes |
 |---|---|---|
-| Sign-in (Q-13) | Email link/code, Apple, Google, phone OTP | ADR-007 |
 | Data region | India (Mumbai) vs EU vs US | Choose for latency and law; record in an ADR |
 | Analytics vendor | PostHog, Plausible-style, or none at MVP | Must not receive stat values |
 | Live mode web join (Q-08) | Expo web vs a small separate web app | Later |
@@ -4640,6 +4979,8 @@ See also: [permissions](https://github.com/VIsHnu1762/blag/blob/main/kb/09-mobil
 3. Every permission has a **fallback**: refusing never blocks playing.
 4. No contacts permission in the MVP (D-07).
 
+In the MVP BLAG requests **no** health, usage-access or Screen Time permissions: every stat is typed in (D-34, D-39). The rows marked Later below are the plan for after the MVP.
+
 ### Permission list
 
 | Permission | Platform | Release | Asked when | BLAG explanation (draft) | If refused |
@@ -4829,7 +5170,8 @@ alignment, never certification. The earlier
 | Law | Applies when | What it means for BLAG | Source |
 |---|---|---|---|
 | **India: DPDP Act 2023 and DPDP Rules 2025** | Users in India (first market) | Rules notified on 13 Nov 2025, with obligations phased in on dates in Nov 2025, Nov 2026 and May 2027. Anyone under 18 is a child needing verifiable parental consent, which is a strong reason to launch 18+ (Q-03). Breaches must be reported to the Data Protection Board within 72 hours | [S-41], [S-46] |
-| EU GDPR / UK GDPR | Users in the EU or UK | Lawful basis and consent; health data is special category data, so steps and sleep need explicit consent (Q-04); access and erasure rights | General knowledge; verify |
+| EU GDPR / UK GDPR | Users in the EU or UK | Lawful basis and consent; health data is special category data, so steps and sleep need explicit consent; access and erasure rights | General knowledge; verify |
+| **BLAG's health-data rule (D-39)** | Everywhere | DPDP has no separate sensitive category [S-81], but BLAG applies the GDPR standard to steps and sleep: separate opt-in per health stat, never in analytics, number deleted at the reveal; typed in, no HealthKit or Health Connect in the MVP | [S-81] |
 | US: California CCPA/CPRA | California users at scale | Notice, deletion and access rights | General knowledge; verify |
 
 ### Store rules
@@ -4837,6 +5179,8 @@ alignment, never certification. The earlier
 | Rule | What it requires | Source |
 |---|---|---|
 | Apple guideline 5.1.1(v) | Apps with account creation must let people start account deletion inside the app | [S-38] |
+| Apple guideline 4.8 | Offering Google sign-in means also offering an equivalent privacy-focused login; Sign in with Apple satisfies it (D-26) | [S-77], [S-78] |
+| Apple guideline 1.2 | User content needs a filter, a report mechanism with timely response, blocking, and terms with zero tolerance; BLAG keeps free text to names (D-42, F-24) | [S-79], [S-80] |
 | Google Play account deletion | In-app deletion path **and** a web link for deletion requests, declared in the Data safety form | [S-37] |
 | Google Play sensitive permissions | Some permissions need a declaration and approval; check Usage Access (Q-16) | [S-45] |
 | Google Play Health Connect | Declare health data types and pass review | [S-31] |
@@ -4859,7 +5203,12 @@ alignment, never certification. The earlier
 
 ### Pre-launch compliance checklist
 
-- [ ] Legal review of age policy (Q-03) and health data (Q-04)
+- [ ] Legal review of age policy (D-27) and health data (D-39)
+- [ ] Terms of use with the zero-tolerance line; Report, Block and contact email live (F-24)
+- [ ] Sign in with Apple shown with equal prominence on iPhone (D-26)
+- [ ] Name and trademark check for BLAG in India and the main store markets
+- [ ] Grievance contact published (DPDP)
+- [ ] Support page and age-rating questionnaires (Apple, Google) done
 - [ ] Privacy policy written from the [data inventory](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/data-inventory.md)
 - [ ] In-app and web account deletion live (F-18)
 - [ ] Apple privacy label and Google Data safety form completed
@@ -4877,13 +5226,17 @@ alignment, never certification. The earlier
 
 ### Test layers
 
-| Layer | What | Tool *(Proposal)* | Runs |
+Tools decided in D-44. One shared file of test cases runs against both the TypeScript engine and the SQL rules, so they can never drift.
+
+| Layer | What | Tool | Runs |
 |---|---|---|---|
 | Game engine unit tests | Truth zone, scoring, best-20, titles, Speaker choice | Vitest | Every push |
 | Property tests | Scoring invariants (never negative, idempotent, unit-independent) | fast-check | Every push |
-| Database and access rules | Every row in the [who-can-read table](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/data-model.md#who-can-read-what-row-level-security) | pgTAP or SQL tests against a local Supabase | Every push |
+| Database and access rules | Every row in the [who-can-see table](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/data-model.md#what-a-member-sees-rls); **49 checks exist** in `supabase/tests` | pgTAP via `supabase test db` (or `scripts/db/test-local.sh`) | Every push |
 | Edge Function integration | State machine transitions and rejections | Deno test + local Supabase | Every push |
+| Screens and hooks | Component states, copy keys, accessibility labels | Jest + React Native Testing Library | Every push |
 | End-to-end flows | Join, Speaker turn, reader turn, pass, delete | Maestro on Android and iOS | Before each release |
+| Design checks | Native audit, critique, dark-pattern check, five-layer review | Impeccable `audit` + `critique`, Intent `/evaluate`, Perception-First Design `evaluate` ([toolkit](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/design-toolkit.md)) | Each screen, before it is called done |
 | Accessibility | Labels, contrast, screen reader run-through | Lint + manual VoiceOver/TalkBack | Before each release |
 | Device matrix | 2 iPhones, 3–5 Android brands including one mid-range | Manual | Before beta and release |
 | KB health | Links, ids, metadata | `python scripts/kb.py check` | Every push |
@@ -4914,6 +5267,11 @@ alignment, never certification. The earlier
 
 **Edge cases:** one test per row in [edge cases](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/edge-cases.md).
 
+**Design** (from the [design toolkit](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/design-toolkit.md)):
+- Impeccable native audit scores at least 3 of 4 on accessibility and appearance.
+- Intent `/evaluate` finds no dark pattern: no streak loss, no confirmshaming, no notification sent for engagement alone.
+- Operate screens use platform controls; Experience screens respect Reduce Motion (D-24).
+
 ### Definition of ready (before building a feature)
 
 - [ ] Has an `F-` id with acceptance criteria
@@ -4927,9 +5285,10 @@ alignment, never certification. The earlier
 - [ ] Unit and access-rule tests pass
 - [ ] Copy passes the [voice checklist](https://github.com/VIsHnu1762/blag/blob/main/kb/05-brand/voice-and-tone.md#checklist-for-any-new-copy)
 - [ ] Accessibility checked (labels, contrast, reduced motion)
+- [ ] Design checks passed for any new or changed screen (Impeccable audit, Intent evaluate)
 - [ ] No stat values in logs or analytics
 - [ ] KB updated (feature status, any new decisions) and `scripts/kb.py check` passes
-- [ ] Reviewed by another team member
+- [ ] Reviewed by another team member, or by an agent review while the team is one person
 
 
 ---
@@ -4947,11 +5306,27 @@ Durations are *(Estimates)* for a small student team working part-time.
 | Phase | Goal | Main deliverables | Exit when | Duration |
 |---|---|---|---|---|
 | **0. Knowledge base** | Agree what BLAG is | This KB; decisions on Q-03, Q-13, Q-14 | Readiness gate in the [KB home](https://github.com/VIsHnu1762/blag/blob/main/kb/README.md#readiness-gate) is mostly ticked | 1–2 weeks (now) |
-| **1. Hand-run test** | Prove the loop is wanted | Two weeks in WhatsApp with 3 groups ([plan](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/07-validation-plan.md)) | A-01, A-02, A-04, A-05 pass | 2–3 weeks |
+| **1. Hand-run test** | Prove the loop is wanted | Two weeks in WhatsApp with 3 groups ([plan](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/07-validation-plan.md)), run **alongside** the first two build weeks (D-45) | A-01, A-02, A-04, A-05 pass | 2–3 weeks |
 | **2. Prototype** | A demo for the hackathon and usability tests | One circle, manual stats, seal → claim → read → reveal, scoring; minimal UI | Usability test with 6–8 people done | 2–3 weeks |
 | **3. MVP** | A whole month playable by real circles | All MVP features ([scope](https://github.com/VIsHnu1762/blag/blob/main/kb/04-features/mvp-scope.md)); privacy and deletion; notifications | Definition of done met for every MVP feature | 6–8 weeks |
 | **4. Closed beta** | Learn retention over a full season | 10–20 circles across 2–3 colleges; Android first via internal testing, iOS via TestFlight | A-06 and A-08 measured; no red-line breaches reported | 1–2 seasons |
 | **5. Launch** | Public release in India | Store listings; privacy policy; support page; legal review done | Compliance checklist done ([compliance](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/compliance.md)) | — |
+
+No deadline and no sprints for now; work happens on `main` (D-35).
+
+### Release documents, drafted alongside the build (D-46)
+
+| Document | Drafted during | Source |
+|---|---|---|
+| Privacy policy | Prototype | [Data inventory](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/data-inventory.md) |
+| Terms of use (zero-tolerance line) | Prototype | Apple 1.2 [S-80] |
+| Account-deletion web page | MVP | `apps/web/delete-account.html` (F-18) |
+| Support page and contact email | MVP | F-24 |
+| Apple privacy label, Google Data safety form | MVP | Data inventory |
+| Age-rating questionnaires | Beta | 18+ (D-27) |
+| Name and trademark check | Now, before the store listing | D-01 |
+| Grievance contact (DPDP) | MVP | [Compliance](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/compliance.md) |
+| Store listing: category Games > Casual (D-37) | Beta | — |
 
 ### After launch (Next and Later)
 
@@ -5053,12 +5428,12 @@ The full 290-word description is in the [vision](https://github.com/VIsHnu1762/b
 | Register | What it holds | Edit this file |
 |---|---|---|
 | [Idea bank](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/ideas.md) | 52 ideas | `kb/data/ideas.yaml` |
-| [Feature catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/features.md) | 23 features with acceptance criteria | `kb/data/features.yaml` |
+| [Feature catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/features.md) | 25 features with acceptance criteria | `kb/data/features.yaml` |
 | [Stat catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/stats.md) | 16 stats | `kb/data/stats.yaml` |
-| [Decision log](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/decisions.md) | 23 decisions | `kb/data/decisions.yaml` |
-| [Open questions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/questions.md) | 19 open of 20 | `kb/data/questions.yaml` |
+| [Decision log](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/decisions.md) | 46 decisions | `kb/data/decisions.yaml` |
+| [Open questions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/questions.md) | 8 open of 20 | `kb/data/questions.yaml` |
 | [Risks and assumptions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/risks.md) | 15 risks, 10 assumptions | `kb/data/risks.yaml` |
-| [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md) | 75 sources | `kb/data/sources.yaml` |
+| [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md) | 89 sources | `kb/data/sources.yaml` |
 | [Glossary](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/glossary.md) | 34 terms | `kb/data/glossary.yaml` |
 
 The [decisions workbook](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/design-decisions-2026-11-01.xlsx) from 1 Nov 2026 is kept here for reference; the YAML files supersede it.
@@ -5202,6 +5577,8 @@ Release tags: `MVP` first playable version · `Next` soon after · `Later` · `R
 | F-16 | My month | Personal | Could | P-28 |
 | F-17 | Notifications | Platform | Must |  |
 | F-18 | Delete my data | Account | Must | P-26 |
+| F-24 | Report and block | Safety | Must |  |
+| F-25 | Rounds per day | Circles | Should |  |
 
 ### Next
 
@@ -5225,6 +5602,8 @@ Release tags: `MVP` first playable version · `Next` soon after · `Later` · `R
 - [ ] A new person can create an account in under 2 minutes
 - [ ] Sign-up asks the person to confirm they are 18 or older; under-18s can't continue (Q-03)
 - [ ] No contacts or usage permissions are requested at sign-up
+- [ ] Sign-in by email one-time code or Google; Sign in with Apple is offered with equal prominence on iPhone (D-26)
+- [ ] Only the 18+ attestation time is stored, never the date of birth (D-27)
 
 #### F-02 · Create a circle
 
@@ -5255,7 +5634,7 @@ Release tags: `MVP` first playable version · `Next` soon after · `Later` · `R
 
 - [ ] Speaker enters the real number first; it is stored server-side and cannot be changed after the claim
 - [ ] Speaker then sees the truth zone and enters a claim
-- [ ] Optional screenshot proof can be attached to the seal
+- [ ] Screenshot proof is deferred past the MVP; MVP seals are typed (D-43)
 - [ ] Seal and claim take under 2 minutes for a first-time Speaker
 
 #### F-07 · Read and guess
@@ -5344,6 +5723,19 @@ Release tags: `MVP` first playable version · `Next` soon after · `Later` · `R
 - [ ] With Usage Access granted, the seal can be filled from UsageStatsManager; if the member edits the value, the badge becomes Typed
 - [ ] Shows an 'auto-read' trust badge; no extra points (D-17)
 
+#### F-24 · Report and block
+
+- [ ] Any member can report a display name, circle name, avatar or behaviour; the founder sees open reports and responds within 24 hours (D-42)
+- [ ] Blocking someone stops them joining any circle you are in through future invites; shared circles prompt you to leave or ask the organiser
+- [ ] Display and circle names are checked against a blocked-terms list before saving
+- [ ] Terms of use state zero tolerance for objectionable content; a contact email is shown in Settings
+
+#### F-25 · Rounds per day
+
+- [ ] The organiser chooses 1 or 2 rounds per day; the change takes effect from the next day (D-29)
+- [ ] With 2 rounds, the two reveal times are at least 3 hours apart and each round has a different Speaker
+- [ ] After 7 days in which everyone read every round, the app suggests a second round; after 3 days under half participation it suggests going back to one
+
 
 
 ---
@@ -5413,6 +5805,29 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | D-21 | 2026-11-04 | Backend split into seven domain services inside one Supabase project, connected by events on Supabase Queues; extract a service into its own microservice only when a trigger in the service map is met (ADR-010) | Full microservices now; one monolithic backend; one function per action | Founder wants classified, separately optimisable services; full microservices are too heavy for a solo MVP | Proposed |
 | D-22 | 2026-11-04 | Backend writes go through one SQL function per use case that saves the change and its queue event in one transaction; points are computed on each read (score-on-write) so the reveal is a cheap state flip; scheduler runs every minute | Outbox table plus dispatcher; compute all points at reveal time; 5-minute ticks | No lost events; handles the 9pm peak; reveals within 2 minutes | Proposed |
 | D-23 | 2026-11-04 | Separate in-app wording from code names: friendly, familiar words in the UI (Today's Drop, Lock it in, Call it, Season Wrap, Receipts) while code keeps glossary code names | Use the technical terms in the UI | Familiar words cut learning time for social and productivity users; code stays stable if wording changes | Proposed |
+| D-24 | 2026-11-04 | Design rule: native plumbing, expressive game moments. Operate screens (sign-in, settings, invite, members, notifications) follow iOS and Android conventions; Experience screens (seal, claim, read, reveal, finale) carry BLAG's own look, motion and sound | One custom look everywhere; stock platform look everywhere | Uniqueness lands where people feel it, without the app feeling off-spec in the plumbing (Impeccable modes, S-86) | Proposed |
+| D-25 | 2026-11-04 | Design toolkit: Design with Intent for UX strategy, wireframes and the dark-pattern check; Perception-First Design to diagnose key screens; Impeccable as the main design system (PRODUCT.md, DESIGN.md, iOS and Android rules, audits, later polish); Taste Skill for the public web pages only; React Bits as motion inspiration only, rebuilt in Reanimated | Anthropic frontend-design skill alone; a UI kit | Founder's long-used references (2026-11-04); one job per tool so they don't conflict | Agreed |
+| D-26 | 2026-11-04 | Sign-in: email one-time code, Google, and Sign in with Apple on iPhone. Phone-number sign-in comes after the MVP | Phone OTP at launch; email only | Founder chose email code, Google and phone; Apple rule 4.8 requires an equivalent privacy-focused option when Google sign-in is offered (S-77, S-78); SMS costs money and needs sender registration in India | Agreed |
+| D-27 | 2026-11-04 | Minimum age is 18+ by self-attestation at sign-up; the date of birth is not stored, only the attestation time and age-gate version | 16+ with an age gate | Founder's choice; avoids parental-consent flows under DPDP and GDPR; data minimisation | Agreed |
+| D-28 | 2026-11-04 | Truth-zone tolerance is 10% with unit floors: h = max(ceil(0.10 x seal), floor) | 5% | Founder's choice; 10% forgives honest rounding | Agreed |
+| D-29 | 2026-11-04 | Each circle plays 1 or 2 rounds per day. The organiser changes it, effective from the next day; the app suggests a change from the circle's involvement. With 2 rounds the reveals are at least 3 hours apart and the Speakers differ. A day can score up to 8; best-20 days is unchanged | Always one round; always two | Founder wants both, chosen by interest and involvement; the league is inside one circle, so everyone shares the setting and it stays fair | Agreed |
+| D-30 | 2026-11-04 | Package manager is pnpm (workspaces, hoisted installs for React Native) | Bun; npm; Yarn | Founder asked for the most effective option for mobile; pnpm is the best-supported choice for Expo monorepos | Agreed |
+| D-31 | 2026-11-04 | Public web pages are plain static HTML on free hosting, under 30 KB each. The invite page loads no data (it hands the code to the app or shows store buttons); only the account-deletion page signs the person in | A React or Next.js site | Founder's choice; fastest load and nothing private leaks from a link | Agreed |
+| D-32 | 2026-11-04 | Release notes and versions are managed with Changesets | semantic-release; hand-written notes | Founder agreed; fits a pnpm monorepo | Agreed |
+| D-33 | 2026-11-04 | Animation: Reanimated for the MVP; try Rive after the core game works | Rive or Lottie from the start | Founder's choice; core functionality comes before polish | Agreed |
+| D-34 | 2026-11-04 | No Apple Family Controls (Screen Time) entitlement for the MVP; iPhone stats are typed in | Apply now for a private check-your-number view | Founder's choice; approval is slow and the data can't leave the device anyway (R-01) | Agreed |
+| D-35 | 2026-11-04 | Work directly on main during the MVP; add a branch and pull-request workflow later only if needed | Feature branches from day one | Founder's choice; solo builder | Agreed |
+| D-36 | 2026-11-04 | Design starts low-fidelity (greyscale, system font, real copy, proper layout); colours, fonts and brand visuals come only after the core works | Pick the palette now | Founder's choice; function first | Agreed |
+| D-37 | 2026-11-04 | Store category: Games > Casual as the main category, Social Networking as Apple's second category; confirm at submission | Social Networking as the main category | BLAG is a game first; Social Networking draws heavier review | Proposed |
+| D-38 | 2026-11-04 | Money: free for the MVP; never ads and never selling data; later, optional cosmetics and extra card packs (movies, memes, music); never paying for points | Ads; subscriptions at launch | Protects the red lines; revenue only from things that don't change who wins | Proposed |
+| D-39 | 2026-11-04 | Steps and sleep are treated as health data at the GDPR special-category level even though India's DPDP Act has no separate category: separate opt-in per health stat, never used in analytics, and the number is deleted at the reveal. In the MVP they are typed in; no HealthKit or Health Connect permissions | Treat like screen time; read from HealthKit and Health Connect at launch | Strictest common standard (S-81); avoids health-permission store reviews in the MVP | Proposed |
+| D-40 | 2026-11-04 | Database is written as plain SQL migrations (supabase/migrations) with generated TypeScript types; no Prisma or other ORM for the MVP (ADR-011) | Prisma; Prisma Next; Drizzle | Access rules, sealed values, queues and cron live in the database, which an ORM doesn't help with; Prisma can bypass RLS (S-83); Prisma Next's Supabase support is new (S-82) | Proposed |
+| D-41 | 2026-11-04 | The app only reads, through api views filtered by RLS; every write goes through an Edge Function that connects as its own service role and can only run that service's functions (ADR-012) | App writes tables directly under RLS; one shared service-role key | Least privilege per service; ownership enforced by the database itself | Proposed |
+| D-42 | 2026-11-04 | User-generated content is kept minimal: free text only in display names and circle names; reactions are a fixed emoji set. A blocked-terms filter, Report, Block and a contact email meet Apple guideline 1.2 | Free-text comments and chat in the MVP | Apple 1.2 requires filter, report and block (S-79, S-80); less text means less moderation | Proposed |
+| D-43 | 2026-11-04 | Screenshot proof (the screenshot trust level) is deferred past the MVP; MVP seals are typed | Screenshot upload at launch | Uploaded images are user content that needs image moderation (D-42); trust levels never change points anyway (D-17) | Proposed |
+| D-44 | 2026-11-04 | Testing: Vitest + fast-check for the game engine, pgTAP (supabase test db) for SQL and access rules, Deno test for Edge Functions, Jest + React Native Testing Library for screens, Maestro for end-to-end flows; one shared test-vector file runs against both the TypeScript and SQL scoring | Unit tests only | Founder asked for the best frameworks for game rules and access rules | Agreed |
+| D-45 | 2026-11-04 | The two-week WhatsApp test runs alongside the first two weeks of the build; the Speaker DMs the real number to the founder before posting the claim | Test before building | Founder's choice; no deadline, learn while building | Agreed |
+| D-46 | 2026-11-04 | Release documents (privacy policy, terms, deletion page, support page, store privacy forms, age-rating forms, name check, grievance contact) are drafted alongside the build, not at the end | Write them before submission | Founder's choice; avoids a release-week scramble | Agreed |
 
 
 ---
@@ -5423,30 +5838,30 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 
 ## Open questions
 
-> **In short:** 19 questions still open. When one is answered, add a decision and set `status: Decided` with `decided_by`.
+> **In short:** 8 questions still open. When one is answered, add a decision and set `status: Decided` with `decided_by`.
 
 | ID | Question | Why it matters | Options (lean) | Owner | Status |
 |---|---|---|---|---|---|
 | Q-01 | When someone misses days, do they stay in the league quietly with a catch-up, or sit out until next month? | Absence handling in scoring and UI | Stay in with catch-up (lean) / Sit out | Product | Decided (D-16) |
 | Q-02 | Should focus-lane goals ever affect league points? | Whether personal data feeds the score | Never (lean) / Small bonus / Optional per circle | Product | Open |
-| Q-03 | Minimum age at launch? | Consent flows under GDPR and India's DPDP Act | 18+ (lean) / 16+ with age gate | Product + legal | Open |
-| Q-04 | Are steps and sleep treated as sensitive health data? | Stronger consent and store review | Treat as sensitive (lean) / Same as screen time | Product + legal | Open |
-| Q-05 | Keep the purple, yellow and coral palette, or create a new identity? | Brand section | Keep, refined (lean) / New | Design | Open |
+| Q-03 | Minimum age at launch? | Consent flows under GDPR and India's DPDP Act | 18+ (lean) / 16+ with age gate | Product + legal | Decided (D-27) |
+| Q-04 | Are steps and sleep treated as sensitive health data? | Stronger consent and store review | Treat as sensitive (lean) / Same as screen time | Product + legal | Decided (D-39) |
+| Q-05 | Keep the purple, yellow and coral palette, or create a new identity? | Brand section | Keep, refined (lean) / New | Design | Parked (D-36) |
 | Q-06 | Is 'BLAG' clear in the app stores and trademark databases? | Avoid a forced rename | Search before launch | Product | Open |
 | Q-07 | Is the first market our own college circle or broader? | Who we recruit for the hand-run test | Own college (lean) / Several colleges / Online | Product | Open |
 | Q-08 | Live mode: can friends join from a web page without installing? | Lowers cold start; adds a web surface | Yes / No / Later (lean) | Product + tech | Open |
 | Q-09 | Which apps in India already combine screen time with friend games? | Sharpens positioning | Market scan | Research | Open |
-| Q-10 | How does BLAG make money, if ever? | Must not break red lines | Cosmetics / Circle themes / None for now (lean) | Product | Open |
-| Q-11 | Rounds per drop: one, or two? | Ten-minute budget vs everyone getting turns | One (lean) / Two | Game design | Open |
-| Q-12 | Store category: Games or Social Networking? | Different review expectations | Games (lean) / Social | Product | Open |
-| Q-13 | Sign-in method? | Friction vs account recovery vs store rules | Phone OTP / Email magic link / Sign in with Apple and Google | Tech | Open |
-| Q-14 | Truth-zone tolerance: 10% or 5%? | Too wide makes bluffs easy; too narrow punishes rounding | 10% with unit floors (lean) / 5% | Game design | Open |
-| Q-15 | Should we request Apple's Family Controls entitlement at all? | Approval can take weeks and the data can't be shared anyway | No for MVP (lean) / Yes, to show a private 'check your number' view | Tech | Open |
+| Q-10 | How does BLAG make money, if ever? | Must not break red lines | Cosmetics / Circle themes / None for now (lean) | Product | Decided (D-38) |
+| Q-11 | Rounds per drop: one, or two? | Ten-minute budget vs everyone getting turns | One (lean) / Two | Game design | Decided (D-29) |
+| Q-12 | Store category: Games or Social Networking? | Different review expectations | Games (lean) / Social | Product | Decided (D-37) |
+| Q-13 | Sign-in method? | Friction vs account recovery vs store rules | Phone OTP / Email magic link / Sign in with Apple and Google | Tech | Decided (D-26) |
+| Q-14 | Truth-zone tolerance: 10% or 5%? | Too wide makes bluffs easy; too narrow punishes rounding | 10% with unit floors (lean) / 5% | Game design | Decided (D-28) |
+| Q-15 | Should we request Apple's Family Controls entitlement at all? | Approval can take weeks and the data can't be shared anyway | No for MVP (lean) / Yes, to show a private 'check your number' view | Tech | Decided (D-34) |
 | Q-16 | Does Google Play require a declaration for the Usage Access permission? | Blocks Android auto-read release | Check policy and test a submission | Tech | Open |
 | Q-17 | How long are revealed numbers kept after a season ends? | Retention policy and yearbook design | 90 days (lean) / Until account deletion | Product + legal | Open |
 | Q-18 | After the prototype, stay on Expo/React Native or move to two native apps built with AI agents? | Shopify's 2026 switch shows native is cheaper than it was; BLAG's team skills and AI use decide it | Stay on Expo (lean) / Native iOS + Android / Hybrid with native widgets | Tech | Open |
-| Q-19 | Animation tool for the reveal and stamps: Reanimated only, Lottie, or Rive? | The reveal is BLAG's signature moment; Duolingo uses Rive state machines | Reanimated (lean for MVP) / Rive / Lottie | Design + tech | Open |
-| Q-20 | Package manager: pnpm or Bun? | Affects install speed and React Native compatibility in the monorepo | pnpm with hoisted installs (lean) / Bun | Tech | Open |
+| Q-19 | Animation tool for the reveal and stamps: Reanimated only, Lottie, or Rive? | The reveal is BLAG's signature moment; Duolingo uses Rive state machines | Reanimated (lean for MVP) / Rive / Lottie | Design + tech | Decided (D-33) |
+| Q-20 | Package manager: pnpm or Bun? | Affects install speed and React Native compatibility in the monorepo | pnpm with hoisted installs (lean) / Bun | Tech | Decided (D-30) |
 
 
 ---
@@ -5582,3 +5997,17 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | S-74 | Twelve-Factor App: store config in the environment, separate from code | [12factor.net](https://12factor.net/config) | A | 2026-11-04 |
 | S-75 | Conventional Commits: commit types that drive changelogs and semantic versions | [Conventional Commits](https://github.com/conventional-commits/conventionalcommits.org/blob/master/content/next/index.md) | A | 2026-11-04 |
 | S-76 | Laws of UX: Jakob's Law (familiar patterns) and Hick's Law (fewer choices, faster decisions) | [Fast Company](https://www.fastcompany.com/90157775/10-laws-of-ux-illustrated) | B | 2026-11-04 |
+| S-77 | Apple guideline 4.8: an app using Google or another social login for the main account must also offer an equivalent privacy-focused login | [Newly](https://newly.app/how-to/add-social-login) | B | 2026-11-04 |
+| S-78 | Sign in with Apple satisfies guideline 4.8; adding it later costs another review cycle | [Newly](https://newly.app/how-to/sign-in-with-apple) | B | 2026-11-04 |
+| S-79 | Apple guideline 1.2: apps with user-generated content need filtering, reporting and blocking | [Vettly](https://vettly.pages.dev/apple) | C | 2026-11-04 |
+| S-80 | Apple guideline 1.2 terms of use: zero tolerance for objectionable content (example implementation) | [org-social-ios](https://git.andros.dev/org-social/org-social-ios/src/branch/main/App/Views/Welcome/EULAView.swift) | C | 2026-11-04 |
+| S-81 | India's DPDP Act has no separate sensitive-data category; GDPR treats health data as a special category | [ConsentOS](https://consentos.pages.dev/learn/dpdp-for-healthtech) | B | 2026-11-04 |
+| S-82 | Prisma Next added Supabase support and RLS policy authoring (17 July 2026) | [Prisma](https://www.prisma.io/changelog/2026-07-17) | A | 2026-11-04 |
+| S-83 | Prisma bypasses Supabase RLS when connecting with the service role or database URL | [DEV Community](https://dev.to/mridudixit15/using-prisma-with-nextjs-and-supabase-what-actually-works-and-what-doesnt-4e76) | C | 2026-11-04 |
+| S-84 | Drizzle ORM: RLS policies and Supabase roles defined in TypeScript | [Drizzle](https://orm.drizzle.team/docs/rls) | A | 2026-11-04 |
+| S-85 | Supabase Edge Functions may connect to Postgres directly with any Postgres client (pooler, prepare disabled) | [Supabase](https://supabase.com/docs/guides/functions/connect-to-postgres) | A | 2026-11-04 |
+| S-86 | Impeccable 4.8: design skill for agents with modes, iOS/Android rules and a native audit | [Impeccable (Paul Bakaus)](https://github.com/pbakaus/impeccable) | A | 2026-11-04 |
+| S-87 | Design with Intent 1.7: UX strategy skills and an ethical-design (dark pattern) catalogue | [Design with Intent (Ghaida)](https://github.com/ghaida/intent) | A | 2026-11-04 |
+| S-88 | Taste Skill: art direction and browser checks for distinctive web pages | [Taste Skill](https://github.com/Leonxlnx/taste-skill) | B | 2026-11-04 |
+| S-89 | Perception-First Design: five perceptual layers to diagnose a design before pixels | [Stefan Kovalik](https://github.com/skovalik/perception-first-design) | B | 2026-11-04 |
+| S-90 | React Bits: web animation components under MIT + Commons Clause (no redistribution or ports) | [React Bits](https://github.com/DavidHDev/react-bits) | A | 2026-11-04 |

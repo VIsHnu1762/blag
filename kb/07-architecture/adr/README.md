@@ -21,10 +21,12 @@ related: [arch.home]
 | [ADR-004](ADR-004-stat-providers.md) | Manual entry first, behind a provider interface | Accepted |
 | [ADR-005](ADR-005-scheduled-drops.md) | Drive drops with a scheduler job | Proposed |
 | [ADR-006](ADR-006-persistent-circles.md) | Persistent circles instead of temporary rooms | Accepted |
-| [ADR-007](ADR-007-authentication.md) | Sign-in method | Proposed (Q-13 open) |
+| [ADR-007](ADR-007-authentication.md) | Sign-in: email code, Google, Apple | Accepted (D-26) |
 | [ADR-008](ADR-008-monorepo.md) | Monorepo with pnpm workspaces and Turborepo | Proposed |
 | [ADR-009](ADR-009-feature-modules.md) | Feature modules with enforced import boundaries | Proposed |
 | [ADR-010](ADR-010-domain-services.md) | Domain services as grouped Edge Functions, connected by events | Proposed |
+| [ADR-011](ADR-011-sql-first-database.md) | Plain SQL migrations instead of Prisma | Proposed (D-40) |
+| [ADR-012](ADR-012-service-database-roles.md) | One database role per service; the app only reads | Proposed (D-41) |
 
 ## Writing a new ADR
 

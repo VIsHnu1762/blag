@@ -33,6 +33,8 @@ stateDiagram-v2
 
 A rest day is scheduled directly as `REST` at the drop time.
 
+In the database (`game.round_state`), REVEALED and CLOSED are one step, because points are already computed on every read (D-22). With two rounds a day, each round runs this machine on its own ([data model](../07-architecture/data-model.md#round-lifecycle-in-the-database)).
+
 ## Who can do what
 
 | State | Speaker | Readers | Server |

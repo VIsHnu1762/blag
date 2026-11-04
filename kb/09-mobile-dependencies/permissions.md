@@ -20,6 +20,8 @@ related: [mobile.home, privacy.inventory, brand.voice]
 3. Every permission has a **fallback**: refusing never blocks playing.
 4. No contacts permission in the MVP (D-07).
 
+In the MVP BLAG requests **no** health, usage-access or Screen Time permissions: every stat is typed in (D-34, D-39). The rows marked Later below are the plan for after the MVP.
+
 ## Permission list
 
 | Permission | Platform | Release | Asked when | BLAG explanation (draft) | If refused |

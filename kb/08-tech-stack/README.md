@@ -32,12 +32,17 @@ Expo for the MVP but reviews it after the prototype (D-19, Q-18).
 | Realtime | Supabase Realtime private channels [S-44] | Per-circle events, members only | ADR-002 |
 | Game engine | Pure TS package shared by app and Edge Functions | Rules tested once, used everywhere | ADR-003 |
 | Push | Expo push notifications → APNs / FCM | One API for both platforms | — |
-| Animation | React Native Reanimated; prototype the stamp in Rive (Q-19) | Smooth reveal on mid-range phones; Duolingo uses Rive for characters [S-50] | — |
+| Animation | React Native Reanimated for the MVP; try Rive after the core works (D-33) | Smooth reveal on mid-range phones; Duolingo uses Rive for characters [S-50] | — |
 | Haptics | expo-haptics | Built in | — |
 | Local storage | Expo SecureStore (tokens), AsyncStorage or SQLite (offline queue) | Secure tokens; queued actions | — |
 | Analytics | Privacy-first, self-hostable option (e.g. PostHog) with no stat values sent *(Proposal)* | Measure retention without collecting habits | — |
 | Crash reporting | Sentry (Expo integration) with personal data scrubbing *(Proposal)* | Find crashes fast | — |
-| Testing | Vitest (game engine), pgTAP or SQL tests (row-level security), Maestro (end-to-end flows) | See [quality](../11-quality/README.md) | — |
+| Database | Plain SQL migrations, one schema per service, generated types; no ORM (D-40) | RLS, sealed values, functions and queues live in Postgres | ADR-011, ADR-012 |
+| Sign-in | Supabase Auth: email one-time code, Google, Sign in with Apple; phone later (D-26) | Apple 4.8 requires Apple sign-in alongside Google [S-77] | ADR-007 |
+| Monorepo tooling | pnpm workspaces (D-30) + Turborepo; Changesets for release notes (D-32) | Best-supported for Expo monorepos | ADR-008 |
+| Public web pages | Plain static HTML on free hosting, under 30 KB per page (D-31) | Instant load; the invite page loads no data | — |
+| Testing | Vitest + fast-check (game engine), pgTAP (database and access rules), Deno test (Edge Functions), Jest + React Native Testing Library (screens), Maestro (end-to-end) (D-44) | See [quality](../11-quality/README.md) | — |
+| Design skills | Intent, Perception-First Design, Impeccable, Taste Skill; React Bits for motion ideas (D-25) | See [design toolkit](../06-design/design-toolkit.md) | — |
 | Docs | This KB: Markdown + YAML, `scripts/kb.py`, MkDocs Material site | People and agents read the same files (D-14) | — |
 
 ## Native work (later, not MVP)
@@ -53,7 +58,6 @@ Expo for the MVP but reviews it after the prototype (D-19, Q-18).
 
 | Question | Options | Notes |
 |---|---|---|
-| Sign-in (Q-13) | Email link/code, Apple, Google, phone OTP | ADR-007 |
 | Data region | India (Mumbai) vs EU vs US | Choose for latency and law; record in an ADR |
 | Analytics vendor | PostHog, Plausible-style, or none at MVP | Must not receive stat values |
 | Live mode web join (Q-08) | Expo web vs a small separate web app | Later |

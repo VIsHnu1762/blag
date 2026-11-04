@@ -15,13 +15,17 @@ related: [game.scoring, arch.fairness, privacy.threats, registers.features]
 
 ## Test layers
 
-| Layer | What | Tool *(Proposal)* | Runs |
+Tools decided in D-44. One shared file of test cases runs against both the TypeScript engine and the SQL rules, so they can never drift.
+
+| Layer | What | Tool | Runs |
 |---|---|---|---|
 | Game engine unit tests | Truth zone, scoring, best-20, titles, Speaker choice | Vitest | Every push |
 | Property tests | Scoring invariants (never negative, idempotent, unit-independent) | fast-check | Every push |
-| Database and access rules | Every row in the [who-can-read table](../07-architecture/data-model.md#who-can-read-what-row-level-security) | pgTAP or SQL tests against a local Supabase | Every push |
+| Database and access rules | Every row in the [who-can-see table](../07-architecture/data-model.md#what-a-member-sees-rls); **49 checks exist** in `supabase/tests` | pgTAP via `supabase test db` (or `scripts/db/test-local.sh`) | Every push |
 | Edge Function integration | State machine transitions and rejections | Deno test + local Supabase | Every push |
+| Screens and hooks | Component states, copy keys, accessibility labels | Jest + React Native Testing Library | Every push |
 | End-to-end flows | Join, Speaker turn, reader turn, pass, delete | Maestro on Android and iOS | Before each release |
+| Design checks | Native audit, critique, dark-pattern check, five-layer review | Impeccable `audit` + `critique`, Intent `/evaluate`, Perception-First Design `evaluate` ([toolkit](../06-design/design-toolkit.md)) | Each screen, before it is called done |
 | Accessibility | Labels, contrast, screen reader run-through | Lint + manual VoiceOver/TalkBack | Before each release |
 | Device matrix | 2 iPhones, 3–5 Android brands including one mid-range | Manual | Before beta and release |
 | KB health | Links, ids, metadata | `python scripts/kb.py check` | Every push |
@@ -52,6 +56,11 @@ related: [game.scoring, arch.fairness, privacy.threats, registers.features]
 
 **Edge cases:** one test per row in [edge cases](../03-game-design/edge-cases.md).
 
+**Design** (from the [design toolkit](../06-design/design-toolkit.md)):
+- Impeccable native audit scores at least 3 of 4 on accessibility and appearance.
+- Intent `/evaluate` finds no dark pattern: no streak loss, no confirmshaming, no notification sent for engagement alone.
+- Operate screens use platform controls; Experience screens respect Reduce Motion (D-24).
+
 ## Definition of ready (before building a feature)
 
 - [ ] Has an `F-` id with acceptance criteria
@@ -65,6 +74,7 @@ related: [game.scoring, arch.fairness, privacy.threats, registers.features]
 - [ ] Unit and access-rule tests pass
 - [ ] Copy passes the [voice checklist](../05-brand/voice-and-tone.md#checklist-for-any-new-copy)
 - [ ] Accessibility checked (labels, contrast, reduced motion)
+- [ ] Design checks passed for any new or changed screen (Impeccable audit, Intent evaluate)
 - [ ] No stat values in logs or analytics
 - [ ] KB updated (feature status, any new decisions) and `scripts/kb.py check` passes
-- [ ] Reviewed by another team member
+- [ ] Reviewed by another team member, or by an agent review while the team is one person

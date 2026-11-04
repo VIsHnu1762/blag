@@ -92,3 +92,17 @@ source: kb/data/sources.yaml
 | S-74 | Twelve-Factor App: store config in the environment, separate from code | [12factor.net](https://12factor.net/config) | A | 2026-11-04 |
 | S-75 | Conventional Commits: commit types that drive changelogs and semantic versions | [Conventional Commits](https://github.com/conventional-commits/conventionalcommits.org/blob/master/content/next/index.md) | A | 2026-11-04 |
 | S-76 | Laws of UX: Jakob's Law (familiar patterns) and Hick's Law (fewer choices, faster decisions) | [Fast Company](https://www.fastcompany.com/90157775/10-laws-of-ux-illustrated) | B | 2026-11-04 |
+| S-77 | Apple guideline 4.8: an app using Google or another social login for the main account must also offer an equivalent privacy-focused login | [Newly](https://newly.app/how-to/add-social-login) | B | 2026-11-04 |
+| S-78 | Sign in with Apple satisfies guideline 4.8; adding it later costs another review cycle | [Newly](https://newly.app/how-to/sign-in-with-apple) | B | 2026-11-04 |
+| S-79 | Apple guideline 1.2: apps with user-generated content need filtering, reporting and blocking | [Vettly](https://vettly.pages.dev/apple) | C | 2026-11-04 |
+| S-80 | Apple guideline 1.2 terms of use: zero tolerance for objectionable content (example implementation) | [org-social-ios](https://git.andros.dev/org-social/org-social-ios/src/branch/main/App/Views/Welcome/EULAView.swift) | C | 2026-11-04 |
+| S-81 | India's DPDP Act has no separate sensitive-data category; GDPR treats health data as a special category | [ConsentOS](https://consentos.pages.dev/learn/dpdp-for-healthtech) | B | 2026-11-04 |
+| S-82 | Prisma Next added Supabase support and RLS policy authoring (17 July 2026) | [Prisma](https://www.prisma.io/changelog/2026-07-17) | A | 2026-11-04 |
+| S-83 | Prisma bypasses Supabase RLS when connecting with the service role or database URL | [DEV Community](https://dev.to/mridudixit15/using-prisma-with-nextjs-and-supabase-what-actually-works-and-what-doesnt-4e76) | C | 2026-11-04 |
+| S-84 | Drizzle ORM: RLS policies and Supabase roles defined in TypeScript | [Drizzle](https://orm.drizzle.team/docs/rls) | A | 2026-11-04 |
+| S-85 | Supabase Edge Functions may connect to Postgres directly with any Postgres client (pooler, prepare disabled) | [Supabase](https://supabase.com/docs/guides/functions/connect-to-postgres) | A | 2026-11-04 |
+| S-86 | Impeccable 4.8: design skill for agents with modes, iOS/Android rules and a native audit | [Impeccable (Paul Bakaus)](https://github.com/pbakaus/impeccable) | A | 2026-11-04 |
+| S-87 | Design with Intent 1.7: UX strategy skills and an ethical-design (dark pattern) catalogue | [Design with Intent (Ghaida)](https://github.com/ghaida/intent) | A | 2026-11-04 |
+| S-88 | Taste Skill: art direction and browser checks for distinctive web pages | [Taste Skill](https://github.com/Leonxlnx/taste-skill) | B | 2026-11-04 |
+| S-89 | Perception-First Design: five perceptual layers to diagnose a design before pixels | [Stefan Kovalik](https://github.com/skovalik/perception-first-design) | B | 2026-11-04 |
+| S-90 | React Bits: web animation components under MIT + Commons Clause (no redistribution or ports) | [React Bits](https://github.com/DavidHDev/react-bits) | A | 2026-11-04 |

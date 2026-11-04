@@ -93,6 +93,7 @@ nav:
     - "Design": 06-design/README.md
     - "Emotional design": 06-design/emotional-design.md
     - "UX language and moments map": 06-design/ux-language.md
+    - "Design toolkit": 06-design/design-toolkit.md
     - "Screens": 06-design/screens.md
     - "Flows": 06-design/flows.md
     - "Accessibility": 06-design/accessibility.md
@@ -118,6 +119,8 @@ nav:
       - "ADR-008: Monorepo with pnpm workspaces and Turborepo": 07-architecture/adr/ADR-008-monorepo.md
       - "ADR-009: Feature modules with enforced import boundaries": 07-architecture/adr/ADR-009-feature-modules.md
       - "ADR-010: Domain services as grouped Edge Functions, connected by events": 07-architecture/adr/ADR-010-domain-services.md
+      - "ADR-011: Plain SQL migrations instead of Prisma": 07-architecture/adr/ADR-011-sql-first-database.md
+      - "ADR-012: One database role per service; the app only reads": 07-architecture/adr/ADR-012-service-database-roles.md
   - "Tech stack":
     - "Tech stack": 08-tech-stack/README.md
     - "Industry benchmarks": 08-tech-stack/industry-benchmarks.md

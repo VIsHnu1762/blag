@@ -24,6 +24,9 @@ fair), A-05 (ten minutes), A-07 (focus lanes).
 
 ### Setup
 
+Timing: runs alongside the first two weeks of the build (D-45). To mimic the seal, the Speaker sends the real number to the game master by private message **before** posting the claim in the group.
+
+
 1. Recruit **three friend groups** of 4–6 people: a hostel group, a class
    group and a long-distance group.
 2. Each group gets a **WhatsApp group** and a **shared sheet**. One team member

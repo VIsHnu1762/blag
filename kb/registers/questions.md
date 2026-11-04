@@ -13,27 +13,27 @@ source: kb/data/questions.yaml
 
 # Open questions
 
-> **In short:** 19 questions still open. When one is answered, add a decision and set `status: Decided` with `decided_by`.
+> **In short:** 8 questions still open. When one is answered, add a decision and set `status: Decided` with `decided_by`.
 
 | ID | Question | Why it matters | Options (lean) | Owner | Status |
 |---|---|---|---|---|---|
 | Q-01 | When someone misses days, do they stay in the league quietly with a catch-up, or sit out until next month? | Absence handling in scoring and UI | Stay in with catch-up (lean) / Sit out | Product | Decided (D-16) |
 | Q-02 | Should focus-lane goals ever affect league points? | Whether personal data feeds the score | Never (lean) / Small bonus / Optional per circle | Product | Open |
-| Q-03 | Minimum age at launch? | Consent flows under GDPR and India's DPDP Act | 18+ (lean) / 16+ with age gate | Product + legal | Open |
-| Q-04 | Are steps and sleep treated as sensitive health data? | Stronger consent and store review | Treat as sensitive (lean) / Same as screen time | Product + legal | Open |
-| Q-05 | Keep the purple, yellow and coral palette, or create a new identity? | Brand section | Keep, refined (lean) / New | Design | Open |
+| Q-03 | Minimum age at launch? | Consent flows under GDPR and India's DPDP Act | 18+ (lean) / 16+ with age gate | Product + legal | Decided (D-27) |
+| Q-04 | Are steps and sleep treated as sensitive health data? | Stronger consent and store review | Treat as sensitive (lean) / Same as screen time | Product + legal | Decided (D-39) |
+| Q-05 | Keep the purple, yellow and coral palette, or create a new identity? | Brand section | Keep, refined (lean) / New | Design | Parked (D-36) |
 | Q-06 | Is 'BLAG' clear in the app stores and trademark databases? | Avoid a forced rename | Search before launch | Product | Open |
 | Q-07 | Is the first market our own college circle or broader? | Who we recruit for the hand-run test | Own college (lean) / Several colleges / Online | Product | Open |
 | Q-08 | Live mode: can friends join from a web page without installing? | Lowers cold start; adds a web surface | Yes / No / Later (lean) | Product + tech | Open |
 | Q-09 | Which apps in India already combine screen time with friend games? | Sharpens positioning | Market scan | Research | Open |
-| Q-10 | How does BLAG make money, if ever? | Must not break red lines | Cosmetics / Circle themes / None for now (lean) | Product | Open |
-| Q-11 | Rounds per drop: one, or two? | Ten-minute budget vs everyone getting turns | One (lean) / Two | Game design | Open |
-| Q-12 | Store category: Games or Social Networking? | Different review expectations | Games (lean) / Social | Product | Open |
-| Q-13 | Sign-in method? | Friction vs account recovery vs store rules | Phone OTP / Email magic link / Sign in with Apple and Google | Tech | Open |
-| Q-14 | Truth-zone tolerance: 10% or 5%? | Too wide makes bluffs easy; too narrow punishes rounding | 10% with unit floors (lean) / 5% | Game design | Open |
-| Q-15 | Should we request Apple's Family Controls entitlement at all? | Approval can take weeks and the data can't be shared anyway | No for MVP (lean) / Yes, to show a private 'check your number' view | Tech | Open |
+| Q-10 | How does BLAG make money, if ever? | Must not break red lines | Cosmetics / Circle themes / None for now (lean) | Product | Decided (D-38) |
+| Q-11 | Rounds per drop: one, or two? | Ten-minute budget vs everyone getting turns | One (lean) / Two | Game design | Decided (D-29) |
+| Q-12 | Store category: Games or Social Networking? | Different review expectations | Games (lean) / Social | Product | Decided (D-37) |
+| Q-13 | Sign-in method? | Friction vs account recovery vs store rules | Phone OTP / Email magic link / Sign in with Apple and Google | Tech | Decided (D-26) |
+| Q-14 | Truth-zone tolerance: 10% or 5%? | Too wide makes bluffs easy; too narrow punishes rounding | 10% with unit floors (lean) / 5% | Game design | Decided (D-28) |
+| Q-15 | Should we request Apple's Family Controls entitlement at all? | Approval can take weeks and the data can't be shared anyway | No for MVP (lean) / Yes, to show a private 'check your number' view | Tech | Decided (D-34) |
 | Q-16 | Does Google Play require a declaration for the Usage Access permission? | Blocks Android auto-read release | Check policy and test a submission | Tech | Open |
 | Q-17 | How long are revealed numbers kept after a season ends? | Retention policy and yearbook design | 90 days (lean) / Until account deletion | Product + legal | Open |
 | Q-18 | After the prototype, stay on Expo/React Native or move to two native apps built with AI agents? | Shopify's 2026 switch shows native is cheaper than it was; BLAG's team skills and AI use decide it | Stay on Expo (lean) / Native iOS + Android / Hybrid with native widgets | Tech | Open |
-| Q-19 | Animation tool for the reveal and stamps: Reanimated only, Lottie, or Rive? | The reveal is BLAG's signature moment; Duolingo uses Rive state machines | Reanimated (lean for MVP) / Rive / Lottie | Design + tech | Open |
-| Q-20 | Package manager: pnpm or Bun? | Affects install speed and React Native compatibility in the monorepo | pnpm with hoisted installs (lean) / Bun | Tech | Open |
+| Q-19 | Animation tool for the reveal and stamps: Reanimated only, Lottie, or Rive? | The reveal is BLAG's signature moment; Duolingo uses Rive state machines | Reanimated (lean for MVP) / Rive / Lottie | Design + tech | Decided (D-33) |
+| Q-20 | Package manager: pnpm or Bun? | Affects install speed and React Native compatibility in the monorepo | pnpm with hoisted installs (lean) / Bun | Tech | Decided (D-30) |

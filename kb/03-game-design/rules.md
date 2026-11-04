@@ -47,6 +47,17 @@ local time. All values *(tunable)* by the organiser within limits.
 
 Every Sunday is a **rest day** with a non-stat prompt *(tunable)*.
 
+### One or two rounds a day
+
+Each circle plays **1 or 2 rounds a day** (D-29). The organiser changes it, and the change applies from the next day.
+The app suggests a second round after 7 days in which everyone read every round, and suggests going back to one
+after 3 days with under half the circle reading.
+
+- Both rounds open at the drop time and each has its own reveal time, at least 3 hours apart (for example 14:00 and 21:00).
+- The Speaker and backup cutoffs split each round's window 5:5:3, which gives 13:00 and 18:00 with the defaults above.
+- The two rounds have **different Speakers**.
+- A day can score up to 8 (two rounds × 4); the season still counts the best 20 days (D-16). Everyone in a circle plays the same number of rounds, so changing it mid-month stays fair.
+
 ## Step by step
 
 ### 1. Seal (Speaker)

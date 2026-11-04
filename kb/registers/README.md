@@ -16,12 +16,12 @@ last_updated: '2026-11-04'
 | Register | What it holds | Edit this file |
 |---|---|---|
 | [Idea bank](ideas.md) | 52 ideas | `kb/data/ideas.yaml` |
-| [Feature catalogue](features.md) | 23 features with acceptance criteria | `kb/data/features.yaml` |
+| [Feature catalogue](features.md) | 25 features with acceptance criteria | `kb/data/features.yaml` |
 | [Stat catalogue](stats.md) | 16 stats | `kb/data/stats.yaml` |
-| [Decision log](decisions.md) | 23 decisions | `kb/data/decisions.yaml` |
-| [Open questions](questions.md) | 19 open of 20 | `kb/data/questions.yaml` |
+| [Decision log](decisions.md) | 46 decisions | `kb/data/decisions.yaml` |
+| [Open questions](questions.md) | 8 open of 20 | `kb/data/questions.yaml` |
 | [Risks and assumptions](risks.md) | 15 risks, 10 assumptions | `kb/data/risks.yaml` |
-| [Sources](sources.md) | 75 sources | `kb/data/sources.yaml` |
+| [Sources](sources.md) | 89 sources | `kb/data/sources.yaml` |
 | [Glossary](../00-start-here/glossary.md) | 34 terms | `kb/data/glossary.yaml` |
 
 The [decisions workbook](design-decisions-2026-11-01.xlsx) from 1 Nov 2026 is kept here for reference; the YAML files supersede it.
