@@ -800,8 +800,8 @@
       "id": "adr.001",
       "title": "ADR-001: Use React Native with Expo",
       "section": "07-architecture",
-      "status": "proposal",
-      "summary": "ADR-001: Use React Native with Expo. Status: Proposed (from the team brief; confirm at kick-off).",
+      "status": "agreed",
+      "summary": "ADR-001: Use React Native with Expo. Status: Accepted (2026-11-04).",
       "last_updated": "2026-11-04",
       "related": [
         "arch.adr",

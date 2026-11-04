@@ -2,8 +2,8 @@
 id: adr.001
 title: "ADR-001: Use React Native with Expo"
 section: 07-architecture
-status: proposal
-summary: "ADR-001: Use React Native with Expo. Status: Proposed (from the team brief; confirm at kick-off)."
+status: agreed
+summary: "ADR-001: Use React Native with Expo. Status: Accepted (2026-11-04)."
 last_updated: 2026-11-04
 audience: [developers, agents]
 related: [arch.adr, arch.home, stack.benchmarks]
@@ -13,7 +13,7 @@ related: [arch.adr, arch.home, stack.benchmarks]
 
 > **In short:** Build with React Native + Expo + TypeScript, using development builds (not Expo Go) once native modules are added, and EAS Build for store builds.
 
-**Status:** Proposed (from the team brief; confirm at kick-off)
+**Status:** Accepted on 2026-11-04 by the founder (D-19). Review after the prototype (Q-18).
 
 ## Context
 
@@ -35,5 +35,8 @@ Build with **React Native + Expo + TypeScript**, using **development builds** (n
 | Valdi (Snap) | TypeScript UI compiled to native views; proven inside Snapchat [S-47] | Still in beta as open source; small community |
 
 ## Consequences
+
+India is the first market and about 93% of phones there run Android [S-66], so one codebase for both platforms matters more than native depth. The founder learns Swift alongside for the parts that must be native: the home-screen widget, any private Screen Time view, and HealthKit.
+
 
 Fast start and shared code with the backend's game engine (TypeScript). Review this decision at the end of the prototype phase (D-19, Q-18); see [industry benchmarks](../../08-tech-stack/industry-benchmarks.md). Native work (Android Usage Access, Health Connect, HealthKit) will need Expo Modules and development builds. Keep game logic out of UI components.

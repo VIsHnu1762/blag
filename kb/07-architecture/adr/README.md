@@ -15,7 +15,7 @@ related: [arch.home]
 
 | ADR | Decision | Status |
 |---|---|---|
-| [ADR-001](ADR-001-expo-react-native.md) | Use React Native with Expo | Proposed (from the team brief; confirm at kick-off) |
+| [ADR-001](ADR-001-expo-react-native.md) | Use React Native with Expo | Accepted (D-19) |
 | [ADR-002](ADR-002-supabase-backend.md) | Use Supabase as the backend | Proposed (confirm at kick-off) |
 | [ADR-003](ADR-003-server-authoritative.md) | Server-authoritative game with sealed values | Accepted |
 | [ADR-004](ADR-004-stat-providers.md) | Manual entry first, behind a provider interface | Accepted |

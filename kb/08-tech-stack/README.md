@@ -13,7 +13,7 @@ related: [stack.benchmarks, arch.home, adr.001, adr.002, mobile.home]
 
 > **In short:** TypeScript everywhere: Expo and React Native for the app, Supabase for the backend, a shared pure game engine, and managed services wherever possible.
 
-Status: **Proposal**. Each choice links to its ADR when there is one.
+Status: **Proposal**, except the app framework: **Expo + React Native is decided** (D-19, ADR-001). Each choice links to its ADR when there is one.
 
 **Benchmark:** see [industry benchmarks](industry-benchmarks.md) for what Snapchat,
 Duolingo, Wordle, BeReal, Discord, Bluesky and others use, and why BLAG keeps

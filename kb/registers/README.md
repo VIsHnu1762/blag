@@ -21,7 +21,7 @@ last_updated: '2026-11-04'
 | [Decision log](decisions.md) | 19 decisions | `kb/data/decisions.yaml` |
 | [Open questions](questions.md) | 18 open of 19 | `kb/data/questions.yaml` |
 | [Risks and assumptions](risks.md) | 15 risks, 9 assumptions | `kb/data/risks.yaml` |
-| [Sources](sources.md) | 64 sources | `kb/data/sources.yaml` |
+| [Sources](sources.md) | 65 sources | `kb/data/sources.yaml` |
 | [Glossary](../00-start-here/glossary.md) | 34 terms | `kb/data/glossary.yaml` |
 
 The [decisions workbook](design-decisions-2026-11-01.xlsx) from 1 Nov 2026 is kept here for reference; the YAML files supersede it.

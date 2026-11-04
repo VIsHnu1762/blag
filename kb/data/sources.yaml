@@ -67,3 +67,4 @@ items:
   - {id: S-63, topic: "Home-screen widgets must be written natively (SwiftUI/WidgetKit) even in cross-platform apps", url: "https://zenn.dev/aki030402/articles/77d9e51301b255", publisher: Zenn (developer article), quality: C, checked: 2026-11-04}
   - {id: S-64, topic: "Strava's iOS app is built with Swift, Objective-C and C/C++ (binary analysis)", url: "https://techdevnotes.com/apps/ios/strava/426826309/tech-stack/465.0.0", publisher: Tech Dev Notes, quality: C, checked: 2026-11-04}
   - {id: S-65, topic: "Discord engineering posts on scaling Elixir for realtime messaging", url: "https://medium.com/discord-engineering/engineering-posts/home", publisher: Discord Engineering, quality: A, checked: 2026-11-04}
+  - {id: S-66, topic: "India mobile OS share June 2026: Android ~93%, iOS ~7%", url: "https://gs.statcounter.com/os-market-share/mobile/india", publisher: StatCounter, quality: B, checked: 2026-11-04}

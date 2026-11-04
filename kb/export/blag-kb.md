@@ -2933,7 +2933,7 @@ See [quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.
 
 | ADR | Decision | Status |
 |---|---|---|
-| [ADR-001](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-001-expo-react-native.md) | Use React Native with Expo | Proposed (from the team brief; confirm at kick-off) |
+| [ADR-001](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-001-expo-react-native.md) | Use React Native with Expo | Accepted (D-19) |
 | [ADR-002](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-002-supabase-backend.md) | Use Supabase as the backend | Proposed (confirm at kick-off) |
 | [ADR-003](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-003-server-authoritative.md) | Server-authoritative game with sealed values | Accepted |
 | [ADR-004](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-004-stat-providers.md) | Manual entry first, behind a provider interface | Accepted |
@@ -2951,13 +2951,13 @@ See [quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.
 
 ---
 
-<!-- page: kb/07-architecture/adr/ADR-001-expo-react-native.md · id: adr.001 · status: proposal · updated: 2026-11-04 -->
+<!-- page: kb/07-architecture/adr/ADR-001-expo-react-native.md · id: adr.001 · status: agreed · updated: 2026-11-04 -->
 
 ## ADR-001: Use React Native with Expo
 
 > **In short:** Build with React Native + Expo + TypeScript, using development builds (not Expo Go) once native modules are added, and EAS Build for store builds.
 
-**Status:** Proposed (from the team brief; confirm at kick-off)
+**Status:** Accepted on 2026-11-04 by the founder (D-19). Review after the prototype (Q-18).
 
 ### Context
 
@@ -2979,6 +2979,9 @@ Build with **React Native + Expo + TypeScript**, using **development builds** (n
 | Valdi (Snap) | TypeScript UI compiled to native views; proven inside Snapchat [S-47] | Still in beta as open source; small community |
 
 ### Consequences
+
+India is the first market and about 93% of phones there run Android [S-66], so one codebase for both platforms matters more than native depth. The founder learns Swift alongside for the parts that must be native: the home-screen widget, any private Screen Time view, and HealthKit.
+
 
 Fast start and shared code with the backend's game engine (TypeScript). Review this decision at the end of the prototype phase (D-19, Q-18); see [industry benchmarks](https://github.com/VIsHnu1762/blag/blob/main/kb/08-tech-stack/industry-benchmarks.md). Native work (Android Usage Access, Health Connect, HealthKit) will need Expo Modules and development builds. Keep game logic out of UI components.
 
@@ -3174,7 +3177,7 @@ Whatever is chosen, account deletion must be available in the app and on the web
 
 > **In short:** TypeScript everywhere: Expo and React Native for the app, Supabase for the backend, a shared pure game engine, and managed services wherever possible.
 
-Status: **Proposal**. Each choice links to its ADR when there is one.
+Status: **Proposal**, except the app framework: **Expo + React Native is decided** (D-19, ADR-001). Each choice links to its ADR when there is one.
 
 **Benchmark:** see [industry benchmarks](https://github.com/VIsHnu1762/blag/blob/main/kb/08-tech-stack/industry-benchmarks.md) for what Snapchat,
 Duolingo, Wordle, BeReal, Discord, Bluesky and others use, and why BLAG keeps
@@ -3847,7 +3850,7 @@ The full 290-word description is in the [vision](https://github.com/VIsHnu1762/b
 | [Decision log](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/decisions.md) | 19 decisions | `kb/data/decisions.yaml` |
 | [Open questions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/questions.md) | 18 open of 19 | `kb/data/questions.yaml` |
 | [Risks and assumptions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/risks.md) | 15 risks, 9 assumptions | `kb/data/risks.yaml` |
-| [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md) | 64 sources | `kb/data/sources.yaml` |
+| [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md) | 65 sources | `kb/data/sources.yaml` |
 | [Glossary](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/glossary.md) | 34 terms | `kb/data/glossary.yaml` |
 
 The [decisions workbook](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/design-decisions-2026-11-01.xlsx) from 1 Nov 2026 is kept here for reference; the YAML files supersede it.
@@ -4197,7 +4200,7 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | D-16 | 2026-11-04 | Season score is the sum of each player's best 20 daily scores | Sum of all days; average per day played | Missing up to about 10 days costs nothing; playing more never hurts | Proposed |
 | D-17 | 2026-11-04 | Trust levels (typed, screenshot, auto-read) show badges only and never change points | Bonus points for verified numbers | iPhone players can't auto-read, so bonuses would be unfair | Proposed |
 | D-18 | 2026-11-04 | Voters never lose points for a wrong read | Negative points for wrong reads (original spec) | Forgive-by-default principle; keeps quiet players playing | Proposed |
-| D-19 | 2026-11-04 | Keep Expo + React Native for the MVP; review the choice at the end of the prototype phase in light of Shopify's return to native | Two native apps (SwiftUI + Compose) built with AI coding agents; Flutter | Small student team, one TypeScript codebase shared with the game engine, Android-first market; native's advantages matter less for BLAG's simple screens | Proposed |
+| D-19 | 2026-11-04 | Build BLAG with Expo + React Native (TypeScript) for Android and iOS; review after the prototype in light of Shopify's return to native | Two native apps (SwiftUI + Compose) built with AI coding agents; Flutter; Swift-only iOS app | Founder's choice (2026-11-04). Solo builder; ~93% of phones in India run Android, so one codebase for both platforms matters; TypeScript shared with the game engine and Supabase. Swift is learned alongside for iOS-only parts (widget, Screen Time view, HealthKit) | Agreed |
 
 
 ---
@@ -4354,3 +4357,4 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | S-63 | Home-screen widgets must be written natively (SwiftUI/WidgetKit) even in cross-platform apps | [Zenn (developer article)](https://zenn.dev/aki030402/articles/77d9e51301b255) | C | 2026-11-04 |
 | S-64 | Strava's iOS app is built with Swift, Objective-C and C/C++ (binary analysis) | [Tech Dev Notes](https://techdevnotes.com/apps/ios/strava/426826309/tech-stack/465.0.0) | C | 2026-11-04 |
 | S-65 | Discord engineering posts on scaling Elixir for realtime messaging | [Discord Engineering](https://medium.com/discord-engineering/engineering-posts/home) | A | 2026-11-04 |
+| S-66 | India mobile OS share June 2026: Android ~93%, iOS ~7% | [StatCounter](https://gs.statcounter.com/os-market-share/mobile/india) | B | 2026-11-04 |

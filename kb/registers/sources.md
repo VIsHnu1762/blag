@@ -81,3 +81,4 @@ source: kb/data/sources.yaml
 | S-63 | Home-screen widgets must be written natively (SwiftUI/WidgetKit) even in cross-platform apps | [Zenn (developer article)](https://zenn.dev/aki030402/articles/77d9e51301b255) | C | 2026-11-04 |
 | S-64 | Strava's iOS app is built with Swift, Objective-C and C/C++ (binary analysis) | [Tech Dev Notes](https://techdevnotes.com/apps/ios/strava/426826309/tech-stack/465.0.0) | C | 2026-11-04 |
 | S-65 | Discord engineering posts on scaling Elixir for realtime messaging | [Discord Engineering](https://medium.com/discord-engineering/engineering-posts/home) | A | 2026-11-04 |
+| S-66 | India mobile OS share June 2026: Android ~93%, iOS ~7% | [StatCounter](https://gs.statcounter.com/os-market-share/mobile/india) | B | 2026-11-04 |
