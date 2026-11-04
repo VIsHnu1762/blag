@@ -713,6 +713,8 @@
         "arch.data",
         "arch.api",
         "arch.fairness",
+        "arch.repo",
+        "arch.services",
         "arch.adr",
         "stack.home"
       ],
@@ -750,6 +752,7 @@
       "last_updated": "2026-11-04",
       "related": [
         "arch.data",
+        "arch.services",
         "game.state",
         "arch.fairness"
       ],
@@ -779,6 +782,47 @@
         "agents"
       ],
       "path": "kb/07-architecture/sealing-and-fairness.md"
+    },
+    {
+      "id": "arch.repo",
+      "title": "Repository structure",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "The full planned file structure for BLAG's code: a pnpm monorepo with the Expo app, shared packages (game engine, contracts, config) and Supabase, with dependency rules, naming conventions, a where-does-it-go table and a growth plan.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.home",
+        "arch.services",
+        "adr.008",
+        "adr.009",
+        "adr.010",
+        "stack.home",
+        "quality.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/repository-structure.md"
+    },
+    {
+      "id": "arch.services",
+      "title": "Service map",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "BLAG split into seven domain services (identity, circles, game, league, scheduler, notifications, proofs) with owned data, actions, events, load profiles and rules for extracting any of them into a separate microservice later.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.repo",
+        "arch.api",
+        "arch.data",
+        "adr.010"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/services.md"
     },
     {
       "id": "arch.adr",
@@ -915,6 +959,60 @@
         "agents"
       ],
       "path": "kb/07-architecture/adr/ADR-007-authentication.md"
+    },
+    {
+      "id": "adr.008",
+      "title": "ADR-008: Monorepo with pnpm workspaces and Turborepo",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "ADR-008: Monorepo with pnpm workspaces and Turborepo. Status: Proposed.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.repo",
+        "arch.services"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-008-monorepo.md"
+    },
+    {
+      "id": "adr.009",
+      "title": "ADR-009: Feature modules with enforced import boundaries",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "ADR-009: Feature modules with enforced import boundaries. Status: Proposed.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.repo",
+        "arch.services"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-009-feature-modules.md"
+    },
+    {
+      "id": "adr.010",
+      "title": "ADR-010: Domain services as grouped Edge Functions, connected by events",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "ADR-010: Domain services as grouped Edge Functions, connected by events. Status: Proposed.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.repo",
+        "arch.services"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-010-domain-services.md"
     },
     {
       "id": "stack.home",

@@ -30,6 +30,8 @@ Follow `related` to find neighbouring pages.
 | UI copy or tone | `kb/05-brand/voice-and-tone.md` | — |
 | Screens or flows | `kb/06-design/` | — |
 | Database, API, backend | `kb/07-architecture/` | add an ADR in `kb/07-architecture/adr/` |
+| Where code goes, folder layout | `kb/07-architecture/repository-structure.md` | — |
+| Which backend service owns something | `kb/07-architecture/services.md` | — |
 | Platform capability (iOS/Android) | `kb/09-mobile-dependencies/` | `sources.yaml`, `risks.yaml` |
 | Privacy, security, legal | `kb/10-privacy-security/` | `risks.yaml`, `questions.yaml` |
 | Planning | `kb/12-roadmap/` | — |
@@ -89,6 +91,9 @@ These come from the red lines. If a request conflicts with them, stop and say so
 The KB stays the source of truth for behaviour. If code and KB disagree, flag
 it rather than silently changing either. Shared game logic must stay
 independent of the UI and testable on its own (`kb/07-architecture/README.md`).
+Follow the folder layout, dependency rules and where-does-it-go table in
+`kb/07-architecture/repository-structure.md`, and the data-ownership rules in
+`kb/07-architecture/services.md` (only the owning service writes a table).
 
 ## 6. Writing style for human readers
 

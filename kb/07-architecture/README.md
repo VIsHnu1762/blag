@@ -6,7 +6,7 @@ status: draft
 summary: "System overview of BLAG: components, trust boundaries, code layout and the architecture principles, with links to the data model, API, fairness design and ADRs."
 last_updated: 2026-11-04
 audience: [developers, agents]
-related: [arch.data, arch.api, arch.fairness, arch.adr, stack.home]
+related: [arch.data, arch.api, arch.fairness, arch.repo, arch.services, arch.adr, stack.home]
 ---
 
 # Architecture
@@ -58,21 +58,13 @@ accepts a score, a state change or a reveal from a client.
 | Storage | Screenshot proofs | Readable only after the reveal, only by circle members |
 | Push | Notifications | Text never contains stats or Speaker identity before claim |
 
-## Proposed code layout (when development starts)
+## Code layout and services
 
-```text
-blag/
-├── app/                    # Expo app (screens, navigation, UI)
-├── packages/
-│   └── game-engine/        # pure TS: truthZone(), score(), assignTitles(), pickSpeaker()
-├── supabase/
-│   ├── migrations/         # SQL schema, RLS policies
-│   ├── functions/          # Edge Functions (one per action)
-│   └── tests/              # RLS and SQL tests
-├── modules/                # native modules (Android usage, later)
-├── kb/                     # this knowledge base
-└── scripts/
-```
+The full planned file structure is in [repository structure](repository-structure.md):
+a pnpm monorepo with `apps/mobile`, shared `packages/` (game engine, contracts,
+config) and `supabase/`. The backend is split into seven services (identity,
+circles, game, league, scheduler, notifications, proofs) described in the
+[service map](services.md).
 
 ## Architecture principles
 
@@ -90,4 +82,6 @@ blag/
 | [Data model](data-model.md) | Tables, keys, who can read what |
 | [API and realtime](api-and-realtime.md) | Every action, scheduled job and realtime event |
 | [Sealing and fairness](sealing-and-fairness.md) | How hidden values stay hidden and scoring stays honest |
+| [Repository structure](repository-structure.md) | Every folder, dependency rules, naming, where things go |
+| [Service map](services.md) | The seven backend services, their data, events and extraction rules |
 | [ADRs](adr/README.md) | Architecture decisions and their reasons |

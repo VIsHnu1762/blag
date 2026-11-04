@@ -2676,21 +2676,13 @@ accepts a score, a state change or a reveal from a client.
 | Storage | Screenshot proofs | Readable only after the reveal, only by circle members |
 | Push | Notifications | Text never contains stats or Speaker identity before claim |
 
-### Proposed code layout (when development starts)
+### Code layout and services
 
-```text
-blag/
-├── app/                    # Expo app (screens, navigation, UI)
-├── packages/
-│   └── game-engine/        # pure TS: truthZone(), score(), assignTitles(), pickSpeaker()
-├── supabase/
-│   ├── migrations/         # SQL schema, RLS policies
-│   ├── functions/          # Edge Functions (one per action)
-│   └── tests/              # RLS and SQL tests
-├── modules/                # native modules (Android usage, later)
-├── kb/                     # this knowledge base
-└── scripts/
-```
+The full planned file structure is in [repository structure](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/repository-structure.md):
+a pnpm monorepo with `apps/mobile`, shared `packages/` (game engine, contracts,
+config) and `supabase/`. The backend is split into seven services (identity,
+circles, game, league, scheduler, notifications, proofs) described in the
+[service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md).
 
 ### Architecture principles
 
@@ -2708,6 +2700,8 @@ blag/
 | [Data model](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/data-model.md) | Tables, keys, who can read what |
 | [API and realtime](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/api-and-realtime.md) | Every action, scheduled job and realtime event |
 | [Sealing and fairness](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/sealing-and-fairness.md) | How hidden values stay hidden and scoring stays honest |
+| [Repository structure](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/repository-structure.md) | Every folder, dependency rules, naming, where things go |
+| [Service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md) | The seven backend services, their data, events and extraction rules |
 | [ADRs](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/README.md) | Architecture decisions and their reasons |
 
 
@@ -2798,6 +2792,8 @@ Every rule above becomes an automated test ([quality](https://github.com/VIsHnu1
 > **In short:** about twelve actions and two scheduled jobs; every action is authenticated, checked against the state machine, and idempotent.
 
 ### Conventions
+
+- Actions are grouped by **service** (identity, circles, game, league, scheduler, notifications, proofs): each service is one Edge Function and each action a route inside it, e.g. `game/claim` ([service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md), ADR-010).
 
 - Each action is a Supabase **Edge Function** called with the member's auth token.
 - Body includes `idempotency_key` (a UUID made on the device). Repeat calls with the same key return the first response.
@@ -2925,6 +2921,431 @@ See [quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.
 
 ---
 
+<!-- page: kb/07-architecture/repository-structure.md · id: arch.repo · status: proposal · updated: 2026-11-04 -->
+
+## Repository structure
+
+> **In short:** one monorepo with an `apps/` folder (the Expo app now, a small web app later), a `packages/` folder for code shared across apps and the server (game engine, contracts, config), and `supabase/` for the database and server functions; features are self-contained folders with strict import rules, so the codebase can grow from one developer to a team without a rewrite.
+
+Status: **Proposal** (ADR-008, ADR-009, ADR-010). Nothing here exists yet.
+Create folders **only when the first file needs them** (see [growth plan](#growth-plan-create-folders-only-when-needed)).
+
+### Goals
+
+| Goal | How the structure supports it |
+|---|---|
+| One person can start fast | Small number of top-level folders; Expo defaults kept |
+| A team can join later | Feature folders with owners; clear rules on what may import what |
+| Game rules are identical everywhere | One pure `game-engine` package used by the app and the server |
+| The server stays the authority | All scoring and state live under `supabase/`; the app only sends intents (ADR-003) |
+| New card types (movies, memes, music) plug in | Card types are modules behind one interface (P-38 to P-41) |
+| AI agents can work safely | Predictable paths, a where-does-it-go table, `AGENTS.md` at the root |
+| Optimisation later without restructuring | Caching, lazy routes, build caching and grouped server functions are planned in |
+
+### Top level
+
+```text
+blag/
+├── apps/
+│   ├── mobile/                  # Expo + React Native app (iOS, Android)            ← MVP
+│   └── web/                     # Small web app: account-deletion page, later live-mode web join   ← MVP (deletion page only)
+├── packages/
+│   ├── game-engine/             # Pure TypeScript game rules: truth zone, scoring, titles, Speaker choice  ← MVP
+│   ├── contracts/               # Shared API types, validation schemas, error codes, realtime events     ← MVP
+│   ├── db-types/                # Types generated from the database schema (never hand-edited)          ← MVP
+│   ├── tokens/                  # Design tokens: colours, type, spacing (from kb/05-brand)               ← Next
+│   ├── ui/                      # Shared design-system components, if a second app needs them            ← Later
+│   └── config/                  # Shared tsconfig, ESLint and Prettier presets                            ← MVP
+├── supabase/
+│   ├── config.toml              # Local Supabase settings
+│   ├── migrations/              # SQL schema and row-level-security changes, in order
+│   ├── functions/               # Edge Functions (Deno), grouped by domain
+│   ├── tests/                   # SQL tests for access rules (pgTAP)
+│   └── seed.sql                 # Local test data (fake circles, never real people)
+├── kb/                          # This knowledge base
+├── scripts/                     # Repo tools: kb.py, codegen, release helpers
+├── .github/                     # CI workflows, PR template, CODEOWNERS
+├── AGENTS.md  CLAUDE.md  README.md  CONTRIBUTING.md  SECURITY.md  CHANGELOG.md  LICENSE
+├── package.json                 # Root: workspace scripts only, no app code
+├── pnpm-workspace.yaml          # Declares apps/* and packages/*
+├── turbo.json                   # Task graph and build cache (ADR-008)
+├── tsconfig.base.json           # Strict TypeScript settings shared by all
+├── .npmrc  .nvmrc  .editorconfig  .gitignore  .env.example
+└── mkdocs.yml  requirements-docs.txt  llms.txt
+```
+
+Expo supports monorepos built with Bun, npm, pnpm or Yarn workspaces, and
+configures its bundler for them automatically from SDK 52 onwards [S-67].
+
+### `apps/mobile`
+
+```text
+apps/mobile/
+├── app.config.ts                # App config per environment (dev, preview, production)
+├── eas.json                     # EAS build and submit profiles
+├── package.json
+├── tsconfig.json                # Extends packages/config; "@/*" → src/*
+├── assets/                      # Icons, splash, fonts, sounds, Rive/Lottie files
+├── src/
+│   ├── app/                     # ROUTES ONLY (Expo Router). Thin files that render feature screens
+│   │   ├── _layout.tsx          # Root providers, fonts, error boundary
+│   │   ├── (auth)/              # sign-in, age gate
+│   │   ├── (onboarding)/        # welcome cards, lane and stats
+│   │   ├── (main)/
+│   │   │   ├── index.tsx        # Home: list of circles
+│   │   │   ├── circle/[circleId]/
+│   │   │   │   ├── index.tsx    # Today (the drop)
+│   │   │   │   ├── seal.tsx  claim.tsx  read.tsx  reveal.tsx
+│   │   │   │   ├── league.tsx
+│   │   │   │   └── finale/[seasonId].tsx
+│   │   │   ├── my-month.tsx
+│   │   │   └── settings/        # notifications, stats, privacy, delete account
+│   │   └── join/[code].tsx      # Invite deep link
+│   ├── features/                # One folder per product feature (see anatomy below)
+│   │   ├── auth/
+│   │   ├── onboarding/
+│   │   ├── circles/             # create, join, invite, leave
+│   │   ├── consent/             # stats on/off, spicy and health confirmations, focus lane
+│   │   ├── drop/                # today's state, catch-up card, rest day
+│   │   ├── round/               # seal, claim, read, reveal, reactions
+│   │   ├── league/
+│   │   ├── finale/              # titles, moments, share card
+│   │   ├── my-month/
+│   │   ├── notifications/
+│   │   └── account/             # settings, deletion
+│   ├── cards/                   # Card-type UI plugins: stat (MVP), rest (MVP), movie/meme/music (later)
+│   ├── ui/                      # App design system: Button, Card, Stamp, NumberPad, Avatar, Sheet
+│   ├── lib/                     # Infrastructure, no product logic
+│   │   ├── supabase/            # Client, auth session, typed queries
+│   │   ├── api/                 # Calls to Edge Functions with idempotency keys
+│   │   ├── query/               # TanStack Query client, cache keys
+│   │   ├── realtime/            # Circle channel subscription
+│   │   ├── offline/             # Action queue for poor connections
+│   │   ├── analytics/           # Wrapper that blocks stat values by design
+│   │   ├── logging/             # Crash reporting with scrubbing
+│   │   └── storage/             # SecureStore and local storage helpers
+│   ├── i18n/                    # String catalogues (en first), number formatting
+│   ├── theme/                   # Reads tokens; light and dark themes
+│   └── config/                  # Typed environment and feature flags
+├── modules/                     # Local native modules (Expo Modules), added only when needed
+│   ├── today-widget/            # iOS WidgetKit (Swift) + Android widget (Kotlin)    ← Later
+│   └── android-usage/           # UsageStatsManager reader (Kotlin)                   ← Later
+└── e2e/                         # Maestro end-to-end flows
+```
+
+In Expo Router, the `src/app` folder is only for routes: any other file placed
+there is treated as a screen. Components, hooks and the rest live elsewhere in
+`src/` [S-68].
+
+#### Feature folder anatomy
+
+Every feature follows the same shape, so people and agents always know where to look:
+
+```text
+features/round/
+├── index.ts                 # PUBLIC API: the only file other code may import
+├── screens/                 # Full screens used by routes in src/app
+│   ├── SealScreen.tsx
+│   └── RevealScreen.tsx
+├── components/              # Pieces used only inside this feature
+│   └── TruthZoneHint.tsx
+├── hooks/                   # useRound(), useSubmitRead() …
+├── api.ts                   # Queries and mutations for this feature (uses lib/api, lib/query)
+├── state.ts                 # Local UI state if needed
+├── copy.ts                  # Keys into the i18n catalogue for this feature
+└── __tests__/               # Component and hook tests
+```
+
+Rules: a feature never imports another feature's internals, only its `index.ts`.
+Shared logic moves down into `ui/`, `lib/` or a package.
+
+### `packages/`
+
+```text
+packages/game-engine/
+├── src/
+│   ├── truth-zone.ts            # truthZone(), isTruth()
+│   ├── scoring.ts               # scoreRound()
+│   ├── season.ts                # seasonScore() (best 20)
+│   ├── titles.ts                # assignTitles()
+│   ├── speaker.ts               # pickSpeaker(), pickStat()
+│   ├── state-machine.ts         # allowed transitions per drop state
+│   ├── cards/                   # Card-type rules: stat.ts, rest.ts (one interface for all)
+│   ├── catalog/stats.ts         # Generated from kb/data/stats.yaml
+│   └── index.ts
+├── test/                        # Unit tests from every worked example in kb/03-game-design
+└── package.json                 # No runtime dependencies. No React, no Supabase, no I/O
+
+packages/contracts/
+├── src/
+│   ├── actions/                 # Request and response shapes for each server action
+│   ├── events.ts                # Realtime event names and payloads (ids only)
+│   ├── errors.ts                # Error codes shared by app and server
+│   └── index.ts
+└── package.json                 # Depends only on a schema library (e.g. zod)
+
+packages/db-types/               # Output of `supabase gen types`; regenerated in CI
+packages/config/                 # tsconfig presets, ESLint config, Prettier config
+packages/tokens/                 # Design tokens as TypeScript (and later JSON for Figma)
+```
+
+The game engine is the most important package: it's where the rules in
+[game design](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/README.md) become code, tested once and used by
+both the app (for instant previews such as the truth zone) and the server (for
+the real result).
+
+### `supabase/`
+
+```text
+supabase/
+├── config.toml
+├── migrations/
+│   ├── 20261110000000_core_schema.sql
+│   ├── 20261110000100_rls_policies.sql
+│   └── …                         # One change per file, never edited after merge
+├── functions/                   # One folder per service (see the service map)
+│   ├── _shared/                 # Auth check, errors, idempotency, db client, rate limits, event outbox
+│   ├── identity/                # profile, device registration, account deletion
+│   ├── circles/                 # create, join, leave, invite-reset, lane-set, consent-set
+│   ├── game/                    # seal, claim, pass, read, react (uses packages/game-engine)
+│   ├── league/                  # day scores, season close, titles (uses packages/game-engine)
+│   ├── scheduler/               # drops-tick, season-tick (called by pg_cron)
+│   ├── notifications/           # reads the event queue, sends pushes
+│   ├── proofs/                  # upload and view URLs for screenshot proofs
+│   └── deno.json                # Imports, including the shared packages
+├── tests/
+│   ├── rls_seals.test.sql       # "A member can't read private.seals" …
+│   └── rls_reads.test.sql
+└── seed.sql
+```
+
+Supabase recommends keeping shared function code in a folder whose name starts
+with an underscore, and building a few larger functions that combine related
+actions to reduce cold starts [S-69]. BLAG follows that: each **service** from the [service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md) is
+one function folder, and each action from [API and realtime](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/api-and-realtime.md)
+is a route inside it (ADR-010). Services talk to each other through events on a
+queue, never by writing each other's tables. Importing code from outside `supabase/` (our
+`packages/`) is supported for monorepos [S-70] *(verify the current deploy
+command when setting up)*.
+
+### Dependency rules
+
+```mermaid
+flowchart TD
+    ROUTES["apps/mobile/src/app (routes)"] --> FEAT["features/*"]
+    FEAT --> CARDS["cards/*"]
+    FEAT --> UI["ui/"]
+    FEAT --> LIB["lib/"]
+    CARDS --> UI
+    UI --> THEME["theme/ + packages/tokens"]
+    LIB --> CONTRACTS["packages/contracts"]
+    FEAT --> ENGINE["packages/game-engine"]
+    FUNCS["supabase/functions"] --> ENGINE
+    FUNCS --> CONTRACTS
+    LIB --> DBT["packages/db-types"]
+    FUNCS --> DBT
+```
+
+| Rule | Why |
+|---|---|
+| Arrows only point down. Nothing imports "upwards" | Prevents tangles as the app grows |
+| `game-engine` imports nothing except the standard library | Rules stay pure and identical on app and server |
+| Features import other features only through their `index.ts` | Each feature can change internally without breaking others |
+| `src/app` files contain no logic; they render a feature screen | Routes can be reorganised freely |
+| Only `lib/supabase` talks to Supabase directly | One place to change auth, retries and caching |
+| Nothing in the app imports from `supabase/functions` | The server is a separate deployment |
+
+Enforced in CI with an import-boundary lint rule (for example
+`eslint-plugin-boundaries` or `dependency-cruiser`) *(Proposal, ADR-009)*.
+
+### Naming conventions
+
+| Thing | Convention | Example |
+|---|---|---|
+| Folders | kebab-case | `my-month/`, `truth-zone.ts` |
+| React components and screens | PascalCase file and export | `RevealScreen.tsx` |
+| Hooks | `use` + camelCase | `useSubmitRead.ts` |
+| Pure functions | camelCase verbs | `scoreRound()` |
+| Tests | Same name + `.test.ts(x)` | `scoring.test.ts` |
+| Routes | Lowercase, glossary words | `circle/[circleId]/reveal.tsx` |
+| Database | snake_case, glossary code names | `circle_members`, `reveal_at` |
+| Edge Function routes | kebab-case verbs | `game/claim` |
+| Environment variables | `EXPO_PUBLIC_` prefix only for values safe to ship in the app | `EXPO_PUBLIC_SUPABASE_URL` |
+| Packages | `@blag/` scope | `@blag/game-engine` |
+
+Use the [glossary](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/glossary.md) words in code: `circle`,
+`drop`, `round`, `seal`, `claim`, `read`, `reveal`, `season`, `speaker`.
+
+### Environments
+
+| Environment | Supabase | App build | Used for |
+|---|---|---|---|
+| `local` | `supabase start` on your machine | Expo dev client | Daily development |
+| `preview` | Separate Supabase project | EAS "preview" profile, internal distribution | Testers and the beta |
+| `production` | Separate Supabase project | EAS "production" profile, stores | Real users |
+
+Secrets (service-role key, push credentials) live only in Supabase and EAS
+secret stores, never in the repo. `.env.example` lists every variable with a
+fake value.
+
+### Where does it go?
+
+| I want to add… | Put it in |
+|---|---|
+| A new screen | Route file in `apps/mobile/src/app/…` + screen in `features/<feature>/screens/` |
+| A rule about points, truth or titles | `packages/game-engine` + a test, then update `kb/03-game-design` |
+| A new server action | Route in the owning service's `supabase/functions/<service>/` + shapes in `packages/contracts` |
+| Something one service must tell another | An event in `packages/contracts/src/events.ts`, written to the outbox, handled idempotently |
+| A database table or policy | New file in `supabase/migrations/` + test in `supabase/tests/` + update [data model](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/data-model.md) |
+| A new card type (e.g. movie) | Rules in `packages/game-engine/src/cards/`, UI in `apps/mobile/src/cards/` |
+| A reusable button or stamp | `apps/mobile/src/ui/` (move to `packages/ui` only if a second app needs it) |
+| A colour or font size | `packages/tokens` |
+| User-facing text | `apps/mobile/src/i18n/` catalogue, checked against [voice and tone](https://github.com/VIsHnu1762/blag/blob/main/kb/05-brand/voice-and-tone.md) |
+| A native iOS or Android feature | `apps/mobile/modules/<name>/` as an Expo Module |
+| A scheduled job | `supabase/functions/scheduler/` + a `pg_cron` entry in a migration |
+| An end-to-end test | `apps/mobile/e2e/` |
+| A decision | `kb/data/decisions.yaml`, or an ADR for technical ones |
+
+### Built-in room to optimise later
+
+| Area | Planned now | Turn on when |
+|---|---|---|
+| Build speed | Turborepo task cache | From day one; add remote cache when CI gets slow |
+| App start time | Thin routes; heavy screens (finale, my month) loaded lazily | If cold start on a mid-range Android exceeds about 2 s |
+| Lists | One list component wrapper in `ui/` | Swap the implementation without touching features |
+| Network | TanStack Query cache, ids-only realtime events | Always on |
+| Offline | `lib/offline` action queue with idempotency keys | MVP |
+| Server cold starts | One function per service, not per action (ADR-010) | Always on |
+| Hot service | Service boundaries with events | Extract that service into its own microservice ([service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md#when-to-extract-a-service-into-its-own-microservice)) |
+| Database | Indexes on `circle_id`, `season_id`, `local_date`, `round_id` | In the first migration |
+| Updates | EAS Update channels per environment | For copy and bug fixes without store review (within store rules) |
+| Native speed-ups | `modules/` for hot paths in Swift or Kotlin | Only if profiling shows a need |
+
+### Growth plan: create folders only when needed
+
+| Phase ([roadmap](https://github.com/VIsHnu1762/blag/blob/main/kb/12-roadmap/README.md)) | What exists |
+|---|---|
+| 2. Prototype | `apps/mobile` (auth, circles, round, a basic league), `packages/game-engine`, `packages/contracts`, `packages/config`, `supabase/` with `game` and `scheduler` services |
+| 3. MVP | All MVP features, `apps/web` with the deletion page, `packages/db-types`, the remaining services (identity, circles, league, notifications, proofs), the event queue, e2e flows, CI |
+| 4. Beta | `packages/tokens`, analytics and crash reporting in `lib/`, preview environment |
+| Later | `modules/today-widget`, `modules/android-usage`, new card types, `packages/ui` if a second app shares components |
+
+### Open questions
+
+- Package manager: pnpm (lean) or Bun. Expo supports both; isolated installs work from SDK 54, but some React Native libraries may still break with them [S-67]. Start pnpm with hoisted installs and revisit.
+- Exact deploy command for Edge Functions importing `packages/` [S-70].
+
+
+---
+
+<!-- page: kb/07-architecture/services.md · id: arch.services · status: proposal · updated: 2026-11-04 -->
+
+## Service map
+
+> **In short:** BLAG is divided into seven services with clear jobs and their own data, talking to each other through events on a queue; they start as grouped Supabase Edge Functions in one project, and any of them can be moved out into its own microservice later without changing the others.
+
+Status: **Proposal** (ADR-010, D-21).
+
+### Why services now, separate deployments later
+
+| Approach | For | Against for BLAG today |
+|---|---|---|
+| One big backend | Simplest | Hard to classify, optimise or hand over parts |
+| **Service boundaries inside one Supabase project (chosen)** | Clear ownership and contracts; each service optimised on its own; cheap to run; one person can manage it | Shares one database (mitigated by ownership rules) |
+| Full microservices (separate servers and databases) | Independent scaling and teams | Many deployments, network failures between services, data spread out, more cost; heavy for one developer before product-market fit |
+
+The aim is a **modular** system: each service has its own code folder, its own
+tables, its own actions and its own events. Because services never reach into
+each other's internals, extracting one later is a move, not a rewrite.
+
+### The services
+
+| # | Service | Job | Owns data | Actions (from the app) | Emits events | Consumes events | Load profile |
+|---|---|---|---|---|---|---|---|
+| 1 | **Identity** | Accounts, age gate, profiles, deletion, push tokens | `profiles`, `push_tokens`, `idempotency_keys` | sign-up completion, profile update, register device, delete account | `account.deleted` | — | Low, spiky at sign-up |
+| 2 | **Circles** | Circles, invites, membership, focus lanes, stat consent | `circles`, `circle_members`, `stat_consents` | create, join, leave, invite-reset, lane-set, consent-set | `circle.member_joined`, `circle.member_left`, `consent.changed` | `account.deleted` | Low |
+| 3 | **Game** | Drops and rounds: Speaker choice, seal, claim, read, reveal, round scoring | `drops`, `rounds`, `private.seals`, `claims`, `reads`, `rest_answers`, `reactions`, `round_results` | seal, claim, pass, read, react | `drop.opened`, `round.claimed`, `round.revealed` | `circle.member_left`, `consent.changed`, `account.deleted` | Medium; peaks around reveal times |
+| 4 | **League** | Day scores, best-20 season scores, finale, titles, recap | `seasons`, `day_scores`, `titles` | (read-only queries) | `league.updated`, `season.finale_ready` | `round.revealed`, `account.deleted` | Low, batch at month end |
+| 5 | **Scheduler** | The clock: opens drops, applies cutoffs, triggers reveals, closes seasons | none (reads due times) | none (called by `pg_cron`) | — (calls Game and League) | — | Small, steady every few minutes |
+| 6 | **Notifications** | Turns events into pushes; quiet hours; daily budget; no stats or Speaker leaks | `notification_log`, `notification_prefs` | update preferences | — | `drop.opened` (Speaker only), `round.claimed`, `round.revealed`, `season.finale_ready` | Bursty: many pushes at once |
+| 7 | **Proofs** *(MVP-light)* | Screenshot upload, access only after reveal, deletion after 30 days | Storage bucket `proofs` | get upload URL, get view URL | — | `round.revealed`, `account.deleted` | Low; storage-bound |
+
+Later candidates: **Cards** (movie, meme, music content), **Analytics**
+(privacy-safe metrics), **Moderation** (for any future user content).
+
+### How services talk
+
+```mermaid
+flowchart LR
+    APP[Mobile app] -- actions --> ID[Identity]
+    APP -- actions --> CI[Circles]
+    APP -- actions --> GA[Game]
+    APP -- queries --> LE[League]
+    APP -- upload --> PR[Proofs]
+    CRON[pg_cron] --> SC[Scheduler]
+    SC --> GA
+    SC --> LE
+    GA -- round.revealed --> Q[(Event queue)]
+    CI -- member_left / consent.changed --> Q
+    ID -- account.deleted --> Q
+    Q --> LE
+    Q --> NO[Notifications]
+    Q --> GA
+    Q --> PR
+    NO --> PUSH[Push service]
+```
+
+1. **App → service:** direct calls to that service's Edge Function, with an idempotency key.
+2. **Service → service:** through **events**, not direct writes. A service writes the event to an *outbox* in the same database transaction as its change; a dispatcher puts it on a queue.
+3. **Queue:** Supabase Queues, a pull-based message queue in Postgres [S-71]. An Edge Function reads a batch, processes it, and deletes each message; if processing fails, the message stays and is retried next run [S-71].
+4. **Realtime to the app:** ids only, on private circle channels ([API and realtime](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/api-and-realtime.md)).
+
+Every event handler must be **idempotent**: processing the same event twice gives
+the same result.
+
+### Data ownership rules
+
+- Every table has **exactly one owning service**, listed above. Only the owner writes to it.
+- Other services may **read** through a view or receive the data in an event; they never write.
+- Row-level security still protects all client reads ([data model](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/data-model.md#who-can-read-what-row-level-security)).
+- *(Later)* Move each service's tables into its own Postgres schema (`identity`, `circles`, `game`, …) once there's a second developer.
+
+### Optimisation per service
+
+| Service | What to optimise | How |
+|---|---|---|
+| Game | Reveal-time latency | Indexes on `(circle_id, local_date)`; precompute scores at reveal; keep the function warm by grouping actions |
+| League | Month-end batch | Incremental day scores on each `round.revealed`, so the finale is a small final step |
+| Notifications | Bursts at reveal times | Batch sends from the queue; respect quiet hours; drop stale pushes |
+| Scheduler | Missed or double runs | Idempotent ticks that only move drops whose time has passed |
+| Proofs | Storage cost | Compress on device; delete after 30 days |
+| Identity | Abuse | Rate limits on sign-up and join |
+
+### When to extract a service into its own microservice
+
+Extract only with evidence. Triggers:
+
+| Trigger | Likely first candidate |
+|---|---|
+| Push volume makes the queue lag at reveal times | Notifications → a dedicated worker (any language, e.g. Go) |
+| Game actions need lower latency than Edge Functions give in a region | Game → a container service near users |
+| Month-end finale takes minutes | League → a batch job runner |
+| A second team owns part of the product | That team's service |
+| A new card type needs heavy media processing | Cards/Proofs → a media service |
+
+**How:** the extracted service keeps the same action contracts
+(`packages/contracts`) and the same events, so the app and the other services
+don't change. Move its tables last, once nothing else reads them directly.
+
+### Code location
+
+Each service is one folder in `supabase/functions/` with routes per action, plus
+shared code in `_shared/` and the shared packages
+([repository structure](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/repository-structure.md#supabase)).
+
+
+---
+
 <!-- page: kb/07-architecture/adr/README.md · id: arch.adr · status: living · updated: 2026-11-04 -->
 
 ## Architecture decision records
@@ -2940,6 +3361,9 @@ See [quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.
 | [ADR-005](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-005-scheduled-drops.md) | Drive drops with a scheduler job | Proposed |
 | [ADR-006](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-006-persistent-circles.md) | Persistent circles instead of temporary rooms | Accepted |
 | [ADR-007](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-007-authentication.md) | Sign-in method | Proposed (Q-13 open) |
+| [ADR-008](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-008-monorepo.md) | Monorepo with pnpm workspaces and Turborepo | Proposed |
+| [ADR-009](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-009-feature-modules.md) | Feature modules with enforced import boundaries | Proposed |
+| [ADR-010](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-010-domain-services.md) | Domain services as grouped Edge Functions, connected by events | Proposed |
 
 ### Writing a new ADR
 
@@ -3167,6 +3591,101 @@ Not decided. Leading option: **email one-time link or code** plus **Sign in with
 ### Consequences
 
 Whatever is chosen, account deletion must be available in the app and on the web (F-18).
+
+
+---
+
+<!-- page: kb/07-architecture/adr/ADR-008-monorepo.md · id: adr.008 · status: proposal · updated: 2026-11-04 -->
+
+## ADR-008: Monorepo with pnpm workspaces and Turborepo
+
+> **In short:** Use one repository with pnpm workspaces (`apps/*`, `packages/*`) and Turborepo for the task graph and build cache.
+
+**Status:** Proposed
+
+### Context
+
+BLAG has an app, shared rules used by app and server, a Supabase backend, a small web page for account deletion, and a knowledge base. They change together and must stay in sync.
+
+### Decision
+
+Use **one repository** with **pnpm workspaces** (`apps/*`, `packages/*`) and **Turborepo** for the task graph and build cache. Start pnpm with hoisted installs for React Native compatibility and revisit isolated installs later. Expo supports monorepos with Bun, npm, pnpm or Yarn workspaces and configures its bundler automatically from SDK 52 [S-67].
+
+### Options considered
+
+| Option | For | Against |
+|---|---|---|
+| **pnpm workspaces + Turborepo** | Fast installs; strict dependencies; cached builds; widely used with Expo | Some React Native libraries dislike isolated installs [S-67] |
+| npm or Yarn workspaces | Simplest | Slower; weaker dependency strictness |
+| Bun workspaces | Very fast | Younger ecosystem for React Native tooling |
+| Separate repositories | Clear separation | Shared rules drift; harder for one person |
+
+### Consequences
+
+One place for everything, including the KB. Root `package.json` holds only workspace scripts. See [repository structure](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/repository-structure.md).
+
+
+---
+
+<!-- page: kb/07-architecture/adr/ADR-009-feature-modules.md · id: adr.009 · status: proposal · updated: 2026-11-04 -->
+
+## ADR-009: Feature modules with enforced import boundaries
+
+> **In short:** Organise app code by feature (`src/features/<feature>/` with a public `index.ts`), keep routes thin in `src/app/`, put shared UI in `src/ui/` and infrastructure in `src/lib/`.
+
+**Status:** Proposed
+
+### Context
+
+The app will grow from about 16 screens to many more, possibly with more developers and AI agents editing code. Without rules, features import each other's internals and become hard to change.
+
+### Decision
+
+Organise app code by **feature** (`src/features/<feature>/` with a public `index.ts`), keep **routes thin** in `src/app/`, put shared UI in `src/ui/` and infrastructure in `src/lib/`. Enforce the dependency rules with an import-boundary lint rule in CI. Expo Router treats every file in `src/app` as a route, so non-route code must live elsewhere [S-68].
+
+### Options considered
+
+| Option | For | Against |
+|---|---|---|
+| **Feature folders + boundaries** | Changes stay local; clear ownership; easy for agents | Some upfront discipline |
+| Type folders (components/, hooks/, screens/) | Familiar | Features scatter across folders as the app grows |
+| Atomic design only | Good for UI | Says nothing about product logic |
+
+### Consequences
+
+A where-does-it-go table in the [repository structure](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/repository-structure.md#where-does-it-go) guides every addition.
+
+
+---
+
+<!-- page: kb/07-architecture/adr/ADR-010-domain-services.md · id: adr.010 · status: proposal · updated: 2026-11-04 -->
+
+## ADR-010: Domain services as grouped Edge Functions, connected by events
+
+> **In short:** Split the backend into seven services (identity, circles, game, league, scheduler, notifications, proofs).
+
+**Status:** Proposed
+
+### Context
+
+The founder wants services that can be classified and optimised separately. Full microservices would add deployments, network failure points and data spread before the product is proven. Supabase recommends a few larger functions to reduce cold starts and a `_shared` folder for common code [S-69].
+
+### Decision
+
+Split the backend into **seven services** (identity, circles, game, league, scheduler, notifications, proofs). Each is **one Edge Function** with a route per action, **owns its tables** (only it writes them), and talks to other services through **events** written to an outbox and delivered via **Supabase Queues** [S-71]. Any service can later be extracted into its own microservice using the same contracts.
+
+### Options considered
+
+| Option | For | Against |
+|---|---|---|
+| **Domain services in one Supabase project** | Clear boundaries; cheap; one person can run it; extractable | Shared database needs ownership discipline |
+| One function per action | Very granular | More cold starts; more to deploy [S-69] |
+| Full microservices now | Independent scaling | Heavy operations for a solo builder; premature |
+| One monolithic function | Simple | No classification or separate optimisation |
+
+### Consequences
+
+Event handlers must be idempotent. Extraction triggers and steps are in the [service map](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/services.md#when-to-extract-a-service-into-its-own-microservice).
 
 
 ---
@@ -3847,10 +4366,10 @@ The full 290-word description is in the [vision](https://github.com/VIsHnu1762/b
 | [Idea bank](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/ideas.md) | 52 ideas | `kb/data/ideas.yaml` |
 | [Feature catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/features.md) | 23 features with acceptance criteria | `kb/data/features.yaml` |
 | [Stat catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/stats.md) | 16 stats | `kb/data/stats.yaml` |
-| [Decision log](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/decisions.md) | 19 decisions | `kb/data/decisions.yaml` |
-| [Open questions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/questions.md) | 18 open of 19 | `kb/data/questions.yaml` |
+| [Decision log](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/decisions.md) | 21 decisions | `kb/data/decisions.yaml` |
+| [Open questions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/questions.md) | 19 open of 20 | `kb/data/questions.yaml` |
 | [Risks and assumptions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/risks.md) | 15 risks, 9 assumptions | `kb/data/risks.yaml` |
-| [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md) | 65 sources | `kb/data/sources.yaml` |
+| [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md) | 71 sources | `kb/data/sources.yaml` |
 | [Glossary](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/glossary.md) | 34 terms | `kb/data/glossary.yaml` |
 
 The [decisions workbook](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/design-decisions-2026-11-01.xlsx) from 1 Nov 2026 is kept here for reference; the YAML files supersede it.
@@ -4201,6 +4720,8 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | D-17 | 2026-11-04 | Trust levels (typed, screenshot, auto-read) show badges only and never change points | Bonus points for verified numbers | iPhone players can't auto-read, so bonuses would be unfair | Proposed |
 | D-18 | 2026-11-04 | Voters never lose points for a wrong read | Negative points for wrong reads (original spec) | Forgive-by-default principle; keeps quiet players playing | Proposed |
 | D-19 | 2026-11-04 | Build BLAG with Expo + React Native (TypeScript) for Android and iOS; review after the prototype in light of Shopify's return to native | Two native apps (SwiftUI + Compose) built with AI coding agents; Flutter; Swift-only iOS app | Founder's choice (2026-11-04). Solo builder; ~93% of phones in India run Android, so one codebase for both platforms matters; TypeScript shared with the game engine and Supabase. Swift is learned alongside for iOS-only parts (widget, Screen Time view, HealthKit) | Agreed |
+| D-20 | 2026-11-04 | One monorepo (pnpm workspaces + Turborepo) with apps/, packages/ and supabase/; feature modules with enforced import boundaries (ADR-008, ADR-009) | Separate repositories; folders by file type | Shared game rules stay identical; structure scales from one developer to a team | Proposed |
+| D-21 | 2026-11-04 | Backend split into seven domain services inside one Supabase project, connected by events on Supabase Queues; extract a service into its own microservice only when a trigger in the service map is met (ADR-010) | Full microservices now; one monolithic backend; one function per action | Founder wants classified, separately optimisable services; full microservices are too heavy for a solo MVP | Proposed |
 
 
 ---
@@ -4211,7 +4732,7 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 
 ## Open questions
 
-> **In short:** 18 questions still open. When one is answered, add a decision and set `status: Decided` with `decided_by`.
+> **In short:** 19 questions still open. When one is answered, add a decision and set `status: Decided` with `decided_by`.
 
 | ID | Question | Why it matters | Options (lean) | Owner | Status |
 |---|---|---|---|---|---|
@@ -4234,6 +4755,7 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | Q-17 | How long are revealed numbers kept after a season ends? | Retention policy and yearbook design | 90 days (lean) / Until account deletion | Product + legal | Open |
 | Q-18 | After the prototype, stay on Expo/React Native or move to two native apps built with AI agents? | Shopify's 2026 switch shows native is cheaper than it was; BLAG's team skills and AI use decide it | Stay on Expo (lean) / Native iOS + Android / Hybrid with native widgets | Tech | Open |
 | Q-19 | Animation tool for the reveal and stamps: Reanimated only, Lottie, or Rive? | The reveal is BLAG's signature moment; Duolingo uses Rive state machines | Reanimated (lean for MVP) / Rive / Lottie | Design + tech | Open |
+| Q-20 | Package manager: pnpm or Bun? | Affects install speed and React Native compatibility in the monorepo | pnpm with hoisted installs (lean) / Bun | Tech | Open |
 
 
 ---
@@ -4358,3 +4880,9 @@ Sensitivity: `standard` · `spicy` (extra opt-in) · `health` (extra opt-in, nev
 | S-64 | Strava's iOS app is built with Swift, Objective-C and C/C++ (binary analysis) | [Tech Dev Notes](https://techdevnotes.com/apps/ios/strava/426826309/tech-stack/465.0.0) | C | 2026-11-04 |
 | S-65 | Discord engineering posts on scaling Elixir for realtime messaging | [Discord Engineering](https://medium.com/discord-engineering/engineering-posts/home) | A | 2026-11-04 |
 | S-66 | India mobile OS share June 2026: Android ~93%, iOS ~7% | [StatCounter](https://gs.statcounter.com/os-market-share/mobile/india) | B | 2026-11-04 |
+| S-67 | Expo supports monorepos (Bun, npm, pnpm, Yarn); automatic Metro config from SDK 52; isolated installs from SDK 54 with some library caveats | [Expo](https://docs.expo.dev/guides/monorepos/) | A | 2026-11-04 |
+| S-68 | Expo Router: src/app holds routes only; other code lives elsewhere in src | [Expo](https://docs.expo.dev/router/basics/core-concepts/) | A | 2026-11-04 |
+| S-69 | Supabase Edge Functions: shared code in _shared; prefer a few larger functions to reduce cold starts | [Supabase](https://supabase.com/docs/guides/functions/development-environment) | A | 2026-11-04 |
+| S-70 | Supabase CLI: Edge Functions can import files outside the supabase directory (monorepos) | [Supabase](https://supabase.com/changelog/33613-deploy-edge-functions-from-cli-without-needing-docker-import-files-outside-of-supabase-directory) | A | 2026-11-04 |
+| S-71 | Supabase Queues: pull-based Postgres queue consumed by Edge Functions; failed messages stay for retry | [Supabase](https://supabase.com/docs/guides/queues/consuming-messages-with-edge-functions) | A | 2026-11-04 |
+| S-72 | Expo guidance on organising app folders for scale (src folder, components, server code) | [Expo](https://expo.dev/blog/expo-app-folder-structure-best-practices) | A | 2026-11-04 |

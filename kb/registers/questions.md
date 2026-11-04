@@ -13,7 +13,7 @@ source: kb/data/questions.yaml
 
 # Open questions
 
-> **In short:** 18 questions still open. When one is answered, add a decision and set `status: Decided` with `decided_by`.
+> **In short:** 19 questions still open. When one is answered, add a decision and set `status: Decided` with `decided_by`.
 
 | ID | Question | Why it matters | Options (lean) | Owner | Status |
 |---|---|---|---|---|---|
@@ -36,3 +36,4 @@ source: kb/data/questions.yaml
 | Q-17 | How long are revealed numbers kept after a season ends? | Retention policy and yearbook design | 90 days (lean) / Until account deletion | Product + legal | Open |
 | Q-18 | After the prototype, stay on Expo/React Native or move to two native apps built with AI agents? | Shopify's 2026 switch shows native is cheaper than it was; BLAG's team skills and AI use decide it | Stay on Expo (lean) / Native iOS + Android / Hybrid with native widgets | Tech | Open |
 | Q-19 | Animation tool for the reveal and stamps: Reanimated only, Lottie, or Rive? | The reveal is BLAG's signature moment; Duolingo uses Rive state machines | Reanimated (lean for MVP) / Rive / Lottie | Design + tech | Open |
+| Q-20 | Package manager: pnpm or Bun? | Affects install speed and React Native compatibility in the monorepo | pnpm with hoisted installs (lean) / Bun | Tech | Open |

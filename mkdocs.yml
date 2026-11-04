@@ -100,6 +100,8 @@ nav:
     - "Data model": 07-architecture/data-model.md
     - "API and realtime": 07-architecture/api-and-realtime.md
     - "Sealing and fairness": 07-architecture/sealing-and-fairness.md
+    - "Repository structure": 07-architecture/repository-structure.md
+    - "Service map": 07-architecture/services.md
     - "Architecture decision records":
       - "Architecture decision records": 07-architecture/adr/README.md
       - "ADR-001: Use React Native with Expo": 07-architecture/adr/ADR-001-expo-react-native.md
@@ -109,6 +111,9 @@ nav:
       - "ADR-005: Drive drops with a scheduler job": 07-architecture/adr/ADR-005-scheduled-drops.md
       - "ADR-006: Persistent circles instead of temporary rooms": 07-architecture/adr/ADR-006-persistent-circles.md
       - "ADR-007: Sign-in method": 07-architecture/adr/ADR-007-authentication.md
+      - "ADR-008: Monorepo with pnpm workspaces and Turborepo": 07-architecture/adr/ADR-008-monorepo.md
+      - "ADR-009: Feature modules with enforced import boundaries": 07-architecture/adr/ADR-009-feature-modules.md
+      - "ADR-010: Domain services as grouped Edge Functions, connected by events": 07-architecture/adr/ADR-010-domain-services.md
   - "Tech stack":
     - "Tech stack": 08-tech-stack/README.md
     - "Industry benchmarks": 08-tech-stack/industry-benchmarks.md

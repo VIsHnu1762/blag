@@ -82,3 +82,9 @@ source: kb/data/sources.yaml
 | S-64 | Strava's iOS app is built with Swift, Objective-C and C/C++ (binary analysis) | [Tech Dev Notes](https://techdevnotes.com/apps/ios/strava/426826309/tech-stack/465.0.0) | C | 2026-11-04 |
 | S-65 | Discord engineering posts on scaling Elixir for realtime messaging | [Discord Engineering](https://medium.com/discord-engineering/engineering-posts/home) | A | 2026-11-04 |
 | S-66 | India mobile OS share June 2026: Android ~93%, iOS ~7% | [StatCounter](https://gs.statcounter.com/os-market-share/mobile/india) | B | 2026-11-04 |
+| S-67 | Expo supports monorepos (Bun, npm, pnpm, Yarn); automatic Metro config from SDK 52; isolated installs from SDK 54 with some library caveats | [Expo](https://docs.expo.dev/guides/monorepos/) | A | 2026-11-04 |
+| S-68 | Expo Router: src/app holds routes only; other code lives elsewhere in src | [Expo](https://docs.expo.dev/router/basics/core-concepts/) | A | 2026-11-04 |
+| S-69 | Supabase Edge Functions: shared code in _shared; prefer a few larger functions to reduce cold starts | [Supabase](https://supabase.com/docs/guides/functions/development-environment) | A | 2026-11-04 |
+| S-70 | Supabase CLI: Edge Functions can import files outside the supabase directory (monorepos) | [Supabase](https://supabase.com/changelog/33613-deploy-edge-functions-from-cli-without-needing-docker-import-files-outside-of-supabase-directory) | A | 2026-11-04 |
+| S-71 | Supabase Queues: pull-based Postgres queue consumed by Edge Functions; failed messages stay for retry | [Supabase](https://supabase.com/docs/guides/queues/consuming-messages-with-edge-functions) | A | 2026-11-04 |
+| S-72 | Expo guidance on organising app folders for scale (src folder, components, server code) | [Expo](https://expo.dev/blog/expo-app-folder-structure-best-practices) | A | 2026-11-04 |

@@ -7,7 +7,7 @@ summary: "Every client action (Edge Function), scheduled job and realtime event,
 order: 2
 last_updated: 2026-11-04
 audience: [developers, agents]
-related: [arch.data, game.state, arch.fairness]
+related: [arch.data, arch.services, game.state, arch.fairness]
 ---
 
 # API and realtime
@@ -15,6 +15,8 @@ related: [arch.data, game.state, arch.fairness]
 > **In short:** about twelve actions and two scheduled jobs; every action is authenticated, checked against the state machine, and idempotent.
 
 ## Conventions
+
+- Actions are grouped by **service** (identity, circles, game, league, scheduler, notifications, proofs): each service is one Edge Function and each action a route inside it, e.g. `game/claim` ([service map](services.md), ADR-010).
 
 - Each action is a Supabase **Edge Function** called with the member's auth token.
 - Body includes `idempotency_key` (a UUID made on the device). Repeat calls with the same key return the first response.
