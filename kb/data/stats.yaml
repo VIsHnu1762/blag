@@ -1,0 +1,25 @@
+# Stat catalogue: what can be claimed about.
+# sensitivity: standard | spicy | health   (spicy and health need an extra opt-in; health is never ranked)
+# lanes: fitness | social | sleep | productivity | fun
+# sources: manual = typed in; android_auto = possible via UsageStatsManager (Research); health_api = HealthKit / Health Connect (Research)
+# floor = smallest truth-zone half-width, in the stat's unit
+meta:
+  title: Stat catalogue
+  last_updated: 2026-11-04
+items:
+  - {id: ST-01, name: Screen time yesterday, unit: minutes, period: yesterday, sensitivity: standard, lanes: [social, fun], sources: [manual, android_auto], floor: 10, where_to_find: "iPhone: Settings > Screen Time. Android: Settings > Digital Wellbeing", release: MVP}
+  - {id: ST-02, name: Social apps yesterday, unit: minutes, period: yesterday, sensitivity: standard, lanes: [social], sources: [manual, android_auto], floor: 5, where_to_find: "Screen Time / Digital Wellbeing, by category or by app", release: MVP}
+  - {id: ST-03, name: Video apps yesterday, unit: minutes, period: yesterday, sensitivity: standard, lanes: [social, fun], sources: [manual, android_auto], floor: 5, where_to_find: "Screen Time / Digital Wellbeing, by app", release: MVP}
+  - {id: ST-04, name: One named app this week, unit: minutes, period: last 7 days, sensitivity: standard, lanes: [social, fun], sources: [manual, android_auto], floor: 10, where_to_find: "Screen Time / Digital Wellbeing, weekly view", release: MVP}
+  - {id: ST-05, name: Phone pickups yesterday, unit: count, period: yesterday, sensitivity: spicy, lanes: [social], sources: [manual], floor: 3, where_to_find: "iPhone: Screen Time > Pickups. Android: Digital Wellbeing > Unlocks (varies by brand)", release: MVP}
+  - {id: ST-06, name: First pickup time, unit: time of day, period: today, sensitivity: standard, lanes: [sleep, fun], sources: [manual], floor: 10, where_to_find: "iPhone: Screen Time > Pickups > First pickup", release: Next}
+  - {id: ST-07, name: Late-night use, unit: minutes after 1am, period: last night, sensitivity: spicy, lanes: [sleep], sources: [manual, android_auto], floor: 5, where_to_find: "Hourly chart in Screen Time / Digital Wellbeing", release: MVP}
+  - {id: ST-08, name: Notifications yesterday, unit: count, period: yesterday, sensitivity: standard, lanes: [social], sources: [manual], floor: 5, where_to_find: "iPhone: Screen Time > Notifications. Android: Digital Wellbeing (varies)", release: Next}
+  - {id: LF-01, name: Steps yesterday, unit: steps, period: yesterday, sensitivity: health, lanes: [fitness], sources: [manual, health_api], floor: 200, where_to_find: "Apple Health / Google Fit / phone's health app", release: MVP}
+  - {id: LF-02, name: Sleep last night, unit: minutes, period: last night, sensitivity: health, lanes: [sleep], sources: [manual, health_api], floor: 15, where_to_find: "Health app if tracked, otherwise your best estimate", release: Next}
+  - {id: LF-03, name: Workout this week, unit: minutes, period: last 7 days, sensitivity: health, lanes: [fitness], sources: [manual, health_api], floor: 10, where_to_find: "Fitness app or your own log", release: Next}
+  - {id: PR-01, name: Focus time yesterday, unit: minutes, period: yesterday, sensitivity: standard, lanes: [productivity], sources: [manual], floor: 10, where_to_find: "Your own log or a focus app", release: MVP}
+  - {id: PR-02, name: Tasks finished yesterday, unit: count, period: yesterday, sensitivity: standard, lanes: [productivity], sources: [manual], floor: 1, where_to_find: "Your to-do list", release: Next}
+  - {id: PR-03, name: Pages read this week, unit: pages, period: last 7 days, sensitivity: standard, lanes: [productivity, fun], sources: [manual], floor: 3, where_to_find: "Your own count", release: Next}
+  - {id: FN-01, name: Cups of tea or coffee yesterday, unit: count, period: yesterday, sensitivity: standard, lanes: [fun], sources: [manual], floor: 0, where_to_find: "Memory", release: MVP}
+  - {id: FN-02, name: Photos taken this week, unit: count, period: last 7 days, sensitivity: standard, lanes: [fun], sources: [manual], floor: 3, where_to_find: "Photos app", release: Next}

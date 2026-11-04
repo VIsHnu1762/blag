@@ -1,0 +1,61 @@
+# Idea bank: single source of truth.
+# Edit here, then run `python scripts/kb.py build` to regenerate kb/registers/ideas.md.
+# release: MVP | Next | Later | Research | Cut
+# source: Spec (original brief) | Talk (design discussions) | Table (round table) | Insp (inspiration library)
+# area: core | fairness | comfort | personal | memory | growth | cards | data
+meta:
+  title: Idea bank
+  last_updated: 2026-11-04
+items:
+  - {id: P-01, area: core, title: Classic Bluff round, description: "Claim, True/Bluff vote, reveal, points.", source: Spec, release: MVP, notes: The heart of BLAG}
+  - {id: P-02, area: core, title: Daily drop, description: "One drop per circle each day, open for 24 hours.", source: "Talk, Insp", release: MVP, notes: Replaces 8-12 round sessions}
+  - {id: P-03, area: core, title: Monthly league, description: "Points add up across a calendar-month season; fresh start each season.", source: "Talk, Insp", release: MVP, notes: Points from skill only}
+  - {id: P-04, area: core, title: Monthly finale, description: "Every member gets a play-style title.", source: Talk, release: MVP, notes: No habit-based titles}
+  - {id: P-05, area: core, title: Guess the number, description: "Voters also guess the real number; closest earns a point.", source: Spec, release: MVP, notes: Adds skill depth}
+  - {id: P-06, area: core, title: Guess yourself, description: "Before checking your own stat, guess it; closest to your own truth earns a point.", source: Insp, release: Next, notes: "Turns the finding that people misjudge their own screen time into play"}
+  - {id: P-07, area: core, title: Daily twist cards, description: "One small rule change a day (double stakes, everyone bluffs, silent round).", source: Table, release: Next, notes: Keeps the loop fresh}
+  - {id: P-08, area: core, title: Beat the house, description: "The whole circle plays together against the app.", source: Table, release: Later, notes: Easy way in for quieter members}
+  - {id: P-09, area: core, title: Knowing score, description: "A score between each pair of friends that grows over a season.", source: "Spec, Table", release: Next, notes: Long-term reason to stay}
+  - {id: P-10, area: core, title: Closest pair, description: "'Digital twins' reveal at the finale.", source: Spec, release: Next, notes: Fun and low-stakes}
+  - {id: P-11, area: core, title: Live mode, description: "Same room, shared screen, phones as controllers.", source: "Spec, Insp", release: Next, notes: Possible web join (Q-08)}
+  - {id: P-12, area: core, title: Pass-the-phone, description: "Everyone plays on one device.", source: Spec, release: Later, notes: Live mode may cover this}
+  - {id: P-13, area: core, title: Hot Seat (original form), description: "20 seconds to defend a stat in front of the group.", source: Spec, release: Cut, notes: "Feels like a courtroom; could return as a friendly 'explain your number' with no timer"}
+  - {id: P-14, area: fairness, title: Seal before you claim, description: "The real number is locked before the claim and votes.", source: Table, release: MVP, notes: Key to fairness with typed-in numbers}
+  - {id: P-15, area: fairness, title: Trust badges, description: "Typed, screenshot or auto-read numbers show a small badge.", source: Table, release: Next, notes: "Badges only, no points, so iPhone players are not disadvantaged (D-17)"}
+  - {id: P-16, area: fairness, title: Screenshot proof, description: "Optional screenshot attached to a seal; no OCR.", source: Spec, release: MVP, notes: Visible only after reveal}
+  - {id: P-17, area: fairness, title: Server-side scoring, description: "Scores, reveals and deadlines are computed only on the server.", source: Spec, release: MVP, notes: Architecture requirement}
+  - {id: P-18, area: comfort, title: Per-stat opt-in, description: "Each stat is opt-in; spicy and health stats need an extra opt-in.", source: Spec, release: MVP, notes: ""}
+  - {id: P-19, area: comfort, title: Invisible pass, description: "A pass looks the same as a random skip.", source: Talk, release: MVP, notes: ""}
+  - {id: P-20, area: comfort, title: Neutral away status, description: "No missed-day counts anywhere.", source: Talk, release: MVP, notes: ""}
+  - {id: P-21, area: comfort, title: Sealed claims in advance, description: "Leave claims for days you'll be away.", source: Talk, release: Next, notes: ""}
+  - {id: P-22, area: comfort, title: Catch-up card, description: "A short summary of what you missed.", source: Talk, release: MVP, notes: ""}
+  - {id: P-23, area: comfort, title: Rest day, description: "One non-stat prompt a week.", source: Table, release: MVP, notes: The ritual never depends on numbers}
+  - {id: P-24, area: comfort, title: Private weekly mirror, description: "A neutral note against your own baseline.", source: Table, release: Next, notes: Only you see it}
+  - {id: P-25, area: comfort, title: Emoji-only reactions, description: "Preset reactions during rounds; never counted or ranked.", source: "Spec, Insp", release: MVP, notes: ""}
+  - {id: P-26, area: comfort, title: Delete my data, description: "Leave a circle or delete everything at any time.", source: Spec, release: MVP, notes: Also a store requirement}
+  - {id: P-27, area: personal, title: Focus lanes, description: "Fitness, less social media, sleep, productivity, just for fun.", source: Talk, release: MVP, notes: Decides what each player's claims are about}
+  - {id: P-28, area: personal, title: My month and our month, description: "Private personal view vs shared circle story.", source: Talk, release: MVP, notes: Connected by stories, not numbers}
+  - {id: P-29, area: personal, title: My four, description: "A mini-profile of four favourite things.", source: Insp, release: Later, notes: Identity without stats}
+  - {id: P-30, area: memory, title: Share card, description: "Shows stamps, titles and moments; never raw stats.", source: "Spec, Insp", release: MVP, notes: Growth engine}
+  - {id: P-31, area: memory, title: Group Wrapped, description: "Monthly story-style recap of the circle.", source: "Spec, Insp", release: Next, notes: ""}
+  - {id: P-32, area: memory, title: Circle yearbook, description: "Archive of each season's best moments.", source: Table, release: Later, notes: The real moat}
+  - {id: P-33, area: memory, title: Milestone rounds, description: "Special rounds for birthdays and circle anniversaries.", source: Table, release: Later, notes: ""}
+  - {id: P-34, area: memory, title: Home-screen widget, description: "Shows today's drop.", source: Insp, release: Later, notes: ""}
+  - {id: P-35, area: growth, title: Invite whole circles, description: "One invite link or QR for the whole group.", source: Table, release: MVP, notes: Answers the cold-start problem}
+  - {id: P-36, area: growth, title: Contact sync, description: "Find friends from the address book.", source: Talk, release: Later, notes: "Off by default, no auto-invites (D-07)"}
+  - {id: P-37, area: growth, title: Circle vs circle, description: "Friendly matches between circles.", source: Table, release: Later, notes: Only once circles are stable}
+  - {id: P-38, area: cards, title: Movie card, description: "Rate a film and guess each other's rating.", source: "Talk, Insp", release: Later, notes: No sensitive data}
+  - {id: P-39, area: cards, title: Meme card, description: "Pick the meme that fits a friend.", source: Talk, release: Later, notes: Needs moderation thinking}
+  - {id: P-40, area: cards, title: Music card, description: "Guess whose song is whose.", source: Talk, release: Later, notes: Licensing check needed}
+  - {id: P-41, area: cards, title: Productivity card, description: "Claims about focus time or tasks done.", source: Talk, release: Later, notes: Fits a focus lane}
+  - {id: P-42, area: cards, title: Voice claims, description: "Make your claim as a short voice note.", source: Table, release: Research, notes: Needs privacy review}
+  - {id: P-43, area: cards, title: Shared circle goal, description: "An opt-in shared challenge such as a phone-free dinner.", source: Insp, release: Later, notes: Never a group punishment}
+  - {id: P-44, area: cards, title: Real-world good at the finale, description: "For example a tree planted for an active circle.", source: Insp, release: Research, notes: Needs a partner and funding}
+  - {id: P-45, area: data, title: Manual entry, description: "Type the number from the phone's own screen-time page.", source: Spec, release: MVP, notes: Works everywhere}
+  - {id: P-46, area: data, title: Android auto-read, description: "Read app usage with the Usage Access permission.", source: Spec, release: Research, notes: Granted in system settings}
+  - {id: P-47, area: data, title: iOS auto-read, description: "Read Screen Time numbers on iPhone.", source: Spec, release: Research, notes: "Apple does not let apps export these numbers; likely impossible (R-01)"}
+  - {id: P-48, area: data, title: Steps from health platforms, description: "Read steps from HealthKit or Health Connect.", source: Spec, release: Research, notes: Health data rules apply}
+  - {id: P-49, area: comfort, title: Secret Speaker, description: "Today's Speaker is revealed only when they make their claim; if they don't, a backup is picked privately.", source: Talk, release: MVP, notes: "Nobody can tell who skipped (D-15)"}
+  - {id: P-50, area: core, title: Best 20 days, description: "Season score counts each player's best 20 daily scores.", source: Talk, release: MVP, notes: "Missing days costs nothing (D-16)"}
+  - {id: P-51, area: fairness, title: Truth zone, description: "The Speaker sees the range of claims that count as true before claiming.", source: Talk, release: MVP, notes: Makes bluffing deliberate, avoids rounding disputes}
+  - {id: P-52, area: core, title: Circle reveal time, description: "Each circle picks a daily reveal time, a shared moment like BeReal's.", source: "Talk, Insp", release: MVP, notes: "Early reveal if everyone has voted"}

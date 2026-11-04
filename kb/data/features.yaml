@@ -1,0 +1,223 @@
+# Feature catalogue: what gets built. Links back to ideas (P-) and decisions (D-).
+# priority: Must | Should | Could | Won't (this release)
+# release: MVP | Next | Later
+meta:
+  title: Feature catalogue
+  last_updated: 2026-11-04
+items:
+  - id: F-01
+    name: Sign up and age gate
+    area: Account
+    release: MVP
+    priority: Must
+    ideas: []
+    acceptance:
+      - "A new person can create an account in under 2 minutes"
+      - "Sign-up asks the person to confirm they are 18 or older; under-18s can't continue (Q-03)"
+      - "No contacts or usage permissions are requested at sign-up"
+  - id: F-02
+    name: Create a circle
+    area: Circles
+    release: MVP
+    priority: Must
+    ideas: [P-35]
+    acceptance:
+      - "Organiser sets a name, home time zone, drop time and reveal time"
+      - "Defaults: drop 08:00, Speaker cutoff 13:00, backup cutoff 18:00, reveal 21:00 in the home time zone"
+      - "An invite link and QR code are created; the link can be reset"
+  - id: F-03
+    name: Join and leave a circle
+    area: Circles
+    release: MVP
+    priority: Must
+    ideas: [P-35, P-26]
+    acceptance:
+      - "Joining by link or QR takes under 30 seconds after sign-in"
+      - "A circle holds 3-8 members; the 9th person sees a friendly 'circle is full'"
+      - "Leaving removes the member from future drops; other members see only that the circle changed size"
+  - id: F-04
+    name: Stat consent and focus lane
+    area: Comfort
+    release: MVP
+    priority: Must
+    ideas: [P-18, P-27]
+    acceptance:
+      - "Each stat in the catalogue is off until the member turns it on"
+      - "Spicy and health stats need a second, separate confirmation"
+      - "Member picks one focus lane; it can be changed any time and takes effect the next day"
+      - "A member is only chosen as Speaker for stats they have turned on"
+  - id: F-05
+    name: Daily drop
+    area: Game
+    release: MVP
+    priority: Must
+    ideas: [P-02, P-49, P-52]
+    acceptance:
+      - "A drop opens at the circle's drop time every day of the season"
+      - "The Speaker gets a private notification; nobody else learns who the Speaker is until the claim"
+      - "If the Speaker hasn't claimed by the cutoff, a backup Speaker is chosen privately; if none, the drop becomes a rest round"
+  - id: F-06
+    name: Seal and claim
+    area: Game
+    release: MVP
+    priority: Must
+    ideas: [P-14, P-51, P-45, P-16]
+    acceptance:
+      - "Speaker enters the real number first; it is stored server-side and cannot be changed after the claim"
+      - "Speaker then sees the truth zone and enters a claim"
+      - "Optional screenshot proof can be attached to the seal"
+      - "Seal and claim take under 2 minutes for a first-time Speaker"
+  - id: F-07
+    name: Read and guess
+    area: Game
+    release: MVP
+    priority: Must
+    ideas: [P-01, P-05]
+    acceptance:
+      - "Each non-Speaker member can read TRUE or BLUFF once, and optionally guess the number"
+      - "A read can be changed until the reveal"
+      - "Nobody can see anyone else's read before the reveal"
+  - id: F-08
+    name: Reveal
+    area: Game
+    release: MVP
+    priority: Must
+    ideas: [P-01, P-52]
+    acceptance:
+      - "Reveal happens at the reveal time, or as soon as every active member has read"
+      - "Shows the sealed number, the TRUTH or BLUFF! stamp, each member's read and points"
+      - "Respects reduced-motion settings; stamp is readable without colour"
+  - id: F-09
+    name: Reactions
+    area: Comfort
+    release: MVP
+    priority: Should
+    ideas: [P-25]
+    acceptance:
+      - "Members can add preset emoji to a revealed round"
+      - "Reactions are never counted, totalled or ranked anywhere"
+      - "No free-text input exists on round screens"
+  - id: F-10
+    name: Scoring and league
+    area: Game
+    release: MVP
+    priority: Must
+    ideas: [P-03, P-17, P-50]
+    acceptance:
+      - "All points are computed on the server using the rules in the scoring spec"
+      - "Season score is the sum of a member's best 20 day scores"
+      - "League view shows names and season scores, with shared positions for ties"
+  - id: F-11
+    name: Finale and titles
+    area: Game
+    release: MVP
+    priority: Must
+    ideas: [P-04]
+    acceptance:
+      - "When a season ends, every member who played at least one round gets exactly one title"
+      - "Titles come only from the approved title list in the scoring spec"
+  - id: F-12
+    name: Share card
+    area: Memory
+    release: MVP
+    priority: Should
+    ideas: [P-30]
+    acceptance:
+      - "A finale share image shows the circle name, titles and stamps"
+      - "It never shows any stat value"
+  - id: F-13
+    name: Invisible pass and away status
+    area: Comfort
+    release: MVP
+    priority: Must
+    ideas: [P-19, P-20]
+    acceptance:
+      - "A member can pass today from the drop screen with one tap"
+      - "No screen, notification or share card shows that someone passed or was away"
+  - id: F-14
+    name: Catch-up card
+    area: Comfort
+    release: MVP
+    priority: Should
+    ideas: [P-22]
+    acceptance:
+      - "After 2+ days without opening the app, a member sees a short summary of the drops they missed"
+      - "It contains no count of missed days"
+  - id: F-15
+    name: Rest day
+    area: Comfort
+    release: MVP
+    priority: Should
+    ideas: [P-23]
+    acceptance:
+      - "One drop each week uses a non-stat prompt chosen from the prompt bank"
+  - id: F-16
+    name: My month
+    area: Personal
+    release: MVP
+    priority: Could
+    ideas: [P-28]
+    acceptance:
+      - "Shows only the member's own sealed values against their own earlier values"
+      - "Uses neutral wording; no red/green, no up/down arrows"
+  - id: F-17
+    name: Notifications
+    area: Platform
+    release: MVP
+    priority: Must
+    ideas: []
+    acceptance:
+      - "Speaker gets a private nudge; everyone gets one drop reminder and one reveal alert"
+      - "No notification mentions losing, missing or other members' absence"
+      - "Quiet hours default 23:00-08:00 local"
+  - id: F-18
+    name: Delete my data
+    area: Account
+    release: MVP
+    priority: Must
+    ideas: [P-26]
+    acceptance:
+      - "Account deletion can be started inside the app in Settings"
+      - "A web page also accepts deletion requests (Google Play requirement)"
+      - "Deletion removes personal data; past rounds show 'a former member'"
+  - id: F-19
+    name: Guess yourself
+    area: Game
+    release: Next
+    priority: Should
+    ideas: [P-06]
+    acceptance:
+      - "Before entering a seal, the Speaker may guess their own number; closeness earns a point"
+  - id: F-20
+    name: Knowing score
+    area: Game
+    release: Next
+    priority: Should
+    ideas: [P-09]
+    acceptance:
+      - "Each pair of members has a private-to-the-pair score of how well they read each other"
+  - id: F-21
+    name: Live mode
+    area: Game
+    release: Next
+    priority: Could
+    ideas: [P-11]
+    acceptance:
+      - "A circle in the same room can run a drop with a 60-second read timer and instant reveal"
+  - id: F-22
+    name: Group Wrapped
+    area: Memory
+    release: Next
+    priority: Should
+    ideas: [P-31]
+    acceptance:
+      - "A story-style recap of the season: best bluff, closest guess, most alike pair, no raw history"
+  - id: F-23
+    name: Android auto-read
+    area: Data
+    release: Later
+    priority: Could
+    ideas: [P-46]
+    acceptance:
+      - "With Usage Access granted, the seal can be filled from UsageStatsManager; if the member edits the value, the badge becomes Typed"
+      - "Shows an 'auto-read' trust badge; no extra points (D-17)"

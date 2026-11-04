@@ -1,0 +1,1199 @@
+{
+  "generated_by": "scripts/kb.py",
+  "repo": "https://github.com/VIsHnu1762/blag",
+  "pages": [
+    {
+      "id": "kb.home",
+      "title": "BLAG knowledge base",
+      "section": "kb",
+      "status": "living",
+      "summary": "Home of the BLAG knowledge base, a map of every section and where to start.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "start.home",
+        "idea.vision",
+        "registers.index"
+      ],
+      "audience": [
+        "everyone",
+        "agents"
+      ],
+      "path": "kb/README.md"
+    },
+    {
+      "id": "start.home",
+      "title": "Start here",
+      "section": "00-start-here",
+      "status": "living",
+      "summary": "How to use the KB, with reading paths for each role and for AI agents.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "kb.home",
+        "start.glossary",
+        "start.faq",
+        "start.conventions"
+      ],
+      "audience": [
+        "everyone",
+        "agents"
+      ],
+      "path": "kb/00-start-here/README.md"
+    },
+    {
+      "id": "start.glossary",
+      "title": "Glossary",
+      "section": "00-start-here",
+      "status": "generated",
+      "summary": "Shared vocabulary for people, code and agents.",
+      "last_updated": "2026-11-04",
+      "related": [],
+      "audience": [],
+      "path": "kb/00-start-here/glossary.md"
+    },
+    {
+      "id": "start.faq",
+      "title": "FAQ",
+      "section": "00-start-here",
+      "status": "living",
+      "summary": "Short answers to the questions people ask most about BLAG.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "idea.vision",
+        "game.rules",
+        "privacy.home",
+        "pitch.home"
+      ],
+      "audience": [
+        "everyone",
+        "judges"
+      ],
+      "path": "kb/00-start-here/faq.md"
+    },
+    {
+      "id": "start.conventions",
+      "title": "Conventions",
+      "section": "00-start-here",
+      "status": "agreed",
+      "summary": "Frontmatter schema, id formats, status values and claim labels used across the KB.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "start.template",
+        "start.home"
+      ],
+      "audience": [
+        "everyone",
+        "agents"
+      ],
+      "path": "kb/00-start-here/conventions.md"
+    },
+    {
+      "id": "start.template",
+      "title": "Page template",
+      "section": "00-start-here",
+      "status": "living",
+      "summary": "Copy this file to start a new KB page.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "start.conventions"
+      ],
+      "audience": [
+        "everyone",
+        "agents"
+      ],
+      "path": "kb/00-start-here/doc-template.md"
+    },
+    {
+      "id": "idea.home",
+      "title": "Idea",
+      "section": "01-idea",
+      "status": "proposal",
+      "summary": "What BLAG is and why: vision, problem, concept, research on 15 products, red lines, competitors and how we'll validate it.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "idea.vision",
+        "idea.concept",
+        "registers.ideas"
+      ],
+      "audience": [
+        "everyone",
+        "judges",
+        "agents"
+      ],
+      "path": "kb/01-idea/README.md"
+    },
+    {
+      "id": "idea.vision",
+      "title": "Vision",
+      "section": "01-idea",
+      "status": "proposal",
+      "summary": "Name, title, one-liner, vision, mission, category, pillars and the 290-word description of BLAG.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "idea.concept",
+        "idea.problem",
+        "pitch.home"
+      ],
+      "audience": [
+        "everyone",
+        "judges"
+      ],
+      "path": "kb/01-idea/01-vision.md"
+    },
+    {
+      "id": "idea.problem",
+      "title": "Problem and opportunity",
+      "section": "01-idea",
+      "status": "proposal",
+      "summary": "The three problems BLAG addresses, the evidence for each, and the gap in the market.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "idea.vision",
+        "idea.competitors"
+      ],
+      "audience": [
+        "everyone",
+        "judges"
+      ],
+      "path": "kb/01-idea/02-problem-and-opportunity.md"
+    },
+    {
+      "id": "idea.concept",
+      "title": "Concept",
+      "section": "01-idea",
+      "status": "proposal",
+      "summary": "How BLAG works as an experience: circles, the daily drop, monthly seasons, personal and shared layers, absence and passing.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "game.rules",
+        "game.scoring",
+        "game.seasons",
+        "idea.principles"
+      ],
+      "audience": [
+        "everyone"
+      ],
+      "path": "kb/01-idea/03-concept.md"
+    },
+    {
+      "id": "idea.inspiration",
+      "title": "Inspiration library",
+      "section": "01-idea",
+      "status": "research",
+      "summary": "Fifteen products studied (Wordle, BeReal, Duolingo, Spotify Wrapped and more): what worked, what failed, what BLAG borrows or rejects.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "idea.principles",
+        "idea.competitors"
+      ],
+      "audience": [
+        "everyone"
+      ],
+      "path": "kb/01-idea/04-inspiration-library.md"
+    },
+    {
+      "id": "idea.principles",
+      "title": "Principles and red lines",
+      "section": "01-idea",
+      "status": "proposal",
+      "summary": "Ten product principles, the red lines no feature may cross, and copy examples.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "brand.voice",
+        "design.emotional"
+      ],
+      "audience": [
+        "everyone",
+        "agents"
+      ],
+      "path": "kb/01-idea/05-principles-and-red-lines.md"
+    },
+    {
+      "id": "idea.competitors",
+      "title": "Competitive landscape",
+      "section": "01-idea",
+      "status": "research",
+      "summary": "Where BLAG sits against screen-time apps, daily social apps and party games.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "idea.inspiration",
+        "idea.problem"
+      ],
+      "audience": [
+        "everyone",
+        "judges"
+      ],
+      "path": "kb/01-idea/06-competitive-landscape.md"
+    },
+    {
+      "id": "idea.validation",
+      "title": "Validation plan",
+      "section": "01-idea",
+      "status": "proposal",
+      "summary": "How to test BLAG's riskiest assumptions cheaply before writing code, starting with a two-week hand-run test.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "registers.risks",
+        "roadmap.home",
+        "users.research"
+      ],
+      "audience": [
+        "product",
+        "everyone"
+      ],
+      "path": "kb/01-idea/07-validation-plan.md"
+    },
+    {
+      "id": "users.home",
+      "title": "Users",
+      "section": "02-users",
+      "status": "draft",
+      "summary": "Who BLAG is for and not for, the roles inside a circle, and links to personas, journeys and the research plan.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "users.personas",
+        "users.journeys",
+        "users.research",
+        "idea.vision"
+      ],
+      "audience": [
+        "everyone",
+        "design",
+        "judges"
+      ],
+      "path": "kb/02-users/README.md"
+    },
+    {
+      "id": "users.personas",
+      "title": "Personas",
+      "section": "02-users",
+      "status": "draft",
+      "summary": "Five proto-personas (organiser, quiet member, long-distance friend, fitness lane, sceptic) and one anti-persona, to be validated by interviews.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "users.home",
+        "users.journeys",
+        "design.emotional"
+      ],
+      "audience": [
+        "design",
+        "product",
+        "everyone"
+      ],
+      "path": "kb/02-users/personas.md"
+    },
+    {
+      "id": "users.journeys",
+      "title": "Journeys",
+      "section": "02-users",
+      "status": "draft",
+      "summary": "Six key journeys step by step: first invite, first read, first time as Speaker, a week away, the finale, and leaving or deleting.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "users.personas",
+        "design.flows",
+        "design.screens"
+      ],
+      "audience": [
+        "design",
+        "product",
+        "developers"
+      ],
+      "path": "kb/02-users/journeys.md"
+    },
+    {
+      "id": "users.research",
+      "title": "Research plan",
+      "section": "02-users",
+      "status": "draft",
+      "summary": "The user research to run: problem interviews, the find-your-number task, the hand-run test, and usability tests for the prototype.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "idea.validation",
+        "users.personas"
+      ],
+      "audience": [
+        "product",
+        "design"
+      ],
+      "path": "kb/02-users/research-plan.md"
+    },
+    {
+      "id": "game.home",
+      "title": "Game design",
+      "section": "03-game-design",
+      "status": "proposal",
+      "summary": "Index of the exact game rules: a day's flow, scoring, seasons and titles, stats and the truth zone, prompts, state machine and edge cases.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "game.rules",
+        "game.scoring",
+        "idea.concept"
+      ],
+      "audience": [
+        "product",
+        "developers",
+        "agents"
+      ],
+      "path": "kb/03-game-design/README.md"
+    },
+    {
+      "id": "game.rules",
+      "title": "Rules",
+      "section": "03-game-design",
+      "status": "proposal",
+      "summary": "Step-by-step rules of a daily drop: roles, timings, sealing, claiming, reading, reveal, passing and absence.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "game.scoring",
+        "game.state",
+        "game.stats",
+        "game.edge"
+      ],
+      "audience": [
+        "everyone",
+        "developers",
+        "agents"
+      ],
+      "path": "kb/03-game-design/rules.md"
+    },
+    {
+      "id": "game.scoring",
+      "title": "Scoring",
+      "section": "03-game-design",
+      "status": "proposal",
+      "summary": "Exact point rules for readers and Speakers, with worked examples, ties and the reasoning behind each rule.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "game.rules",
+        "game.seasons",
+        "game.stats"
+      ],
+      "audience": [
+        "product",
+        "developers",
+        "agents"
+      ],
+      "path": "kb/03-game-design/scoring.md"
+    },
+    {
+      "id": "game.seasons",
+      "title": "Seasons and titles",
+      "section": "03-game-design",
+      "status": "proposal",
+      "summary": "How day scores become a season score, what the league view shows, and how every member gets exactly one title at the finale.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "game.scoring",
+        "design.emotional",
+        "brand.voice"
+      ],
+      "audience": [
+        "product",
+        "developers",
+        "design"
+      ],
+      "path": "kb/03-game-design/seasons-and-titles.md"
+    },
+    {
+      "id": "game.stats",
+      "title": "Stats and the truth zone",
+      "section": "03-game-design",
+      "status": "proposal",
+      "summary": "What stats can be claimed about, their sensitivity levels and consent rules, and how the truth zone decides whether a claim is true.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "registers.stats",
+        "game.scoring",
+        "mobile.home",
+        "privacy.home"
+      ],
+      "audience": [
+        "product",
+        "developers",
+        "design"
+      ],
+      "path": "kb/03-game-design/stats-and-truth-zone.md"
+    },
+    {
+      "id": "game.prompts",
+      "title": "Prompt engine",
+      "section": "03-game-design",
+      "status": "proposal",
+      "summary": "How the server chooses each day's Speaker, stat and wording, plus the rest-day prompt bank and rules for safe prompts.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "game.rules",
+        "game.stats",
+        "brand.voice"
+      ],
+      "audience": [
+        "product",
+        "developers",
+        "agents"
+      ],
+      "path": "kb/03-game-design/prompt-engine.md"
+    },
+    {
+      "id": "game.state",
+      "title": "State machine",
+      "section": "03-game-design",
+      "status": "proposal",
+      "summary": "Every state a drop can be in, the events that move it, who may act in each state, and what the server must reject.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "game.rules",
+        "arch.api",
+        "arch.fairness"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/03-game-design/state-machine.md"
+    },
+    {
+      "id": "game.edge",
+      "title": "Edge cases",
+      "section": "03-game-design",
+      "status": "proposal",
+      "summary": "What happens in unusual situations: zero values, joins and leaves mid-day, everyone passing, time-zone changes, network failures and more.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "game.rules",
+        "game.state",
+        "game.scoring"
+      ],
+      "audience": [
+        "developers",
+        "product",
+        "agents"
+      ],
+      "path": "kb/03-game-design/edge-cases.md"
+    },
+    {
+      "id": "features.home",
+      "title": "Features",
+      "section": "04-features",
+      "status": "draft",
+      "summary": "How ideas become features: the MVP scope, user stories, notifications, and the generated feature catalogue with acceptance criteria.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "registers.features",
+        "features.mvp",
+        "features.stories",
+        "features.notifications"
+      ],
+      "audience": [
+        "product",
+        "developers",
+        "agents"
+      ],
+      "path": "kb/04-features/README.md"
+    },
+    {
+      "id": "features.mvp",
+      "title": "MVP scope",
+      "section": "04-features",
+      "status": "proposal",
+      "summary": "What's in and out of the first playable version of BLAG, the reasons, and the conditions for freezing the scope.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "registers.features",
+        "roadmap.home",
+        "game.rules"
+      ],
+      "audience": [
+        "product",
+        "developers",
+        "judges"
+      ],
+      "path": "kb/04-features/mvp-scope.md"
+    },
+    {
+      "id": "features.stories",
+      "title": "User stories",
+      "section": "04-features",
+      "status": "draft",
+      "summary": "The MVP written as user stories in seven epics, each linked to features and acceptance criteria.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "registers.features",
+        "features.mvp",
+        "users.journeys"
+      ],
+      "audience": [
+        "developers",
+        "product",
+        "agents"
+      ],
+      "path": "kb/04-features/user-stories.md"
+    },
+    {
+      "id": "features.notifications",
+      "title": "Notifications",
+      "section": "04-features",
+      "status": "proposal",
+      "summary": "Every notification BLAG may send, its exact wording, timing and privacy rules, and what is banned.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "brand.voice",
+        "idea.principles",
+        "registers.features"
+      ],
+      "audience": [
+        "product",
+        "design",
+        "developers"
+      ],
+      "path": "kb/04-features/notifications.md"
+    },
+    {
+      "id": "brand.home",
+      "title": "Brand",
+      "section": "05-brand",
+      "status": "draft",
+      "summary": "BLAG's name, title, personality, brand promise and the links to voice and tone and visual identity.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "brand.voice",
+        "brand.visual",
+        "idea.vision"
+      ],
+      "audience": [
+        "design",
+        "everyone",
+        "judges"
+      ],
+      "path": "kb/05-brand/README.md"
+    },
+    {
+      "id": "brand.voice",
+      "title": "Voice and tone",
+      "section": "05-brand",
+      "status": "proposal",
+      "summary": "How BLAG writes: four voice principles, words to use and avoid, tone by moment, and ready-to-use copy for every key screen.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "brand.home",
+        "idea.principles",
+        "features.notifications",
+        "design.emotional"
+      ],
+      "audience": [
+        "design",
+        "product",
+        "developers",
+        "agents"
+      ],
+      "path": "kb/05-brand/voice-and-tone.md"
+    },
+    {
+      "id": "brand.visual",
+      "title": "Visual identity",
+      "section": "05-brand",
+      "status": "proposal",
+      "summary": "Proposed colour tokens with measured WCAG contrast, typography, shape, motion, sound and haptics for BLAG.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "brand.home",
+        "design.accessibility",
+        "design.emotional"
+      ],
+      "audience": [
+        "design",
+        "developers"
+      ],
+      "path": "kb/05-brand/visual-identity.md"
+    },
+    {
+      "id": "design.home",
+      "title": "Design",
+      "section": "06-design",
+      "status": "draft",
+      "summary": "Index of BLAG's design work: emotional design, screen inventory, user flows and accessibility.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "design.emotional",
+        "design.screens",
+        "design.flows",
+        "design.accessibility",
+        "brand.home"
+      ],
+      "audience": [
+        "design",
+        "developers",
+        "everyone"
+      ],
+      "path": "kb/06-design/README.md"
+    },
+    {
+      "id": "design.emotional",
+      "title": "Emotional design",
+      "section": "06-design",
+      "status": "proposal",
+      "summary": "The feelings BLAG must create and avoid, the emotional arc of a day and a season, the design review of the early concept, and the fixes it led to.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "idea.principles",
+        "brand.voice",
+        "game.seasons",
+        "users.personas"
+      ],
+      "audience": [
+        "design",
+        "product",
+        "everyone",
+        "judges"
+      ],
+      "path": "kb/06-design/emotional-design.md"
+    },
+    {
+      "id": "design.screens",
+      "title": "Screens",
+      "section": "06-design",
+      "status": "draft",
+      "summary": "Inventory of the 16 MVP screens: purpose, key contents, primary action, and the empty, loading and error states each needs.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "design.flows",
+        "registers.features",
+        "users.journeys"
+      ],
+      "audience": [
+        "design",
+        "developers",
+        "agents"
+      ],
+      "path": "kb/06-design/screens.md"
+    },
+    {
+      "id": "design.flows",
+      "title": "Flows",
+      "section": "06-design",
+      "status": "draft",
+      "summary": "Diagrams of the main user flows: onboarding and joining, a Speaker's turn, a reader's turn, and leaving or deleting.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "design.screens",
+        "users.journeys",
+        "game.state"
+      ],
+      "audience": [
+        "design",
+        "developers"
+      ],
+      "path": "kb/06-design/flows.md"
+    },
+    {
+      "id": "design.accessibility",
+      "title": "Accessibility",
+      "section": "06-design",
+      "status": "proposal",
+      "summary": "WCAG 2.2 AA requirements applied to BLAG's screens, plus inclusion for low-end phones, patchy data and different languages.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "brand.visual",
+        "design.screens",
+        "quality.home"
+      ],
+      "audience": [
+        "design",
+        "developers"
+      ],
+      "path": "kb/06-design/accessibility.md"
+    },
+    {
+      "id": "arch.home",
+      "title": "Architecture",
+      "section": "07-architecture",
+      "status": "draft",
+      "summary": "System overview of BLAG: components, trust boundaries, code layout and the architecture principles, with links to the data model, API, fairness design and ADRs.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.data",
+        "arch.api",
+        "arch.fairness",
+        "arch.adr",
+        "stack.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/README.md"
+    },
+    {
+      "id": "arch.data",
+      "title": "Data model",
+      "section": "07-architecture",
+      "status": "draft",
+      "summary": "Proposed Postgres tables for circles, seasons, drops, rounds, seals, reads and results, with relationships and who can read each table.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.home",
+        "arch.fairness",
+        "privacy.inventory",
+        "game.state"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/data-model.md"
+    },
+    {
+      "id": "arch.api",
+      "title": "API and realtime",
+      "section": "07-architecture",
+      "status": "draft",
+      "summary": "Every client action (Edge Function), scheduled job and realtime event, with inputs, checks and responses.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.data",
+        "game.state",
+        "arch.fairness"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/api-and-realtime.md"
+    },
+    {
+      "id": "arch.fairness",
+      "title": "Sealing and fairness",
+      "section": "07-architecture",
+      "status": "draft",
+      "summary": "How BLAG keeps the game fair with typed-in numbers: sealing, hidden reads, server-side scoring, proof screenshots and what can't be prevented.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.data",
+        "arch.api",
+        "privacy.threats",
+        "game.rules"
+      ],
+      "audience": [
+        "developers",
+        "product",
+        "judges",
+        "agents"
+      ],
+      "path": "kb/07-architecture/sealing-and-fairness.md"
+    },
+    {
+      "id": "arch.adr",
+      "title": "Architecture decision records",
+      "section": "07-architecture",
+      "status": "living",
+      "summary": "Index of BLAG's architecture decisions, each with context, options and consequences.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/README.md"
+    },
+    {
+      "id": "adr.001",
+      "title": "ADR-001: Use React Native with Expo",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "ADR-001: Use React Native with Expo. Status: Proposed (from the team brief; confirm at kick-off).",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-001-expo-react-native.md"
+    },
+    {
+      "id": "adr.002",
+      "title": "ADR-002: Use Supabase as the backend",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "ADR-002: Use Supabase as the backend. Status: Proposed (confirm at kick-off).",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-002-supabase-backend.md"
+    },
+    {
+      "id": "adr.003",
+      "title": "ADR-003: Server-authoritative game with sealed values",
+      "section": "07-architecture",
+      "status": "agreed",
+      "summary": "ADR-003: Server-authoritative game with sealed values. Status: Accepted.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-003-server-authoritative.md"
+    },
+    {
+      "id": "adr.004",
+      "title": "ADR-004: Manual entry first, behind a provider interface",
+      "section": "07-architecture",
+      "status": "agreed",
+      "summary": "ADR-004: Manual entry first, behind a provider interface. Status: Accepted.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-004-stat-providers.md"
+    },
+    {
+      "id": "adr.005",
+      "title": "ADR-005: Drive drops with a scheduler job",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "ADR-005: Drive drops with a scheduler job. Status: Proposed.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-005-scheduled-drops.md"
+    },
+    {
+      "id": "adr.006",
+      "title": "ADR-006: Persistent circles instead of temporary rooms",
+      "section": "07-architecture",
+      "status": "agreed",
+      "summary": "ADR-006: Persistent circles instead of temporary rooms. Status: Accepted.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-006-persistent-circles.md"
+    },
+    {
+      "id": "adr.007",
+      "title": "ADR-007: Sign-in method",
+      "section": "07-architecture",
+      "status": "proposal",
+      "summary": "ADR-007: Sign-in method. Status: Proposed (Q-13 open).",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.adr",
+        "arch.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/07-architecture/adr/ADR-007-authentication.md"
+    },
+    {
+      "id": "stack.home",
+      "title": "Tech stack",
+      "section": "08-tech-stack",
+      "status": "proposal",
+      "summary": "Proposed tools for every layer of BLAG (app, backend, scheduling, notifications, testing, docs) with reasons, alternatives and open choices.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.home",
+        "adr.001",
+        "adr.002",
+        "mobile.home"
+      ],
+      "audience": [
+        "developers",
+        "agents",
+        "judges"
+      ],
+      "path": "kb/08-tech-stack/README.md"
+    },
+    {
+      "id": "mobile.home",
+      "title": "Mobile dependencies",
+      "section": "09-mobile-dependencies",
+      "status": "research",
+      "summary": "What iOS and Android actually allow for screen time, app usage and health data, with confidence levels, sources and consequences for BLAG.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "mobile.permissions",
+        "game.stats",
+        "adr.004",
+        "privacy.compliance"
+      ],
+      "audience": [
+        "developers",
+        "product",
+        "judges",
+        "agents"
+      ],
+      "path": "kb/09-mobile-dependencies/README.md"
+    },
+    {
+      "id": "mobile.permissions",
+      "title": "Permissions",
+      "section": "09-mobile-dependencies",
+      "status": "proposal",
+      "summary": "Every device permission BLAG might ask for, when it's asked, the explanation shown, and the fallback if refused.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "mobile.home",
+        "privacy.inventory",
+        "brand.voice"
+      ],
+      "audience": [
+        "developers",
+        "design",
+        "agents"
+      ],
+      "path": "kb/09-mobile-dependencies/permissions.md"
+    },
+    {
+      "id": "privacy.home",
+      "title": "Privacy and security",
+      "section": "10-privacy-security",
+      "status": "draft",
+      "summary": "BLAG's privacy promises and security approach, with links to the data inventory, threat model and compliance map.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "privacy.inventory",
+        "privacy.threats",
+        "privacy.compliance",
+        "arch.fairness"
+      ],
+      "audience": [
+        "everyone",
+        "developers",
+        "judges",
+        "agents"
+      ],
+      "path": "kb/10-privacy-security/README.md"
+    },
+    {
+      "id": "privacy.inventory",
+      "title": "Data inventory",
+      "section": "10-privacy-security",
+      "status": "draft",
+      "summary": "Every type of data BLAG would store, its purpose, who can see it, where it lives and how long it's kept.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "privacy.home",
+        "arch.data",
+        "privacy.compliance"
+      ],
+      "audience": [
+        "developers",
+        "product",
+        "agents"
+      ],
+      "path": "kb/10-privacy-security/data-inventory.md"
+    },
+    {
+      "id": "privacy.threats",
+      "title": "Threat model",
+      "section": "10-privacy-security",
+      "status": "draft",
+      "summary": "Assets, attackers and threats to BLAG (cheating, leaks, account abuse, harassment), with mitigations and remaining risk.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "arch.fairness",
+        "privacy.home",
+        "quality.home"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/10-privacy-security/threat-model.md"
+    },
+    {
+      "id": "privacy.compliance",
+      "title": "Compliance map",
+      "section": "10-privacy-security",
+      "status": "research",
+      "summary": "Laws, store rules and standards relevant to BLAG (DPDP, GDPR, CCPA, Apple and Google rules, WCAG, OWASP MASVS, ISO documentation standards) and what each requires.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "privacy.home",
+        "privacy.inventory",
+        "mobile.home"
+      ],
+      "audience": [
+        "product",
+        "developers",
+        "judges"
+      ],
+      "path": "kb/10-privacy-security/compliance.md"
+    },
+    {
+      "id": "quality.home",
+      "title": "Quality",
+      "section": "11-quality",
+      "status": "draft",
+      "summary": "Test strategy for BLAG (game engine, access rules, flows, accessibility, devices), key test cases, and the definition of ready and done.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "game.scoring",
+        "arch.fairness",
+        "privacy.threats",
+        "registers.features"
+      ],
+      "audience": [
+        "developers",
+        "agents"
+      ],
+      "path": "kb/11-quality/README.md"
+    },
+    {
+      "id": "roadmap.home",
+      "title": "Roadmap",
+      "section": "12-roadmap",
+      "status": "proposal",
+      "summary": "Six phases from knowledge base and hand-run test to prototype, MVP, closed beta and launch, with goals, deliverables and exit criteria.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "idea.validation",
+        "features.mvp",
+        "registers.features"
+      ],
+      "audience": [
+        "everyone",
+        "judges"
+      ],
+      "path": "kb/12-roadmap/README.md"
+    },
+    {
+      "id": "pitch.home",
+      "title": "Pitch kit",
+      "section": "13-pitch",
+      "status": "draft",
+      "summary": "Everything for presenting BLAG: theme fit, one-liners, the 290-word description, a 3-minute demo script, and answers to likely judge questions.",
+      "last_updated": "2026-11-04",
+      "related": [
+        "idea.vision",
+        "start.faq",
+        "roadmap.home"
+      ],
+      "audience": [
+        "judges",
+        "everyone"
+      ],
+      "path": "kb/13-pitch/README.md"
+    },
+    {
+      "id": "registers.index",
+      "title": "Registers",
+      "section": "registers",
+      "status": "generated",
+      "summary": "Index of the living lists: ideas, features, stats, decisions, questions, risks, sources.",
+      "last_updated": "2026-11-04",
+      "related": [],
+      "audience": [],
+      "path": "kb/registers/README.md"
+    },
+    {
+      "id": "registers.ideas",
+      "title": "Idea bank",
+      "section": "registers",
+      "status": "generated",
+      "summary": "All 52 ideas for BLAG with release tags.",
+      "last_updated": "2026-11-04",
+      "related": [],
+      "audience": [],
+      "path": "kb/registers/ideas.md"
+    },
+    {
+      "id": "registers.features",
+      "title": "Feature catalogue",
+      "section": "registers",
+      "status": "generated",
+      "summary": "Features by release with acceptance criteria.",
+      "last_updated": "2026-11-04",
+      "related": [],
+      "audience": [],
+      "path": "kb/registers/features.md"
+    },
+    {
+      "id": "registers.stats",
+      "title": "Stat catalogue",
+      "section": "registers",
+      "status": "generated",
+      "summary": "Stats that can be claimed about, with sensitivity and sources.",
+      "last_updated": "2026-11-04",
+      "related": [],
+      "audience": [],
+      "path": "kb/registers/stats.md"
+    },
+    {
+      "id": "registers.decisions",
+      "title": "Decision log",
+      "section": "registers",
+      "status": "generated",
+      "summary": "Every decision with alternatives, reasons and status.",
+      "last_updated": "2026-11-04",
+      "related": [],
+      "audience": [],
+      "path": "kb/registers/decisions.md"
+    },
+    {
+      "id": "registers.questions",
+      "title": "Open questions",
+      "section": "registers",
+      "status": "generated",
+      "summary": "Questions that still need a decision, with owners.",
+      "last_updated": "2026-11-04",
+      "related": [],
+      "audience": [],
+      "path": "kb/registers/questions.md"
+    },
+    {
+      "id": "registers.risks",
+      "title": "Risks and assumptions",
+      "section": "registers",
+      "status": "generated",
+      "summary": "Untested assumptions and project risks with mitigations.",
+      "last_updated": "2026-11-04",
+      "related": [],
+      "audience": [],
+      "path": "kb/registers/risks.md"
+    },
+    {
+      "id": "registers.sources",
+      "title": "Sources",
+      "section": "registers",
+      "status": "generated",
+      "summary": "Research sources with quality ratings and dates.",
+      "last_updated": "2026-11-04",
+      "related": [],
+      "audience": [],
+      "path": "kb/registers/sources.md"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+# BLAG: Are You Bluffing?
+
+> BLAG is a privacy-first social game for close friend groups of 3-8. Each day one friend makes a claim about their own habits (screen time, steps, late-night use) that may be a bluff; the others read it as TRUE or BLUFF, the sealed real number is revealed, and points reward reading friends well, never having 'good' habits. Daily points build into a monthly season with a finale. Pre-development: this repository is the knowledge base.
+
+Agents: read AGENTS.md first. The single-file export is kb/export/blag-kb.md. Data registers are YAML in kb/data/.
+
+
+## kb
+- [BLAG knowledge base](https://github.com/VIsHnu1762/blag/blob/main/kb/README.md): Home of the BLAG knowledge base, a map of every section and where to start.
+
+## 00-start-here
+- [Start here](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/README.md): How to use the KB, with reading paths for each role and for AI agents.
+- [Glossary](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/glossary.md): Shared vocabulary for people, code and agents.
+- [FAQ](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/faq.md): Short answers to the questions people ask most about BLAG.
+- [Conventions](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/conventions.md): Frontmatter schema, id formats, status values and claim labels used across the KB.
+- [Page template](https://github.com/VIsHnu1762/blag/blob/main/kb/00-start-here/doc-template.md): Copy this file to start a new KB page.
+
+## 01-idea
+- [Idea](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/README.md): What BLAG is and why: vision, problem, concept, research on 15 products, red lines, competitors and how we'll validate it.
+- [Vision](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/01-vision.md): Name, title, one-liner, vision, mission, category, pillars and the 290-word description of BLAG.
+- [Problem and opportunity](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/02-problem-and-opportunity.md): The three problems BLAG addresses, the evidence for each, and the gap in the market.
+- [Concept](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/03-concept.md): How BLAG works as an experience: circles, the daily drop, monthly seasons, personal and shared layers, absence and passing.
+- [Inspiration library](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/04-inspiration-library.md): Fifteen products studied (Wordle, BeReal, Duolingo, Spotify Wrapped and more): what worked, what failed, what BLAG borrows or rejects.
+- [Principles and red lines](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/05-principles-and-red-lines.md): Ten product principles, the red lines no feature may cross, and copy examples.
+- [Competitive landscape](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/06-competitive-landscape.md): Where BLAG sits against screen-time apps, daily social apps and party games.
+- [Validation plan](https://github.com/VIsHnu1762/blag/blob/main/kb/01-idea/07-validation-plan.md): How to test BLAG's riskiest assumptions cheaply before writing code, starting with a two-week hand-run test.
+
+## 02-users
+- [Users](https://github.com/VIsHnu1762/blag/blob/main/kb/02-users/README.md): Who BLAG is for and not for, the roles inside a circle, and links to personas, journeys and the research plan.
+- [Personas](https://github.com/VIsHnu1762/blag/blob/main/kb/02-users/personas.md): Five proto-personas (organiser, quiet member, long-distance friend, fitness lane, sceptic) and one anti-persona, to be validated by interviews.
+- [Journeys](https://github.com/VIsHnu1762/blag/blob/main/kb/02-users/journeys.md): Six key journeys step by step: first invite, first read, first time as Speaker, a week away, the finale, and leaving or deleting.
+- [Research plan](https://github.com/VIsHnu1762/blag/blob/main/kb/02-users/research-plan.md): The user research to run: problem interviews, the find-your-number task, the hand-run test, and usability tests for the prototype.
+
+## 03-game-design
+- [Game design](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/README.md): Index of the exact game rules: a day's flow, scoring, seasons and titles, stats and the truth zone, prompts, state machine and edge cases.
+- [Rules](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/rules.md): Step-by-step rules of a daily drop: roles, timings, sealing, claiming, reading, reveal, passing and absence.
+- [Scoring](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/scoring.md): Exact point rules for readers and Speakers, with worked examples, ties and the reasoning behind each rule.
+- [Seasons and titles](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/seasons-and-titles.md): How day scores become a season score, what the league view shows, and how every member gets exactly one title at the finale.
+- [Stats and the truth zone](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/stats-and-truth-zone.md): What stats can be claimed about, their sensitivity levels and consent rules, and how the truth zone decides whether a claim is true.
+- [Prompt engine](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/prompt-engine.md): How the server chooses each day's Speaker, stat and wording, plus the rest-day prompt bank and rules for safe prompts.
+- [State machine](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/state-machine.md): Every state a drop can be in, the events that move it, who may act in each state, and what the server must reject.
+- [Edge cases](https://github.com/VIsHnu1762/blag/blob/main/kb/03-game-design/edge-cases.md): What happens in unusual situations: zero values, joins and leaves mid-day, everyone passing, time-zone changes, network failures and more.
+
+## 04-features
+- [Features](https://github.com/VIsHnu1762/blag/blob/main/kb/04-features/README.md): How ideas become features: the MVP scope, user stories, notifications, and the generated feature catalogue with acceptance criteria.
+- [MVP scope](https://github.com/VIsHnu1762/blag/blob/main/kb/04-features/mvp-scope.md): What's in and out of the first playable version of BLAG, the reasons, and the conditions for freezing the scope.
+- [User stories](https://github.com/VIsHnu1762/blag/blob/main/kb/04-features/user-stories.md): The MVP written as user stories in seven epics, each linked to features and acceptance criteria.
+- [Notifications](https://github.com/VIsHnu1762/blag/blob/main/kb/04-features/notifications.md): Every notification BLAG may send, its exact wording, timing and privacy rules, and what is banned.
+
+## 05-brand
+- [Brand](https://github.com/VIsHnu1762/blag/blob/main/kb/05-brand/README.md): BLAG's name, title, personality, brand promise and the links to voice and tone and visual identity.
+- [Voice and tone](https://github.com/VIsHnu1762/blag/blob/main/kb/05-brand/voice-and-tone.md): How BLAG writes: four voice principles, words to use and avoid, tone by moment, and ready-to-use copy for every key screen.
+- [Visual identity](https://github.com/VIsHnu1762/blag/blob/main/kb/05-brand/visual-identity.md): Proposed colour tokens with measured WCAG contrast, typography, shape, motion, sound and haptics for BLAG.
+
+## 06-design
+- [Design](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/README.md): Index of BLAG's design work: emotional design, screen inventory, user flows and accessibility.
+- [Emotional design](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/emotional-design.md): The feelings BLAG must create and avoid, the emotional arc of a day and a season, the design review of the early concept, and the fixes it led to.
+- [Screens](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/screens.md): Inventory of the 16 MVP screens: purpose, key contents, primary action, and the empty, loading and error states each needs.
+- [Flows](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/flows.md): Diagrams of the main user flows: onboarding and joining, a Speaker's turn, a reader's turn, and leaving or deleting.
+- [Accessibility](https://github.com/VIsHnu1762/blag/blob/main/kb/06-design/accessibility.md): WCAG 2.2 AA requirements applied to BLAG's screens, plus inclusion for low-end phones, patchy data and different languages.
+
+## 07-architecture
+- [Architecture](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/README.md): System overview of BLAG: components, trust boundaries, code layout and the architecture principles, with links to the data model, API, fairness design and ADRs.
+- [Data model](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/data-model.md): Proposed Postgres tables for circles, seasons, drops, rounds, seals, reads and results, with relationships and who can read each table.
+- [API and realtime](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/api-and-realtime.md): Every client action (Edge Function), scheduled job and realtime event, with inputs, checks and responses.
+- [Sealing and fairness](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/sealing-and-fairness.md): How BLAG keeps the game fair with typed-in numbers: sealing, hidden reads, server-side scoring, proof screenshots and what can't be prevented.
+- [Architecture decision records](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/README.md): Index of BLAG's architecture decisions, each with context, options and consequences.
+- [ADR-001: Use React Native with Expo](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-001-expo-react-native.md): ADR-001: Use React Native with Expo. Status: Proposed (from the team brief; confirm at kick-off).
+- [ADR-002: Use Supabase as the backend](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-002-supabase-backend.md): ADR-002: Use Supabase as the backend. Status: Proposed (confirm at kick-off).
+- [ADR-003: Server-authoritative game with sealed values](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-003-server-authoritative.md): ADR-003: Server-authoritative game with sealed values. Status: Accepted.
+- [ADR-004: Manual entry first, behind a provider interface](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-004-stat-providers.md): ADR-004: Manual entry first, behind a provider interface. Status: Accepted.
+- [ADR-005: Drive drops with a scheduler job](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-005-scheduled-drops.md): ADR-005: Drive drops with a scheduler job. Status: Proposed.
+- [ADR-006: Persistent circles instead of temporary rooms](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-006-persistent-circles.md): ADR-006: Persistent circles instead of temporary rooms. Status: Accepted.
+- [ADR-007: Sign-in method](https://github.com/VIsHnu1762/blag/blob/main/kb/07-architecture/adr/ADR-007-authentication.md): ADR-007: Sign-in method. Status: Proposed (Q-13 open).
+
+## 08-tech-stack
+- [Tech stack](https://github.com/VIsHnu1762/blag/blob/main/kb/08-tech-stack/README.md): Proposed tools for every layer of BLAG (app, backend, scheduling, notifications, testing, docs) with reasons, alternatives and open choices.
+
+## 09-mobile-dependencies
+- [Mobile dependencies](https://github.com/VIsHnu1762/blag/blob/main/kb/09-mobile-dependencies/README.md): What iOS and Android actually allow for screen time, app usage and health data, with confidence levels, sources and consequences for BLAG.
+- [Permissions](https://github.com/VIsHnu1762/blag/blob/main/kb/09-mobile-dependencies/permissions.md): Every device permission BLAG might ask for, when it's asked, the explanation shown, and the fallback if refused.
+
+## 10-privacy-security
+- [Privacy and security](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/README.md): BLAG's privacy promises and security approach, with links to the data inventory, threat model and compliance map.
+- [Data inventory](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/data-inventory.md): Every type of data BLAG would store, its purpose, who can see it, where it lives and how long it's kept.
+- [Threat model](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/threat-model.md): Assets, attackers and threats to BLAG (cheating, leaks, account abuse, harassment), with mitigations and remaining risk.
+- [Compliance map](https://github.com/VIsHnu1762/blag/blob/main/kb/10-privacy-security/compliance.md): Laws, store rules and standards relevant to BLAG (DPDP, GDPR, CCPA, Apple and Google rules, WCAG, OWASP MASVS, ISO documentation standards) and what each requires.
+
+## 11-quality
+- [Quality](https://github.com/VIsHnu1762/blag/blob/main/kb/11-quality/README.md): Test strategy for BLAG (game engine, access rules, flows, accessibility, devices), key test cases, and the definition of ready and done.
+
+## 12-roadmap
+- [Roadmap](https://github.com/VIsHnu1762/blag/blob/main/kb/12-roadmap/README.md): Six phases from knowledge base and hand-run test to prototype, MVP, closed beta and launch, with goals, deliverables and exit criteria.
+
+## 13-pitch
+- [Pitch kit](https://github.com/VIsHnu1762/blag/blob/main/kb/13-pitch/README.md): Everything for presenting BLAG: theme fit, one-liners, the 290-word description, a 3-minute demo script, and answers to likely judge questions.
+
+## registers
+- [Registers](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/README.md): Index of the living lists: ideas, features, stats, decisions, questions, risks, sources.
+- [Idea bank](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/ideas.md): All 52 ideas for BLAG with release tags.
+- [Feature catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/features.md): Features by release with acceptance criteria.
+- [Stat catalogue](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/stats.md): Stats that can be claimed about, with sensitivity and sources.
+- [Decision log](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/decisions.md): Every decision with alternatives, reasons and status.
+- [Open questions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/questions.md): Questions that still need a decision, with owners.
+- [Risks and assumptions](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/risks.md): Untested assumptions and project risks with mitigations.
+- [Sources](https://github.com/VIsHnu1762/blag/blob/main/kb/registers/sources.md): Research sources with quality ratings and dates.
+
+## Optional
+- [Single-file export](https://github.com/VIsHnu1762/blag/blob/main/kb/export/blag-kb.md): the whole KB in one file
+- [Page index (JSON)](https://github.com/VIsHnu1762/blag/blob/main/kb/export/kb-index.json): ids, summaries and relations of every page

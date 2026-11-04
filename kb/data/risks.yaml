@@ -1,0 +1,29 @@
+# Risks and assumptions: single source of truth.
+meta:
+  title: Risks and assumptions
+  last_updated: 2026-11-04
+assumptions:
+  - {id: A-01, assumption: "Friend groups want a daily game, not an occasional one", test: "Two-week hand-run test", pass_if: "Most circles still playing on day 14", status: Untested}
+  - {id: A-02, assumption: "Bluffing about real stats is fun, not awkward", test: "Hand-run test plus interviews", pass_if: "Players call it fun; few ask to skip", status: Untested}
+  - {id: A-03, assumption: "Friends who live apart miss small daily moments", test: "Interviews with 10-15 people from distant friend groups", pass_if: "Most recognise the problem unprompted", status: Untested}
+  - {id: A-04, assumption: "Typed-in numbers with seal-before-claim feel fair", test: "Hand-run test with a neutral helper holding seals", pass_if: "Few disputes about the truth", status: Untested}
+  - {id: A-05, assumption: "Ten minutes a day is enough and not too much", test: "Time sessions in the hand-run test", pass_if: "Median session 5-15 minutes", status: Untested}
+  - {id: A-06, assumption: "A monthly season keeps interest better than weekly", test: "Compare circles in the beta", pass_if: "Engagement holds through week 4", status: Untested}
+  - {id: A-07, assumption: "Players will use focus lanes", test: "Ask players to pick one in the test", pass_if: "Most pick a lane other than 'just for fun'", status: Untested}
+  - {id: A-08, assumption: "Players share the recap card", test: "Count shares in the beta", pass_if: "A meaningful share of players post one", status: Untested}
+  - {id: A-09, assumption: "Players can find their numbers on their own phone in under a minute", test: "Timed task with 10 people on mixed phones", pass_if: "Most succeed in under 60 seconds", status: Untested}
+risks:
+  - {id: R-01, risk: "iOS won't allow reading Screen Time numbers to share them", likelihood: High, impact: High, mitigation: "Design for typed-in numbers; seal before claim; trust badges; never promise auto-sync on iOS", evidence: "S-29"}
+  - {id: R-02, risk: "Fake stats make the reveal meaningless", likelihood: Medium, impact: High, mitigation: "Seal before claim; screenshot proof; optional Android auto-read", evidence: ""}
+  - {id: R-03, risk: "Novelty fades like BeReal and Gas", likelihood: High, impact: High, mitigation: "League, knowing scores and yearbook build value over time; twist cards", evidence: "S-01, S-12"}
+  - {id: R-04, risk: "Cold start: needs 3+ friends to be fun", likelihood: High, impact: High, mitigation: "Invite whole circles; works with three", evidence: ""}
+  - {id: R-05, risk: "Someone is uncomfortable or becomes a target", likelihood: Medium, impact: High, mitigation: "Invisible pass, secret Speaker, rest days, no free text, skill-only points", evidence: ""}
+  - {id: R-06, risk: "Health-data rules for steps and sleep", likelihood: Medium, impact: Medium, mitigation: "Treat as sensitive; extra consent; legal review (Q-04)", evidence: "S-31"}
+  - {id: R-07, risk: "Under-18 users sign up", likelihood: Medium, impact: High, mitigation: "18+ age gate; legal review (Q-03)", evidence: "S-41"}
+  - {id: R-08, risk: "Scope creep from extra card types", likelihood: High, impact: Medium, mitigation: "One loop first (D-09)", evidence: ""}
+  - {id: R-09, risk: "Time zones make 'today' confusing", likelihood: Medium, impact: Medium, mitigation: "Circle home time zone and local display (D-11)", evidence: ""}
+  - {id: R-10, risk: "Android Usage Access flow confuses users", likelihood: Medium, impact: Medium, mitigation: "Explanation screen first; manual entry fallback", evidence: "S-30"}
+  - {id: R-11, risk: "The name clashes with an existing app or trademark", likelihood: Unknown, impact: Medium, mitigation: "Store and trademark search (Q-06)", evidence: ""}
+  - {id: R-12, risk: "Apple's Family Controls entitlement takes weeks to approve", likelihood: High, impact: Low, mitigation: "Don't depend on it for MVP (Q-15)", evidence: "S-40"}
+  - {id: R-13, risk: "Store rejection for missing account deletion", likelihood: Low, impact: High, mitigation: "In-app deletion plus web deletion link from day one", evidence: "S-37, S-38"}
+  - {id: R-14, risk: "Hidden values leak before reveal through a bug in access rules", likelihood: Medium, impact: High, mitigation: "Seals in a private schema; automated access-rule tests", evidence: ""}

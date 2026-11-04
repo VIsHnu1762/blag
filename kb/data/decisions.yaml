@@ -1,0 +1,24 @@
+# Decision log: single source of truth.
+# status: Agreed (team stated it) | Proposed (needs explicit sign-off) | Superseded
+meta:
+  title: Decision log
+  last_updated: 2026-11-04
+items:
+  - {id: D-01, date: 2026-11-04, decision: "Product title is BLAG: Are You Bluffing?", alternatives: "Trust Me, Bro; Caught You!; Ten Minutes with Your People", reason: "Short, memorable, and a line friends actually say", status: Agreed}
+  - {id: D-02, date: 2026-11-01, decision: "BLAG was chosen for being unique and recognisable, not as British slang; copy stays neutral and international", alternatives: "British-flavoured copy", reason: "Wider audience; matches the team's intent", status: Agreed}
+  - {id: D-03, date: 2026-11-01, decision: "BLAG is a daily ritual with a monthly league and finale, not a one-off party game", alternatives: "8-12 round sessions in temporary rooms", reason: "Builds habit and a reason to return", status: Agreed}
+  - {id: D-04, date: 2026-11-04, decision: "Category: private social game built around a daily friend ritual", alternatives: "Social media; productivity app; gamified wellness tracker", reason: "Matches the experience and avoids health-ranking pressure", status: Agreed}
+  - {id: D-05, date: 2026-11-01, decision: "League points come from skill (reading, bluffing, guessing), never from stat values", alternatives: "Points for 'better' stats", reason: "Nobody is structurally last because of their habits", status: Proposed}
+  - {id: D-06, date: 2026-11-01, decision: "Every member gets a title at the finale; titles describe play style, not habits", alternatives: "Rank-only finale", reason: "Nobody leaves with guilt or pride about habits", status: Proposed}
+  - {id: D-07, date: 2026-11-01, decision: "Contact sync is optional, off by default and a later feature; MVP uses invite links, QR codes and a one-at-a-time contact picker", alternatives: "Address-book upload at signup", reason: "Contacts are third-party data", status: Proposed}
+  - {id: D-08, date: 2026-11-01, decision: "Missed days carry no penalty and are never shown to the circle", alternatives: "Streaks; missed-day counts", reason: "Everyone stays involved, no guilt", status: Agreed}
+  - {id: D-09, date: 2026-11-04, decision: "Build one great loop first; other card types come later", alternatives: "Several card types at once", reason: "Avoids scope creep before the core is proven", status: Proposed}
+  - {id: D-10, date: 2026-11-01, decision: "Personal and league layers connect through stories, not numbers; personal data is compared only with your own baseline", alternatives: "Shared personal charts", reason: "Interconnected, nothing to feel guilt or pride about", status: Agreed}
+  - {id: D-11, date: 2026-11-01, decision: "One daily drop per circle in the circle's home time zone, with a 24-hour window", alternatives: "A fixed global clock time", reason: "Circles may span countries", status: Proposed}
+  - {id: D-12, date: 2026-11-01, decision: "Align with international standards (GDPR, DPDP, WCAG 2.2 AA, OWASP MASVS, ISO documentation standards); claim alignment, not certification", alternatives: "No formal standards", reason: "Team requirement", status: Agreed}
+  - {id: D-13, date: 2026-11-04, decision: "Primary users are close friend groups of 3-8, roughly 18-30; first market likely university friend groups", alternatives: "Broad audience; teenagers", reason: "Dense daily contact, easy to test with", status: Proposed}
+  - {id: D-14, date: 2026-11-04, decision: "The knowledge base serves people and AI agents from the same files: frontmatter on every page, YAML registers as the source of truth, generated indexes", alternatives: "Separate docs for agents", reason: "One source of truth; nothing drifts", status: Agreed}
+  - {id: D-15, date: 2026-11-04, decision: "Today's Speaker stays secret until they claim; if they don't, a backup is chosen privately", alternatives: "Announce the Speaker at the drop", reason: "Absence is never visible to the circle", status: Proposed}
+  - {id: D-16, date: 2026-11-04, decision: "Season score is the sum of each player's best 20 daily scores", alternatives: "Sum of all days; average per day played", reason: "Missing up to about 10 days costs nothing; playing more never hurts", status: Proposed}
+  - {id: D-17, date: 2026-11-04, decision: "Trust levels (typed, screenshot, auto-read) show badges only and never change points", alternatives: "Bonus points for verified numbers", reason: "iPhone players can't auto-read, so bonuses would be unfair", status: Proposed}
+  - {id: D-18, date: 2026-11-04, decision: "Voters never lose points for a wrong read", alternatives: "Negative points for wrong reads (original spec)", reason: "Forgive-by-default principle; keeps quiet players playing", status: Proposed}

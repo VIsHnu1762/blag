@@ -1,0 +1,2 @@
+/* Hide the theme's page-status icons; KB status lives in each page's frontmatter. */
+.md-status { display: none; }

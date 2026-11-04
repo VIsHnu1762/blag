@@ -1,0 +1,50 @@
+# Research sources. Quality: A = official/primary, B = reputable press or research, C = secondary or estimate.
+meta:
+  title: Sources
+  last_updated: 2026-11-04
+items:
+  - {id: S-01, topic: "BeReal daily users fell ~48% from its Oct 2022 peak (Apptopia estimate)", url: "https://petapixel.com/2023/02/22/bereal-may-be-on-the-out-users-have-nearly-halved-since-peak", publisher: PetaPixel, quality: C, checked: 2026-11-04}
+  - {id: S-03, topic: "Wordle's spoiler-free share grid", url: "https://www.smithsonianmag.com/smart-news/heres-why-the-word-game-wordle-went-viral-180979439/", publisher: Smithsonian, quality: B, checked: 2026-11-04}
+  - {id: S-04, topic: "Duolingo Streak Freeze, up to two at a time", url: "https://blog.duolingo.com/how-duolingo-streak-builds-habit", publisher: Duolingo, quality: A, checked: 2026-11-04}
+  - {id: S-05, topic: "Duolingo milestone animation and day-7 retention", url: "https://blog.duolingo.com/duolingo-streak-research/", publisher: Duolingo, quality: A, checked: 2026-11-04}
+  - {id: S-06, topic: "Duolingo leagues: 30 users, 10 tiers, promotion and demotion", url: "https://duolingo.deconstructoroffun.com/mechanics/leagues", publisher: Deconstructor of Fun, quality: C, checked: 2026-11-04}
+  - {id: S-07, topic: "Spotify Wrapped 2025: 200M users in 24h, ~500M shares", url: "https://techcrunch.com/2025/12/04/spotify-says-wrapped-2025-is-its-biggest-yet-with-200m-users-in-its-first-day", publisher: TechCrunch, quality: B, checked: 2026-11-04}
+  - {id: S-08, topic: "Wrapped Party: compare with up to nine friends", url: "https://www.newsbytesapp.com/news/science/over-200m-people-viewed-spotify-wrapped-2025-within-a-day/story", publisher: NewsBytes, quality: C, checked: 2026-11-04}
+  - {id: S-09, topic: "Strava 2024: group activities longer, more kudos", url: "https://marathonhandbook.com/strava-2024-year-in-sport-report/", publisher: Marathon Handbook, quality: C, checked: 2026-11-04}
+  - {id: S-10, topic: "Radboud study: more kudos linked to running more", url: "https://runningmagazine.ca/?p=91520", publisher: Canadian Running, quality: B, checked: 2026-11-04}
+  - {id: S-11, topic: "Strava trend report: social connection is the top reason to exercise with others", url: "https://prnewswire.com/news-releases/strava-releases-year-in-sport-trend-report-showing-what-makes-and-breaks-motivation-across-generations-302019644.html", publisher: Strava via PR Newswire, quality: A, checked: 2026-11-04}
+  - {id: S-12, topic: "Discord shuts down Gas nine months after buying it", url: "https://techcrunch.com/2023/10/19/discord-kills-gas-anonymous-compliments-app-bought-nine-months-ago/", publisher: TechCrunch, quality: B, checked: 2026-11-04}
+  - {id: S-13, topic: "Bits of Freedom survey on Snapchat streaks (March 2026)", url: "https://www.pulse.bot/consumer-tech/blogs/new-study-reveals-how-young-people-are-influenced-by-gamification-features-on-snapchat-386b9eae-9eb9-4fb1-8d38-08092e9e2791", publisher: Pulse summary of EDRi report, quality: C, checked: 2026-11-04}
+  - {id: S-14, topic: "Locket: widget, 20-friend cap, uncounted reactions", url: "https://apps.apple.com/us/app/1600525061", publisher: App Store, quality: A, checked: 2026-11-04}
+  - {id: S-15, topic: "Forest: Plant Together, 2M+ real trees", url: "https://forestapp.cc", publisher: Forest, quality: A, checked: 2026-11-04}
+  - {id: S-16, topic: "Self-report vs tracked screen time in 18-25-year-olds", url: "https://open.uct.ac.za/items/184c9eaa-a55a-49d9-8cfc-57637cefdd61", publisher: University of Cape Town, quality: B, checked: 2026-11-04}
+  - {id: S-17, topic: "~72% of college students underestimated screen time", url: "https://alpha.eurekaselect.com/article/133321", publisher: Eureka Select, quality: B, checked: 2026-11-04}
+  - {id: S-18, topic: "Czech adolescents underestimate screen time and phone checking", url: "https://muni.cz/en/research/publications/2448133", publisher: Masaryk University, quality: B, checked: 2026-11-04}
+  - {id: S-19, topic: "Indians spent ~5 hours/day on phones in 2024 (EY)", url: "https://www.bloomberg.com/news/articles/2025-03-27/indians-spent-1-1-trillion-hours-on-smartphones-in-2024-ey-says", publisher: Bloomberg, quality: B, checked: 2026-11-04}
+  - {id: S-20, topic: "Letterboxd: 30M+ members, four favourites", url: "https://en.wikipedia.org/wiki/Letterboxd", publisher: Wikipedia, quality: C, checked: 2026-11-04}
+  - {id: S-21, topic: "Opal friend and global screen-time leaderboards", url: "https://www.opal.so/help/how-when-and-where-does-opal-report-your-screen-time", publisher: Opal, quality: A, checked: 2026-11-04}
+  - {id: S-22, topic: "Opal users asking to turn off social comparison", url: "https://community.opal.so/t/feature-request-opt-out-of-all-social-features/5634", publisher: Opal community, quality: B, checked: 2026-11-04}
+  - {id: S-23, topic: "Limito: lowest screen time wins the stakes", url: "https://apps.apple.com/us/app/id6749581342", publisher: App Store, quality: A, checked: 2026-11-04}
+  - {id: S-24, topic: "Jackbox: phones as controllers, private info per phone", url: "https://builtin.com/articles/jackbox-games-design-party-pack", publisher: Built In, quality: B, checked: 2026-11-04}
+  - {id: S-25, topic: "Among Us as social deduction, like Mafia and Werewolf", url: "https://www.insidehook.com/internet/why-is-everyone-playing-among-us/amp", publisher: InsideHook, quality: B, checked: 2026-11-04}
+  - {id: S-26, topic: "Relative ranking: top performers try harder, bottom performers less", url: "https://researchonline.lse.ac.uk/id/eprint/115983", publisher: LSE, quality: B, checked: 2026-11-04}
+  - {id: S-27, topic: "Leaderboard design and harm to low performers", url: "https://yukaichou.com/advanced-gamification/how-to-design-effective-leaderboards-boosting-motivation-and-engagement/", publisher: Yu-kai Chou, quality: C, checked: 2026-11-04}
+  - {id: S-28, topic: "Tier-based leaderboards seen as fairer", url: "https://rex.libraries.wsu.edu/esploro/outputs/doctoral/LEVELING-THE-COMPETITION-THE-IMPACT-OF/99901221152701842", publisher: Washington State University, quality: B, checked: 2026-11-04}
+  - {id: S-29, topic: "iOS DeviceActivityReport data can't leave its sandbox", url: "https://developer.apple.com/forums/thread/727958", publisher: Apple Developer Forums, quality: A, checked: 2026-11-04}
+  - {id: S-30, topic: "Android UsageStatsManager and PACKAGE_USAGE_STATS", url: "https://developer.android.com/reference/android/app/usage/UsageStatsManager", publisher: Android Developers, quality: A, checked: 2026-11-04}
+  - {id: S-31, topic: "Health Connect setup, permissions and Play declaration", url: "https://developer.android.com/guide/health-and-fitness/health-connect/get-started", publisher: Android Developers, quality: A, checked: 2026-11-04}
+  - {id: S-32, topic: "Habitica parties and quests", url: "https://apps.apple.com/app/id994882113", publisher: App Store, quality: A, checked: 2026-11-04}
+  - {id: S-33, topic: "tbh bought by Facebook, shut down for low usage", url: "https://en.wikipedia.org/wiki/Tbh_(app)", publisher: Wikipedia, quality: C, checked: 2026-11-04}
+  - {id: S-34, topic: "Gas reached ~1M daily users in two months", url: "https://robots.net/news/discord-shuts-down-gas-the-anonymous-compliments-app-nine-months-after-acquisition/", publisher: Robots.net, quality: C, checked: 2026-11-04}
+  - {id: S-35, topic: "BeReal sold to Voodoo for ~EUR 500M", url: "https://businessofapps.com/?p=79501", publisher: Business of Apps, quality: C, checked: 2026-11-04}
+  - {id: S-36, topic: "Duolingo streak notifications and widget", url: "https://duolingo.deconstructoroffun.com/mechanics/streaks", publisher: Deconstructor of Fun, quality: C, checked: 2026-11-04}
+  - {id: S-37, topic: "Google Play: in-app account deletion plus a web deletion link", url: "https://support.google.com/googleplay/android-developer/answer/13327111", publisher: Google Play Console Help, quality: A, checked: 2026-11-04}
+  - {id: S-38, topic: "App Store guideline 5.1.1(v): account deletion inside the app", url: "https://developer.apple.com/help/app-review/guideline-reference/5-1-1-account-deletion", publisher: Apple, quality: A, checked: 2026-11-04}
+  - {id: S-39, topic: "Family Controls entitlement must be requested for the app and each extension", url: "https://developer.apple.com/documentation/xcode/configuring-family-controls", publisher: Apple, quality: A, checked: 2026-11-04}
+  - {id: S-40, topic: "Developers report multi-week waits for the Family Controls distribution entitlement (2026)", url: "https://developer.apple.com/forums/thread/827132", publisher: Apple Developer Forums, quality: B, checked: 2026-11-04}
+  - {id: S-41, topic: "India DPDP Rules notified 13 Nov 2025; phased dates to May 2027; under-18s need verifiable parental consent", url: "https://www.amsshardul.com/?p=17621", publisher: Shardul Amarchand Mangaldas, quality: B, checked: 2026-11-04}
+  - {id: S-42, topic: "Expo SDK 56 (React Native 0.85) and the SDK 57 follow-up", url: "https://expo.dev/changelog/sdk-56", publisher: Expo, quality: A, checked: 2026-11-04}
+  - {id: S-43, topic: "Supabase: schedule Edge Functions with pg_cron and pg_net", url: "https://supabase.com/docs/guides/functions/schedule-functions", publisher: Supabase, quality: A, checked: 2026-11-04}
+  - {id: S-44, topic: "Supabase Realtime authorization with private channels and RLS", url: "https://supabase.com/docs/guides/realtime/authorization", publisher: Supabase, quality: A, checked: 2026-11-04}
+  - {id: S-45, topic: "Google Play: permissions and APIs that access sensitive information", url: "https://support.google.com/googleplay/android-developer/answer/16558241", publisher: Google Play Console Help, quality: A, checked: 2026-11-04}
+  - {id: S-46, topic: "DPDP: breach notice to the Board within 72 hours; children's data rules", url: "https://www.theweek.in/theweek/business/2025/12/20/indias-dpdp-rules-2025-a-deep-dive-into-the-new-data-privacy-law.html", publisher: The Week, quality: B, checked: 2026-11-04}
